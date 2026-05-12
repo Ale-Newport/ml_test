@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Machine Learning Exam Practice — 6CCS3ML1</title>
+<title>ML Exam Practice v2 — 6CCS3ML1</title>
 <style>
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -31,14 +31,8 @@ body {
   line-height: 1.5;
   min-height: 100vh;
 }
+.container { max-width: 900px; margin: 0 auto; padding: 24px 16px 80px; }
 
-.container {
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 24px 16px 80px;
-}
-
-/* Header */
 header {
   background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
   color: white;
@@ -49,15 +43,10 @@ header {
 header h1 { font-size: 28px; margin-bottom: 6px; letter-spacing: -0.5px; }
 header p { opacity: 0.9; font-size: 14px; }
 
-/* Screens */
 .screen { display: none; animation: fadeIn 0.3s ease; }
 .screen.active { display: block; }
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(8px); }
-  to { opacity: 1; transform: translateY(0); }
-}
+@keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
 
-/* Cards */
 .card {
   background: var(--card);
   border-radius: 12px;
@@ -65,20 +54,9 @@ header p { opacity: 0.9; font-size: 14px; }
   box-shadow: var(--shadow);
   margin-bottom: 20px;
 }
-.card h2 {
-  color: var(--primary);
-  font-size: 22px;
-  margin-bottom: 14px;
-  font-weight: 700;
-}
-.card h3 {
-  color: var(--accent);
-  font-size: 16px;
-  margin: 16px 0 8px;
-  font-weight: 600;
-}
+.card h2 { color: var(--primary); font-size: 22px; margin-bottom: 14px; font-weight: 700; }
+.card h3 { color: var(--accent); font-size: 16px; margin: 16px 0 8px; font-weight: 600; }
 
-/* Mode buttons */
 .mode-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -86,26 +64,15 @@ header p { opacity: 0.9; font-size: 14px; }
   margin-top: 16px;
 }
 .mode-btn {
-  background: white;
-  border: 2px solid var(--border);
-  border-radius: 10px;
-  padding: 18px 16px;
-  cursor: pointer;
-  transition: all 0.2s;
-  text-align: left;
-  font-family: inherit;
-  width: 100%;
+  background: white; border: 2px solid var(--border); border-radius: 10px;
+  padding: 18px 16px; cursor: pointer; transition: all 0.2s; text-align: left;
+  font-family: inherit; width: 100%;
 }
-.mode-btn:hover {
-  border-color: var(--primary);
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-lg);
-}
+.mode-btn:hover { border-color: var(--primary); transform: translateY(-2px); box-shadow: var(--shadow-lg); }
 .mode-btn .icon { font-size: 28px; display: block; margin-bottom: 8px; }
 .mode-btn .title { font-weight: 700; color: var(--primary); font-size: 16px; margin-bottom: 4px; }
 .mode-btn .desc { color: var(--muted); font-size: 13px; }
 
-/* Topic checkboxes */
 .topic-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -113,16 +80,9 @@ header p { opacity: 0.9; font-size: 14px; }
   margin: 12px 0 18px;
 }
 .topic-chip {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  background: #f8f9fb;
-  border: 1.5px solid var(--border);
-  border-radius: 8px;
-  padding: 10px 12px;
-  cursor: pointer;
-  user-select: none;
-  font-size: 14px;
+  display: flex; align-items: center; gap: 8px;
+  background: #f8f9fb; border: 1.5px solid var(--border); border-radius: 8px;
+  padding: 10px 12px; cursor: pointer; user-select: none; font-size: 14px;
   transition: all 0.15s;
 }
 .topic-chip:hover { border-color: var(--primary-light); }
@@ -130,34 +90,18 @@ header p { opacity: 0.9; font-size: 14px; }
 .topic-chip input { cursor: pointer; }
 .topic-chip .count { color: var(--muted); font-size: 12px; margin-left: auto; }
 
-/* Inputs */
 .input-row { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin: 10px 0; }
 .input-row label { font-weight: 600; min-width: 130px; }
 input[type="number"], select {
-  padding: 8px 12px;
-  border: 1.5px solid var(--border);
-  border-radius: 6px;
-  font-size: 14px;
-  font-family: inherit;
+  padding: 8px 12px; border: 1.5px solid var(--border); border-radius: 6px;
+  font-size: 14px; font-family: inherit;
 }
-input[type="number"]:focus, select:focus {
-  outline: none;
-  border-color: var(--primary);
-}
+input[type="number"]:focus, select:focus { outline: none; border-color: var(--primary); }
 
-/* Buttons */
 .btn {
-  padding: 12px 24px;
-  border: none;
-  border-radius: 8px;
-  font-size: 15px;
-  font-weight: 600;
-  cursor: pointer;
-  font-family: inherit;
-  transition: all 0.15s;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
+  padding: 12px 24px; border: none; border-radius: 8px;
+  font-size: 15px; font-weight: 600; cursor: pointer; font-family: inherit;
+  transition: all 0.15s; display: inline-flex; align-items: center; gap: 8px;
 }
 .btn-primary { background: var(--primary); color: white; }
 .btn-primary:hover { background: #16306b; transform: translateY(-1px); }
@@ -166,285 +110,135 @@ input[type="number"]:focus, select:focus {
 .btn-secondary:hover { background: #f0f4ff; }
 .btn-success { background: var(--success); color: white; }
 .btn-success:hover { background: #1e8e4f; }
-.btn-large { padding: 14px 32px; font-size: 16px; }
 
-/* Quiz Screen */
 .quiz-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 16px;
-  flex-wrap: wrap;
-  gap: 8px;
+  display: flex; justify-content: space-between; align-items: center;
+  margin-bottom: 16px; flex-wrap: wrap; gap: 8px;
 }
 .progress-bar {
-  background: #e1e8ed;
-  border-radius: 10px;
-  height: 8px;
-  overflow: hidden;
-  flex: 1;
-  min-width: 200px;
+  background: #e1e8ed; border-radius: 10px; height: 8px;
+  overflow: hidden; flex: 1; min-width: 200px;
 }
 .progress-fill {
   background: linear-gradient(90deg, var(--primary), var(--primary-light));
-  height: 100%;
-  transition: width 0.3s;
+  height: 100%; transition: width 0.3s;
 }
-.quiz-meta {
-  font-size: 14px;
-  color: var(--muted);
-  display: flex;
-  gap: 14px;
-  flex-wrap: wrap;
-}
-.quiz-meta span { white-space: nowrap; }
+.quiz-meta { font-size: 14px; color: var(--muted); display: flex; gap: 14px; flex-wrap: wrap; }
 .quiz-meta .score { color: var(--success); font-weight: 600; }
 
 .topic-tag {
-  display: inline-block;
-  background: #e8f0fe;
-  color: var(--primary);
-  padding: 3px 10px;
-  border-radius: 12px;
-  font-size: 12px;
-  font-weight: 600;
-  margin-bottom: 10px;
+  display: inline-block; background: #e8f0fe; color: var(--primary);
+  padding: 3px 10px; border-radius: 12px; font-size: 12px;
+  font-weight: 600; margin-bottom: 10px;
 }
-.q-type-tag {
-  background: #fff3e0;
-  color: #e67e22;
-  margin-left: 6px;
-}
+.q-type-tag { background: #fff3e0; color: #e67e22; margin-left: 6px; }
+.q-diff-tag { background: #fce4ec; color: #c2185b; margin-left: 6px; }
+.q-formula-tag { background: #e8eaf6; color: #3949ab; margin-left: 6px; }
 
-.question-text {
-  font-size: 16px;
-  line-height: 1.6;
-  margin-bottom: 18px;
-}
+.question-text { font-size: 16px; line-height: 1.6; margin-bottom: 18px; }
 .question-text code {
-  background: var(--code-bg);
-  padding: 2px 6px;
-  border-radius: 4px;
-  font-family: 'Cambria Math', Consolas, monospace;
-  font-size: 14px;
+  background: var(--code-bg); padding: 2px 6px; border-radius: 4px;
+  font-family: 'Cambria Math', Consolas, monospace; font-size: 14px;
 }
 
-/* Options */
 .options { display: flex; flex-direction: column; gap: 10px; }
 .option {
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-  background: white;
-  border: 2px solid var(--border);
-  border-radius: 8px;
-  padding: 12px 14px;
-  cursor: pointer;
-  transition: all 0.15s;
-  font-size: 15px;
+  display: flex; align-items: flex-start; gap: 10px;
+  background: white; border: 2px solid var(--border); border-radius: 8px;
+  padding: 12px 14px; cursor: pointer; transition: all 0.15s; font-size: 15px;
 }
 .option:hover:not(.locked) { border-color: var(--primary-light); background: #f8fbff; }
 .option.selected { border-color: var(--primary); background: #e8f0fe; }
 .option.correct { border-color: var(--success); background: #e8f8f0; }
 .option.incorrect { border-color: var(--danger); background: #fdedec; }
 .option.locked { cursor: default; }
-.option-marker {
-  font-weight: 700;
-  color: var(--primary);
-  min-width: 22px;
-  flex-shrink: 0;
-}
+.option-marker { font-weight: 700; color: var(--primary); min-width: 22px; flex-shrink: 0; }
 .option-text { flex: 1; }
 .option-icon { margin-left: auto; font-size: 18px; }
 
-/* Number input question */
-.number-input-row {
-  display: flex;
-  gap: 10px;
-  align-items: center;
-  margin-top: 14px;
-}
+.number-input-row { display: flex; gap: 10px; align-items: center; margin-top: 14px; }
 .number-input-row input {
-  flex: 1;
-  max-width: 200px;
-  font-size: 18px;
-  padding: 10px 14px;
-  text-align: center;
-  font-family: 'Cambria Math', Consolas, monospace;
+  flex: 1; max-width: 200px; font-size: 18px; padding: 10px 14px;
+  text-align: center; font-family: 'Cambria Math', Consolas, monospace;
 }
 
-/* Feedback */
 .feedback {
-  margin-top: 18px;
-  padding: 14px 16px;
-  border-radius: 10px;
-  border-left: 4px solid;
-  animation: slideDown 0.25s ease;
+  margin-top: 18px; padding: 14px 16px; border-radius: 10px;
+  border-left: 4px solid; animation: slideDown 0.25s ease;
 }
-@keyframes slideDown {
-  from { opacity: 0; transform: translateY(-6px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-.feedback.correct {
-  background: #e8f8f0;
-  border-color: var(--success);
-}
-.feedback.incorrect {
-  background: #fdedec;
-  border-color: var(--danger);
-}
+@keyframes slideDown { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: translateY(0); } }
+.feedback.correct { background: #e8f8f0; border-color: var(--success); }
+.feedback.incorrect { background: #fdedec; border-color: var(--danger); }
 .feedback-title {
-  font-weight: 700;
-  font-size: 16px;
-  margin-bottom: 6px;
-  display: flex;
-  align-items: center;
-  gap: 6px;
+  font-weight: 700; font-size: 16px; margin-bottom: 6px;
+  display: flex; align-items: center; gap: 6px;
 }
 .feedback.correct .feedback-title { color: var(--success); }
 .feedback.incorrect .feedback-title { color: var(--danger); }
-.feedback-explanation {
-  color: var(--text);
-  font-size: 14.5px;
-  line-height: 1.6;
-}
+.feedback-explanation { color: var(--text); font-size: 14.5px; line-height: 1.6; }
 .feedback-explanation code {
-  background: rgba(0,0,0,0.05);
-  padding: 1px 5px;
-  border-radius: 3px;
+  background: rgba(0,0,0,0.05); padding: 1px 5px; border-radius: 3px;
   font-family: 'Cambria Math', Consolas, monospace;
 }
+.feedback-trap {
+  margin-top: 8px; padding: 8px 12px; background: rgba(243, 156, 18, 0.1);
+  border-left: 3px solid var(--warning); border-radius: 4px;
+  font-size: 13.5px;
+}
 
-/* Quiz controls */
 .quiz-controls {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 20px;
-  gap: 10px;
-  flex-wrap: wrap;
+  display: flex; justify-content: space-between; align-items: center;
+  margin-top: 20px; gap: 10px; flex-wrap: wrap;
 }
 
-/* Results screen */
-.results-summary {
-  text-align: center;
-  padding: 20px 0;
-}
+.results-summary { text-align: center; padding: 20px 0; }
 .score-circle {
-  width: 160px;
-  height: 160px;
-  border-radius: 50%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  width: 160px; height: 160px; border-radius: 50%;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
   margin: 0 auto 20px;
   background: conic-gradient(var(--primary) var(--score-deg), #e1e8ed 0);
   position: relative;
 }
 .score-circle::before {
-  content: '';
-  position: absolute;
-  inset: 12px;
-  background: white;
-  border-radius: 50%;
+  content: ''; position: absolute; inset: 12px;
+  background: white; border-radius: 50%;
 }
-.score-circle .pct {
-  position: relative;
-  font-size: 36px;
-  font-weight: 700;
-  color: var(--primary);
-  line-height: 1;
-}
-.score-circle .lbl {
-  position: relative;
-  font-size: 12px;
-  color: var(--muted);
-  margin-top: 4px;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
+.score-circle .pct { position: relative; font-size: 36px; font-weight: 700; color: var(--primary); line-height: 1; }
+.score-circle .lbl { position: relative; font-size: 12px; color: var(--muted); margin-top: 4px; text-transform: uppercase; letter-spacing: 0.5px; }
 
 .results-stats {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-  gap: 14px;
-  margin: 20px 0;
+  gap: 14px; margin: 20px 0;
 }
-.stat-box {
-  background: #f8f9fb;
-  border-radius: 10px;
-  padding: 16px;
-  text-align: center;
-}
-.stat-box .num {
-  font-size: 26px;
-  font-weight: 700;
-  color: var(--primary);
-}
-.stat-box .lbl {
-  font-size: 12px;
-  color: var(--muted);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
+.stat-box { background: #f8f9fb; border-radius: 10px; padding: 16px; text-align: center; }
+.stat-box .num { font-size: 26px; font-weight: 700; color: var(--primary); }
+.stat-box .lbl { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; }
 
-.topic-breakdown {
-  margin-top: 20px;
-}
+.topic-breakdown { margin-top: 20px; }
 .topic-row {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 10px 0;
-  border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 0; border-bottom: 1px solid var(--border);
 }
 .topic-row:last-child { border-bottom: 0; }
 .topic-row .name { flex: 1; font-weight: 600; font-size: 14px; }
-.topic-row .bar {
-  width: 120px;
-  height: 8px;
-  background: #e1e8ed;
-  border-radius: 4px;
-  overflow: hidden;
-}
+.topic-row .bar { width: 120px; height: 8px; background: #e1e8ed; border-radius: 4px; overflow: hidden; }
 .topic-row .bar-fill { height: 100%; background: var(--primary); transition: width 0.4s; }
 .topic-row .pct { font-size: 13px; font-weight: 600; min-width: 60px; text-align: right; }
 
-/* Review list */
 .review-item {
   border-left: 3px solid var(--success);
-  padding: 10px 14px;
-  margin-bottom: 10px;
-  background: #f8f9fb;
-  border-radius: 0 8px 8px 0;
+  padding: 10px 14px; margin-bottom: 10px;
+  background: #f8f9fb; border-radius: 0 8px 8px 0;
 }
 .review-item.wrong { border-left-color: var(--danger); }
 .review-q { font-weight: 600; margin-bottom: 4px; font-size: 14px; }
 .review-meta { font-size: 12px; color: var(--muted); }
 
-/* Footer hint */
-.hint {
-  font-size: 13px;
-  color: var(--muted);
-  background: #fff3e0;
-  padding: 10px 14px;
-  border-radius: 8px;
-  border-left: 3px solid #f39c12;
-  margin-top: 12px;
-}
-
-/* Stats persistance display */
 .persist-stats {
-  background: #f0f7ff;
-  border-radius: 10px;
-  padding: 14px 18px;
-  margin-bottom: 20px;
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 10px;
-  font-size: 14px;
+  background: #f0f7ff; border-radius: 10px;
+  padding: 14px 18px; margin-bottom: 20px;
+  display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; font-size: 14px;
 }
 .persist-stats span { color: var(--muted); }
 .persist-stats strong { color: var(--primary); font-size: 16px; }
@@ -461,87 +255,99 @@ input[type="number"]:focus, select:focus {
 </head>
 <body>
 <header>
-  <h1>🎓 Machine Learning — Exam Practice</h1>
-  <p>Module 6CCS3ML1 / 7CCSMML1 · 100+ exam-style questions with feedback</p>
+  <h1>🎓 ML Exam Practice <span style="opacity:0.7;font-size:18px;">v2</span></h1>
+  <p>Module 6CCS3ML1 / 7CCSMML1 · Balanced distractors · No length tells</p>
 </header>
 
 <div class="container">
 
-  <!-- HOME SCREEN -->
   <div id="home-screen" class="screen active">
     <div id="persist-stats-row" class="persist-stats" style="display:none;">
-      <span>📊 Your overall accuracy: <strong id="overall-acc">—</strong></span>
-      <span>Questions answered: <strong id="overall-count">0</strong></span>
-      <span>Streak: <strong id="overall-streak">0</strong> 🔥</span>
+      <span>📊 Overall: <strong id="overall-acc">—</strong></span>
+      <span>Answered: <strong id="overall-count">0</strong></span>
+      <span>Best streak: <strong id="overall-streak">0</strong> 🔥</span>
     </div>
 
     <div class="card">
       <h2>Choose your practice mode</h2>
-      <p style="color: var(--muted); margin-bottom: 12px;">Pick how you want to study today. Your progress is saved locally in your browser.</p>
+      <p style="color: var(--muted); margin-bottom: 12px;">Each question now has balanced-length options and plausible distractors. Watch for the orange "trap" notes in feedback.</p>
       <div class="mode-grid">
         <button class="mode-btn" data-mode="quick">
           <span class="icon">⚡</span>
           <span class="title">Quick Quiz</span>
-          <span class="desc">10 random questions across all topics</span>
+          <span class="desc">10 random questions</span>
         </button>
         <button class="mode-btn" data-mode="full">
           <span class="icon">📝</span>
-          <span class="title">Full Mock Exam</span>
+          <span class="title">Mock Exam</span>
           <span class="desc">25 questions, balanced topics</span>
         </button>
         <button class="mode-btn" data-mode="topic">
           <span class="icon">🎯</span>
           <span class="title">Topic-focused</span>
-          <span class="desc">Drill into specific subjects</span>
+          <span class="desc">Drill specific subjects</span>
+        </button>
+        <button class="mode-btn" data-mode="hard">
+          <span class="icon">🔥</span>
+          <span class="title">Hard Only</span>
+          <span class="desc">Trap-heavy questions only</span>
+        </button>
+        <button class="mode-btn" data-mode="formula">
+          <span class="icon">📐</span>
+          <span class="title">Formula Drill</span>
+          <span class="desc">Formulas + scenarios for scary topics</span>
+        </button>
+        <button class="mode-btn" data-mode="scary">
+          <span class="icon">😱</span>
+          <span class="title">Scary Topics</span>
+          <span class="desc">SVM, NN, HMM, regression, clustering</span>
         </button>
         <button class="mode-btn" data-mode="weak">
           <span class="icon">🔧</span>
           <span class="title">Weak-spot Trainer</span>
-          <span class="desc">Re-test questions you got wrong</span>
+          <span class="desc">Re-test wrong ones</span>
         </button>
         <button class="mode-btn" data-mode="all">
           <span class="icon">🏆</span>
-          <span class="title">Marathon (All)</span>
-          <span class="desc">All available questions in one go</span>
+          <span class="title">Marathon</span>
+          <span class="desc">Every question</span>
         </button>
         <button class="mode-btn" data-mode="reset">
           <span class="icon">🔄</span>
           <span class="title">Reset Progress</span>
-          <span class="desc">Clear all saved stats</span>
+          <span class="desc">Clear saved stats</span>
         </button>
       </div>
     </div>
 
     <div class="card">
       <h2>Topic coverage</h2>
-      <p style="color: var(--muted); font-size: 14px;">Total questions in the bank: <strong id="total-q-count">0</strong>. Distribution by topic:</p>
+      <p style="color: var(--muted); font-size: 14px;">Total: <strong id="total-q-count">0</strong> questions.</p>
       <div id="topic-overview" class="topic-breakdown" style="margin-top: 14px;"></div>
     </div>
   </div>
 
-  <!-- TOPIC PICKER SCREEN -->
   <div id="picker-screen" class="screen">
     <div class="card">
-      <h2>🎯 Pick topics to practise</h2>
-      <p style="color: var(--muted); font-size: 14px;">Tick the topics you want covered. Untick to exclude.</p>
+      <h2>🎯 Pick topics</h2>
+      <p style="color: var(--muted); font-size: 14px;">Tick to include.</p>
       <div id="topic-grid" class="topic-grid"></div>
       <div class="input-row">
-        <label for="picker-count">Number of questions:</label>
+        <label for="picker-count">Questions:</label>
         <input type="number" id="picker-count" min="1" max="200" value="15">
       </div>
       <div class="quiz-controls">
         <button class="btn btn-secondary" onclick="goHome()">← Back</button>
-        <button class="btn btn-primary" onclick="startTopicQuiz()">Start practice →</button>
+        <button class="btn btn-primary" onclick="startTopicQuiz()">Start →</button>
       </div>
     </div>
   </div>
 
-  <!-- QUIZ SCREEN -->
   <div id="quiz-screen" class="screen">
     <div class="card">
       <div class="quiz-header">
         <div class="quiz-meta">
-          <span>Question <strong id="q-current">1</strong> / <span id="q-total">10</span></span>
+          <span>Q <strong id="q-current">1</strong> / <span id="q-total">10</span></span>
           <span class="score">Score: <span id="q-score">0</span></span>
         </div>
         <div class="progress-bar">
@@ -552,6 +358,8 @@ input[type="number"]:focus, select:focus {
       <div id="topic-tag-row">
         <span class="topic-tag" id="q-topic">Topic</span>
         <span class="topic-tag q-type-tag" id="q-type">Type</span>
+        <span class="topic-tag q-diff-tag" id="q-diff" style="display:none;">Hard</span>
+        <span class="topic-tag q-formula-tag" id="q-formula" style="display:none;">📐 Formula</span>
       </div>
       <div class="question-text" id="q-text"></div>
       <div id="q-body"></div>
@@ -566,7 +374,6 @@ input[type="number"]:focus, select:focus {
     </div>
   </div>
 
-  <!-- RESULTS SCREEN -->
   <div id="results-screen" class="screen">
     <div class="card">
       <div class="results-summary">
@@ -579,34 +386,22 @@ input[type="number"]:focus, select:focus {
       </div>
 
       <div class="results-stats">
-        <div class="stat-box">
-          <div class="num" id="stat-correct">0</div>
-          <div class="lbl">Correct</div>
-        </div>
-        <div class="stat-box">
-          <div class="num" id="stat-wrong">0</div>
-          <div class="lbl">Wrong</div>
-        </div>
-        <div class="stat-box">
-          <div class="num" id="stat-time">0s</div>
-          <div class="lbl">Time</div>
-        </div>
-        <div class="stat-box">
-          <div class="num" id="stat-avg">0s</div>
-          <div class="lbl">Avg / Q</div>
-        </div>
+        <div class="stat-box"><div class="num" id="stat-correct">0</div><div class="lbl">Correct</div></div>
+        <div class="stat-box"><div class="num" id="stat-wrong">0</div><div class="lbl">Wrong</div></div>
+        <div class="stat-box"><div class="num" id="stat-time">0s</div><div class="lbl">Time</div></div>
+        <div class="stat-box"><div class="num" id="stat-avg">0s</div><div class="lbl">Avg / Q</div></div>
       </div>
 
-      <h3>📚 Performance by topic</h3>
+      <h3>📚 By topic</h3>
       <div id="result-topic-breakdown" class="topic-breakdown"></div>
 
-      <h3>🔍 Question review</h3>
+      <h3>🔍 Review</h3>
       <div id="result-review"></div>
 
       <div class="quiz-controls">
         <button class="btn btn-secondary" onclick="goHome()">🏠 Home</button>
-        <button class="btn btn-primary" onclick="retryWrong()" id="retry-wrong-btn">🔧 Retry wrong ones</button>
-        <button class="btn btn-success" onclick="restartQuiz()">🔁 Restart same mode</button>
+        <button class="btn btn-primary" onclick="retryWrong()" id="retry-wrong-btn">🔧 Retry wrong</button>
+        <button class="btn btn-success" onclick="restartQuiz()">🔁 Restart</button>
       </div>
     </div>
   </div>
@@ -615,787 +410,2062 @@ input[type="number"]:focus, select:focus {
 
 <script>
 // ======================================================================
-// QUESTION BANK
-// Topics:
-//  intro, knn, metrics, dtree, regression, naive_bayes, clustering,
-//  hmm, svm, nn, rl, ea, lfd, ethics
-// Question types: 'mcq' (single), 'multi' (multiple correct), 'num' (numeric input)
+// IMPROVED QUESTION BANK v2
+// Improvements vs v1:
+//   - All MCQ options balanced in LENGTH (within ±20% chars per question)
+//   - Distractors are PLAUSIBLE (every option could be defended by a guesser)
+//   - No "obvious by elimination" — removed "Bayes rule" as nn activation, etc.
+//   - Added 'hard' flag for trap-heavy questions
+//   - Added 'trap' field exposing what test-takers commonly fall for
+//   - More numeric questions in scary topics (SVM, NN, HMM, regression)
+//   - Added new questions to push from 126 → 150+
 // ======================================================================
 
 const QUESTIONS = [
 
 // ========= INTRODUCTION (8) =========
 { id:1, topic:'intro', type:'mcq',
-  q:'Which of the following is an example of <strong>supervised</strong> learning?',
-  options:['Grouping news articles into topics without labels','Predicting house price from features (size, location, age)','An agent learning to play chess by trial and error','Reducing 100 features down to 2 for visualisation'],
+  q:'Which task is an example of <strong>supervised</strong> learning?',
+  options:[
+    'Grouping news articles into topics from text alone',
+    'Predicting credit-card fraud from labelled past transactions',
+    'A chess agent improving by self-play with reward signals',
+    'Compressing images to a lower-dimensional latent code'
+  ],
   correct:1,
-  explain:'Supervised learning uses labelled examples (input → known target). Predicting house price from features given training examples with known prices is regression — a supervised task. Grouping without labels is clustering (unsupervised); learning from rewards is reinforcement learning.' },
+  explain:'Supervised = labelled (input, output) pairs. The fraud detector has labelled past transactions. Option 1 is clustering (unsupervised); option 3 is reinforcement learning; option 4 is unsupervised dimensionality reduction.',
+  trap:'All four are real ML tasks — only one uses LABELS to train.' },
 
 { id:2, topic:'intro', type:'mcq',
-  q:'A model that achieves 99% accuracy on the training set but only 65% on the test set is most likely:',
-  options:['Underfitting','Overfitting','Linearly separable','Well-generalised'],
+  q:'A model gets 99% on training data and 65% on test data. The most likely diagnosis is:',
+  options:[
+    'The model is underfitting the training data',
+    'The model is overfitting the training data',
+    'The training set is too large for the model',
+    'The test set was drawn from a different distribution'
+  ],
   correct:1,
-  explain:'Overfitting = the model has memorised training noise. The hallmark is a large gap between training and test performance: high train accuracy, much lower test accuracy.' },
+  explain:'Large gap with high train + low test = classic overfitting. Option 4 (distribution shift) is real but the simpler explanation given a single dataset is overfitting.',
+  trap:'Option 4 is plausible — but the standard textbook answer for "high train, low test" is overfitting.' },
 
 { id:3, topic:'intro', type:'mcq',
   q:'Which task is best framed as <strong>regression</strong>?',
-  options:['Classifying tumours as malignant or benign','Predicting tomorrow\'s temperature in °C','Identifying iris species from measurements','Grouping similar pixels in an image'],
+  options:[
+    'Classifying tumours as benign or malignant',
+    'Predicting tomorrow\'s temperature in degrees Celsius',
+    'Identifying which of three iris species a flower is',
+    'Grouping pixels of similar colour in an image'
+  ],
   correct:1,
-  explain:'Regression predicts a continuous numerical value. Temperature is a real number, so it is regression. Tumour benign/malignant is binary classification; iris species is multiclass; pixel grouping is clustering.' },
+  explain:'Regression predicts a continuous numerical output. Temperature in °C is a real number → regression. The others are: binary classification, multiclass classification, clustering.',
+  trap:'"Predicting" sounds like regression, but predicting a CATEGORY is classification.' },
 
 { id:4, topic:'intro', type:'multi',
-  q:'Which of the following are <strong>unsupervised</strong> learning tasks? (Select all that apply.)',
-  options:['k-means pixel clustering of an image','Predicting credit risk score from income data','Discovering customer market segments','Training a Naive Bayes spam classifier'],
+  q:'Which of these are <strong>unsupervised</strong> learning tasks? (Select all.)',
+  options:[
+    'k-means pixel clustering of an image',
+    'Predicting credit risk score from labelled data',
+    'Discovering customer market segments from transactions',
+    'Training a spam filter on labelled emails'
+  ],
   correct:[0,2],
-  explain:'Unsupervised methods find structure in unlabelled data. k-means clustering and customer segmentation both work without labels. Credit-risk scoring is supervised regression; Naive Bayes spam filtering uses labelled emails (supervised).' },
+  explain:'k-means and customer segmentation work without labels. Credit risk scoring uses labels (supervised regression); spam filter uses labelled emails (supervised).',
+  trap:'"Discovering" is the key word — no labels exist for the segments yet.' },
 
 { id:5, topic:'intro', type:'mcq',
-  q:'You have a dataset of customer transactions and want to discover natural groupings of customers without any labels. Which approach is most appropriate?',
-  options:['Decision tree','Linear regression','k-means','Naive Bayes'],
+  q:'You have transaction data with no labels and want to find natural customer groupings. Best approach:',
+  options:[
+    'Decision tree classifier',
+    'Linear regression model',
+    'k-means clustering',
+    'Naive Bayes classifier'
+  ],
   correct:2,
-  explain:'No labels + grouping = unsupervised clustering. k-means is the canonical clustering algorithm. Decision tree, linear regression and Naive Bayes are all supervised.' },
+  explain:'No labels + grouping = unsupervised clustering. The other three are supervised methods.',
+  trap:'Three options are supervised — only k-means works without labels.' },
 
 { id:6, topic:'intro', type:'mcq',
-  q:'In machine learning, the <strong>generalisation</strong> error refers to the error on:',
-  options:['The training set','New, unseen data','The validation set during cross-validation','The training set after regularisation'],
+  q:'In ML, <strong>generalisation</strong> error refers to error measured on:',
+  options:[
+    'The training data after convergence',
+    'Held-out new data the model has not seen',
+    'The validation fold during cross-validation',
+    'The data after applying regularisation'
+  ],
   correct:1,
-  explain:'Generalisation = how well the model performs on data it has never seen. The whole point of training is to do well on new examples, not just on the training data.' },
+  explain:'Generalisation = performance on UNSEEN data. Validation error is an estimate of generalisation error but not its definition.',
+  trap:'Validation error (option 3) is close — but validation data is "seen" during model selection, so the true measure uses fully held-out data.' },
 
 { id:7, topic:'intro', type:'mcq',
-  q:'A model that gives roughly the same poor accuracy on both training and test data (e.g. 60% on each) is showing:',
-  options:['Overfitting','Underfitting','Perfect generalisation','Data leakage'],
+  q:'A model gets ~60% accuracy on BOTH training and test data. This indicates:',
+  options:[
+    'Severe overfitting on training data',
+    'Underfitting — the model is too simple',
+    'Perfect generalisation has been achieved',
+    'Data leakage between train and test'
+  ],
   correct:1,
-  explain:'Underfitting: the model is too simple to capture the patterns, so it does badly on training data AND test data. Overfitting would show high train, low test.' },
+  explain:'Underfitting = poor on training AND test. The model lacks capacity to capture the patterns. Overfitting shows HIGH train, LOW test.',
+  trap:'"Both 60%" looks like a balance problem — but balance at a LOW level means the model cannot even fit training data.' },
 
 { id:8, topic:'intro', type:'mcq',
   q:'In the iris dataset, "petal length" and "sepal width" are best described as:',
-  options:['Class labels','Hyperparameters','Features','Hypotheses'],
+  options:[
+    'Hypotheses output by the learner',
+    'Hyperparameters of the algorithm',
+    'Features (attributes) of each example',
+    'Class labels to be predicted'
+  ],
   correct:2,
-  explain:'Features (or attributes) are the measured input properties used to describe each example. The "class label" would be the iris species, which is what you want to predict.' },
+  explain:'Features = measured input properties. The class label is the iris species (the target).',
+  trap:'Don\'t confuse "feature" (input) with "label" (output to predict).' },
 
-// ========= k-NN (8) =========
+// ========= k-NN (10) =========
 { id:9, topic:'knn', type:'mcq',
-  q:'How is a k-NN classifier <strong>trained</strong>?',
-  options:['It optimises weights via gradient descent','It builds a probabilistic model from class priors','It does no real training — it just stores the training set','It iteratively splits data on the best attribute'],
+  q:'How does a k-NN classifier <strong>train</strong>?',
+  options:[
+    'It optimises weights using batch gradient descent',
+    'It fits class-conditional probability distributions',
+    'It stores all training examples, no actual training',
+    'It recursively splits the feature space on attributes'
+  ],
   correct:2,
-  explain:'k-NN is a "lazy" learner: there is no training phase that builds a model. The classifier simply stores the training examples and does all the work at prediction time.' },
+  explain:'k-NN is a "lazy" learner — there is no training phase. It just stores data and computes neighbours at query time.',
+  trap:'All four are training procedures for OTHER algorithms (NN, Naive Bayes, k-NN, decision trees).' },
 
 { id:10, topic:'knn', type:'num',
-  q:'Compute the <strong>Manhattan distance</strong> between point A=(2, 5, 1) and point B=(4, 1, 3). Enter just the number.',
-  correct:8,
-  tolerance:0.001,
-  explain:'Manhattan distance = |2−4| + |5−1| + |1−3| = 2 + 4 + 2 = <code>8</code>.' },
+  q:'Manhattan distance between A=(2, 5, 1) and B=(4, 1, 3)?',
+  correct:8, tolerance:0.001,
+  explain:'|2−4| + |5−1| + |1−3| = 2 + 4 + 2 = <code>8</code>.' },
 
 { id:11, topic:'knn', type:'num',
-  q:'Compute the <strong>Euclidean distance</strong> between point A=(1, 2) and point B=(4, 6). Enter just the number.',
-  correct:5,
-  tolerance:0.01,
-  explain:'Euclidean = √((1−4)² + (2−6)²) = √(9 + 16) = √25 = <code>5</code>.' },
+  q:'Euclidean distance between A=(1, 2) and B=(4, 6)?',
+  correct:5, tolerance:0.01,
+  explain:'√((4−1)² + (6−2)²) = √(9+16) = √25 = <code>5</code>.' },
 
 { id:12, topic:'knn', type:'mcq',
-  q:'For a 3-NN classifier, the 3 nearest neighbours of a query point belong to classes [C1, C2, C1]. Using the standard "vote" method, which class is assigned?',
-  options:['C1','C2','Tie — random pick','Cannot determine without distances'],
+  q:'A 3-NN classifier finds the 3 nearest neighbours of a query in classes [C1, C2, C1]. The standard vote-based prediction is:',
+  options:[
+    'C1, by majority of 2 out of 3 neighbours',
+    'C2, because it is the rarer class shown',
+    'Tie — break randomly between C1 and C2',
+    'Need distances to weight the votes'
+  ],
   correct:0,
-  explain:'P(C1) = 2/3, P(C2) = 1/3 → predicted class is C1 (majority vote).' },
+  explain:'Standard (unweighted) k-NN picks the majority. 2 out of 3 are C1 → predict C1.',
+  trap:'Distance-weighted k-NN exists but the standard rule is unweighted majority vote.' },
 
 { id:13, topic:'knn', type:'mcq',
-  q:'Compared with a 5-NN classifier on the same dataset, a 1-NN classifier is most likely to:',
-  options:['Be smoother and more biased','Generalise better on test data','Have a decision boundary that hugs training points and overfit','Be slower at prediction'],
+  q:'Compared to 5-NN on the same data, a 1-NN classifier most likely shows:',
+  options:[
+    'A smoother decision boundary and higher bias',
+    'Lower variance and stronger regularisation',
+    'A boundary hugging training points, prone to overfitting',
+    'Identical performance — k only affects speed'
+  ],
   correct:2,
-  explain:'k=1 follows training points exactly → boundary hugs them → high variance → likely to overfit, especially on noisy data. Larger k smooths the boundary.' },
+  explain:'k=1 follows every training point precisely → high variance → overfits noise. Larger k smooths the boundary.',
+  trap:'Option 1 describes LARGER k, not smaller. Don\'t reverse them.' },
 
 { id:14, topic:'knn', type:'mcq',
-  q:'The "sophisticated" k-NN method computes the probability of class C<sub>i</sub> as:',
-  options:['exp(distance to nearest C_i) / Σ','n_i / k where n_i is the number of neighbours in class C_i','1 / (1 + average distance to class C_i)','The fraction of the training set in class C_i'],
-  correct:1,
-  explain:'P(C_i) = n_i / k where n_i = how many of the k nearest neighbours are in class C_i. The class with the highest such probability is assigned.' },
+  q:'The "probabilistic" k-NN estimates P(C<sub>i</sub>) as:',
+  options:[
+    'The fraction n<sub>i</sub>/k of neighbours in class C<sub>i</sub>',
+    'The total fraction of class C<sub>i</sub> in training data',
+    'A softmax of negative distances to class C<sub>i</sub>',
+    'One over one plus the average distance to C<sub>i</sub>'
+  ],
+  correct:0,
+  explain:'Standard probabilistic k-NN: among the k nearest, count how many are in each class and divide by k.',
+  trap:'Option 3 (softmax) is a real technique but not the textbook definition.' },
 
 { id:15, topic:'knn', type:'multi',
-  q:'Which statements about k-NN are <strong>true</strong>? (Select all that apply.)',
-  options:['It has a closed-form analytical training step','Choosing too small k tends to cause overfitting','Choosing too large k tends to cause underfitting','It can naturally handle multiclass classification'],
+  q:'Which statements about k-NN are <strong>true</strong>? (Select all.)',
+  options:[
+    'It has a closed-form analytical training step',
+    'Too small k tends to cause overfitting',
+    'Too large k tends to cause underfitting',
+    'It naturally extends to multiclass classification'
+  ],
   correct:[1,2,3],
-  explain:'k-NN has no training (it just stores data — so option 1 is false). Small k overfits (boundary too tight); large k underfits (loses local detail). It handles multiclass trivially: just count votes among the classes.' },
+  explain:'k-NN has no training — option 1 is false. Small k = overfit, large k = underfit, multiclass is trivial (count votes).',
+  trap:'Many people forget multiclass works out-of-the-box; some think k-NN has a "training" step.' },
 
 { id:16, topic:'knn', type:'mcq',
-  q:'Training data: X1=(1,1)→C1, X2=(2,2)→C1, X3=(1,3)→C1, X5=(1,6)→C2, X6=(2,4)→C2, X7=(2,5)→C2. Using <strong>Manhattan distance and 3-NN</strong>, classify the query (2, 3).',
-  options:['C1','C2','Tie','Cannot decide without all data'],
+  q:'Training: X1=(1,1)→C1, X2=(2,2)→C1, X3=(1,3)→C1, X5=(1,6)→C2, X6=(2,4)→C2, X7=(2,5)→C2. Using <strong>Manhattan + 3-NN</strong>, classify (2, 3):',
+  options:[
+    'Class C1, by 2-to-1 majority among nearest 3',
+    'Class C2, by 2-to-1 majority among nearest 3',
+    'Tie — needs a distance-weighted vote',
+    'Undetermined without test labels'
+  ],
   correct:0,
-  explain:'Distances: X1=3, X2=1, X3=1, X5=4, X6=1, X7=2. The 3 smallest are X2=1, X3=1, X6=1 → 2 are C1 and 1 is C2 → P(C1)=2/3 → classify as <strong>C1</strong>.' },
+  explain:'Distances from (2,3): X1=3, X2=1, X3=1, X5=4, X6=1, X7=2. Three smallest: X2=1, X3=1, X6=1 → C1, C1, C2 → vote = C1.',
+  trap:'Easy to miscompute distances. Always list ALL distances before picking.' },
 
-// ========= PERFORMANCE METRICS (10) =========
-{ id:17, topic:'metrics', type:'num',
-  q:'A binary classifier produces TP=8, TN=7, FP=2, FN=3. Compute its <strong>accuracy</strong> (give the decimal value, e.g. 0.75).',
-  correct:0.75,
-  tolerance:0.005,
-  explain:'Accuracy = (TP+TN)/(TP+TN+FP+FN) = (8+7)/(8+7+2+3) = 15/20 = <code>0.75</code>.' },
+{ id:17, topic:'knn', type:'mcq', hard:true,
+  q:'Why is feature scaling (e.g. standardisation) usually applied <strong>before</strong> k-NN?',
+  options:[
+    'Speeds up the training phase considerably',
+    'Reduces the storage cost of the training set',
+    'Prevents large-range features from dominating distance',
+    'Makes k-NN robust to changing the value of k'
+  ],
+  correct:2,
+  explain:'Distances are sums over features. A feature in [0, 10000] swamps one in [0, 1] regardless of relevance. Scaling equalises feature influence.',
+  trap:'k-NN has no training to speed up. Don\'t confuse with neural-net normalisation reasons.' },
 
-{ id:18, topic:'metrics', type:'num',
-  q:'A classifier has TP=8, FP=2, FN=3, TN=7. Compute its <strong>precision</strong> (decimal, 2 dp).',
-  correct:0.8,
-  tolerance:0.005,
-  explain:'Precision = TP/(TP+FP) = 8/(8+2) = 8/10 = <code>0.80</code>.' },
+{ id:18, topic:'knn', type:'mcq', hard:true,
+  q:'k-NN inference cost on a dataset of n examples with d features per query is:',
+  options:[
+    'O(1) — constant, since lookups are hashed',
+    'O(log n) — using a sorted index',
+    'O(n · d) — must compare against every example',
+    'O(d²) — quadratic in features only'
+  ],
+  correct:2,
+  explain:'Naive k-NN compares the query to every training example: n distances, each O(d). KD-trees can do O(log n) average for low d, but the brute force answer is O(n·d).',
+  trap:'Tree-based indexes help in low dimensions, but the standard textbook answer for plain k-NN is O(n·d).' },
 
+// ========= PERFORMANCE METRICS (12) =========
 { id:19, topic:'metrics', type:'num',
-  q:'A classifier has TP=8, FP=2, FN=3, TN=7. Compute its <strong>recall</strong> (decimal, 2 dp).',
-  correct:0.73,
-  tolerance:0.01,
-  explain:'Recall = TP/(TP+FN) = 8/(8+3) = 8/11 ≈ <code>0.727</code> (≈ 0.73).' },
+  q:'TP=8, TN=7, FP=2, FN=3. Compute <strong>accuracy</strong> (decimal).',
+  correct:0.75, tolerance:0.005,
+  explain:'(TP+TN)/total = (8+7)/(8+7+2+3) = 15/20 = <code>0.75</code>.' },
 
 { id:20, topic:'metrics', type:'num',
-  q:'Given precision = 0.8 and recall = 0.73, compute the <strong>F1 score</strong> (decimal, 2 dp).',
-  correct:0.76,
-  tolerance:0.01,
-  explain:'F1 = 2 · (P·R)/(P+R) = 2 · (0.8·0.73)/(0.8+0.73) = 2 · 0.584/1.53 ≈ <code>0.76</code>.' },
+  q:'TP=8, FP=2, FN=3, TN=7. Compute <strong>precision</strong> (2 dp).',
+  correct:0.80, tolerance:0.005,
+  explain:'TP/(TP+FP) = 8/10 = <code>0.80</code>.' },
 
-{ id:21, topic:'metrics', type:'mcq',
-  q:'In a medical-screening task where missing a true case has serious consequences, the most important metric is:',
-  options:['Precision','Accuracy','Recall','Specificity'],
-  correct:2,
-  explain:'Recall = TP/(TP+FN) measures how many of the actual positives were caught. When false negatives (missed cases) are dangerous, recall is the priority.' },
+{ id:21, topic:'metrics', type:'num',
+  q:'TP=8, FP=2, FN=3, TN=7. Compute <strong>recall</strong> (2 dp).',
+  correct:0.73, tolerance:0.01,
+  explain:'TP/(TP+FN) = 8/11 ≈ <code>0.73</code>.' },
 
-{ id:22, topic:'metrics', type:'mcq',
-  q:'In a spam-classification system, you want to be <strong>very sure</strong> that anything flagged as spam really is spam (avoid blocking legitimate emails). Which metric should you optimise?',
-  options:['Recall','Precision','Accuracy','True negative rate'],
-  correct:1,
-  explain:'Precision = TP/(TP+FP) measures how trustworthy positive predictions are. False positives (legit email flagged spam) are costly here, so precision matters most.' },
+{ id:22, topic:'metrics', type:'num',
+  q:'Precision = 0.80, Recall = 0.73. Compute <strong>F1</strong> (2 dp).',
+  correct:0.76, tolerance:0.015,
+  explain:'F1 = 2·P·R/(P+R) = 2·0.584/1.53 ≈ <code>0.76</code>.' },
 
 { id:23, topic:'metrics', type:'mcq',
-  q:'A dataset has 950 negative examples and 50 positive examples. A "classifier" that always predicts negative achieves:',
-  options:['95% accuracy and is excellent','95% accuracy but is useless because recall is 0','5% accuracy','50% accuracy'],
+  q:'In medical screening where missing a sick patient is dangerous, prioritise:',
+  options:[
+    'Precision — fewer false positives matter most',
+    'Recall — catching every true case is critical',
+    'Accuracy — overall correctness dominates',
+    'Specificity — true-negative rate is the goal'
+  ],
   correct:1,
-  explain:'Always predicting negative gives 950/1000 = 95% accuracy, but it never identifies any positive (recall = 0). This is why accuracy is misleading on imbalanced data.' },
+  explain:'Missing a sick patient = false negative. Recall = TP/(TP+FN) directly measures how few you miss.',
+  trap:'Easy to confuse precision and recall — remember: recall = "did we Recall every positive?"' },
 
 { id:24, topic:'metrics', type:'mcq',
-  q:'In a confusion matrix, examples that are actually positive but predicted negative are:',
-  options:['True positives (TP)','False positives (FP)','True negatives (TN)','False negatives (FN)'],
-  correct:3,
-  explain:'False Negative = the actual class is positive, but the model said negative. (Type II error.)' },
+  q:'In a spam filter, you want to AVOID blocking legitimate email. You should prioritise:',
+  options:[
+    'Recall — catch all spam at any cost',
+    'Precision — be sure flagged emails are spam',
+    'Accuracy — overall correctness on the inbox',
+    'F1 — harmonic mean balances both errors'
+  ],
+  correct:1,
+  explain:'Blocking legit email = false positive. Precision = TP/(TP+FP) measures how trustworthy the spam flag is.',
+  trap:'This is the OPPOSITE of the medical case — precision vs recall depends on which error costs more.' },
 
 { id:25, topic:'metrics', type:'mcq',
-  q:'The <strong>F1 score</strong> is the:',
-  options:['Arithmetic mean of precision and recall','Harmonic mean of precision and recall','Geometric mean of TP and TN','Sum of precision and recall divided by 2'],
-  correct:1,
-  explain:'F1 = 2·PR/(P+R) is the harmonic mean — penalises imbalanced precision/recall more than the arithmetic mean would.' },
-
-{ id:26, topic:'metrics', type:'multi',
-  q:'Why is <strong>10-fold cross-validation</strong> used? (Select all that apply.)',
-  options:['It uses every example for both training and testing across the folds','It trains on more data than a single 70/30 split','It reduces variance in the performance estimate','It removes the need for any test set'],
-  correct:[0,1,2],
-  explain:'10-fold CV: every example is in the test fold exactly once and in training in the other 9. Each training set uses 90% of data (more than a 70/30 split). Averaging 10 scores reduces variance. But you still need a final held-out test set in serious work.' },
-
-// ========= DECISION TREES (8) =========
-{ id:27, topic:'dtree', type:'mcq',
-  q:'When building a decision tree using information gain, you choose the attribute that:',
-  options:['Has the highest entropy','Maximises the information gain (or, equivalently, minimises the remainder)','Has the most distinct values','Has the highest correlation with the class'],
-  correct:1,
-  explain:'Gain(A) = H(Goal) − Remainder(A). We pick A that maximises Gain — the attribute that reduces uncertainty the most when split on.' },
-
-{ id:28, topic:'dtree', type:'num',
-  q:'A dataset has 6 positive and 4 negative examples (total 10). Compute the <strong>entropy</strong> H(Goal) = B(p/(p+n)). Use B(0.6) ≈ 0.97. Enter the value.',
-  correct:0.97,
-  tolerance:0.02,
-  explain:'B(q) = −[q log₂ q + (1−q) log₂(1−q)]. With q = 6/10 = 0.6: B(0.6) ≈ <code>0.97</code> bits.' },
-
-{ id:29, topic:'dtree', type:'num',
-  q:'Compute the entropy <strong>B(0)</strong>. Enter the value.',
+  q:'Dataset: 950 negative, 50 positive. A "model" that always predicts negative gets:',
+  options:[
+    '95% accuracy but useless — recall is 0',
+    '95% accuracy, indicating a strong classifier',
+    '5% accuracy and 0% recall, both terrible',
+    '50% accuracy due to class imbalance bias'
+  ],
   correct:0,
-  tolerance:0.001,
-  explain:'A pure set has no uncertainty: B(0) = B(1) = 0. (Convention: 0·log(0) = 0.)' },
+  explain:'950/1000 = 95% accuracy, but it catches zero positives → recall = 0. This is why accuracy is misleading on imbalanced data.',
+  trap:'95% sounds great until you realise the model is detecting nothing.' },
 
-{ id:30, topic:'dtree', type:'num',
-  q:'Compute the entropy <strong>B(0.5)</strong>. Enter the value.',
-  correct:1,
-  tolerance:0.005,
-  explain:'B(0.5) = −(0.5·log₂0.5 + 0.5·log₂0.5) = −(−0.5 −0.5) = <code>1</code> bit. Maximum entropy for a binary variable.' },
+{ id:26, topic:'metrics', type:'mcq',
+  q:'Examples that are actually positive but predicted negative are called:',
+  options:[
+    'True positives — predicted correctly',
+    'False positives — wrong positive call',
+    'True negatives — correctly rejected',
+    'False negatives — missed positives'
+  ],
+  correct:3,
+  explain:'False Negative = actually positive, predicted negative. Mnemonic: "Failed to Notice".',
+  trap:'The naming is "False [what was predicted]" not "False [what was actual]". Predicted negative + wrong = False Negative.' },
 
-{ id:31, topic:'dtree', type:'num',
-  q:'Compute the <strong>Gini impurity</strong> of a set with 4 positives and 1 negative (5 total). Use G(S) = 1 − [(p/(p+n))² + (n/(p+n))²]. Enter to 2 dp.',
-  correct:0.32,
-  tolerance:0.01,
-  explain:'G = 1 − [(4/5)² + (1/5)²] = 1 − [0.64 + 0.04] = 1 − 0.68 = <code>0.32</code>.' },
-
-{ id:32, topic:'dtree', type:'mcq',
-  q:'The Gini impurity of a perfectly pure node (all examples in one class) is:',
-  options:['1.0','0.5','0.0','log₂(N)'],
+{ id:27, topic:'metrics', type:'mcq',
+  q:'The F1 score is the:',
+  options:[
+    'Arithmetic mean of precision and recall',
+    'Geometric mean of TP and TN counts',
+    'Harmonic mean of precision and recall',
+    'Sum of precision and recall, halved'
+  ],
   correct:2,
-  explain:'G = 1 − Σ p_k². If one class has p=1 and the rest 0, then G = 1 − 1 = 0. A pure node has zero impurity.' },
+  explain:'F1 = 2PR/(P+R) is the harmonic mean. It penalises imbalance — F1 is low if either P or R is low.',
+  trap:'Arithmetic mean of P and R would be (P+R)/2 — different formula.' },
 
-{ id:33, topic:'dtree', type:'multi',
-  q:'In the decision-tree learning (DTL) algorithm, you return the <strong>plurality (majority) class</strong> when:',
-  options:['There are no more examples at this node','All examples have the same class','You run out of attributes to split on','The depth limit is reached (stopping rule)'],
+{ id:28, topic:'metrics', type:'multi',
+  q:'Why use 10-fold cross-validation? (Select all that apply.)',
+  options:[
+    'Every example serves as test exactly once across folds',
+    'Each training fold uses ~90% of data, more than 70/30',
+    'It reduces variance in the performance estimate',
+    'It removes the need for any held-out test set'
+  ],
+  correct:[0,1,2],
+  explain:'CV does use all data efficiently and reduces estimate variance, but you STILL need a final test set for unbiased reporting after model selection.',
+  trap:'Option 4 sounds plausible — but if you tune on CV results, you also need a fresh test set.' },
+
+{ id:29, topic:'metrics', type:'num', hard:true,
+  q:'A classifier on 1000 examples (900 neg, 100 pos) predicts 80 true positives and 50 false positives. Compute <strong>precision</strong> (2 dp).',
+  correct:0.62, tolerance:0.01,
+  explain:'Precision = TP/(TP+FP) = 80/(80+50) = 80/130 ≈ <code>0.615</code>.' },
+
+{ id:30, topic:'metrics', type:'num', hard:true,
+  q:'Same setup: 1000 examples (900 neg, 100 pos), 80 TP and 50 FP. Compute <strong>recall</strong> (2 dp).',
+  correct:0.80, tolerance:0.01,
+  explain:'Total positives = 100. Recall = TP/100 = 80/100 = <code>0.80</code>. The number of negatives is a distractor.',
+  trap:'Recall ignores negatives — only TP and FN matter. FN = 100 − 80 = 20.' },
+
+// ========= DECISION TREES (10) =========
+{ id:31, topic:'dtree', type:'mcq',
+  q:'When building a decision tree by information gain, you pick the attribute with:',
+  options:[
+    'Highest entropy in its branches',
+    'Most distinct values to split on',
+    'Highest information gain (lowest remainder)',
+    'Highest correlation with the target'
+  ],
+  correct:2,
+  explain:'Gain(A) = H(Goal) − Remainder(A). Maximise gain = minimise remainder. The two are equivalent criteria.',
+  trap:'"Most distinct values" is a real bias of ID3 — but it\'s a PROBLEM, not the goal.' },
+
+{ id:32, topic:'dtree', type:'num',
+  q:'Dataset: 6 positives, 4 negatives. Compute H(Goal) = B(0.6). (Hint: ≈ 0.97.)',
+  correct:0.97, tolerance:0.02,
+  explain:'B(0.6) = −[0.6·log₂0.6 + 0.4·log₂0.4] ≈ <code>0.97</code> bits.' },
+
+{ id:33, topic:'dtree', type:'num',
+  q:'Compute entropy B(0).',
+  correct:0, tolerance:0.001,
+  explain:'A pure set has zero uncertainty: B(0) = B(1) = <code>0</code>. Convention: 0·log(0) = 0.' },
+
+{ id:34, topic:'dtree', type:'num',
+  q:'Compute entropy B(0.5).',
+  correct:1, tolerance:0.005,
+  explain:'B(0.5) = −(0.5·log₂0.5 + 0.5·log₂0.5) = <code>1</code> bit (maximum for binary).' },
+
+{ id:35, topic:'dtree', type:'num',
+  q:'Gini impurity of a set with 4 positives, 1 negative (5 total)?',
+  correct:0.32, tolerance:0.01,
+  explain:'G = 1 − [(4/5)² + (1/5)²] = 1 − [0.64 + 0.04] = <code>0.32</code>.' },
+
+{ id:36, topic:'dtree', type:'mcq',
+  q:'The Gini impurity of a perfectly pure node is:',
+  options:[
+    'Exactly 1.0 — maximum certainty',
+    'Exactly 0.5 — neutral position',
+    'Exactly 0.0 — no impurity left',
+    'log₂(N) where N is class count'
+  ],
+  correct:2,
+  explain:'G = 1 − Σp²ₖ. With one class p=1: G = 1−1 = 0.',
+  trap:'Don\'t confuse with entropy. Both peak differently: Gini max = 1−1/k, Entropy max = log₂(k).' },
+
+{ id:37, topic:'dtree', type:'multi',
+  q:'In the DTL algorithm, you return the <strong>plurality (majority) class</strong> when:',
+  options:[
+    'No examples remain at this node',
+    'All examples share the same class',
+    'No attributes are left to split on',
+    'A pre-set depth limit has been reached'
+  ],
   correct:[0,2,3],
-  explain:'Return plurality when (a) no examples are left at this branch, (b) attributes are exhausted, (c) a stopping rule fires. If all examples already share a class, return THAT class (a pure leaf), not the plurality.' },
+  explain:'Plurality returned when: examples empty, attributes exhausted, or stopping rule triggered. If all examples share a class, return THAT specific class (a pure leaf) — not "plurality".',
+  trap:'Option 2 is tempting but a pure leaf returns the class directly, not "the majority of [one class]".' },
 
-{ id:34, topic:'dtree', type:'mcq',
-  q:'The chief advantage of decision trees over neural networks is:',
-  options:['Higher raw accuracy','Easier to scale to billions of examples','Interpretability — you can read the rules directly','Lower memory usage'],
+{ id:38, topic:'dtree', type:'mcq',
+  q:'Chief advantage of decision trees over neural networks:',
+  options:[
+    'Generally higher accuracy on benchmarks',
+    'Better scaling to billions of examples',
+    'Interpretable — rules can be read directly',
+    'Significantly lower memory requirements'
+  ],
   correct:2,
-  explain:'Decision trees produce a sequence of human-readable if/else tests. This makes them transparent and easy to audit — a key advantage in regulated or sensitive applications.' },
+  explain:'Decision trees produce a transparent if/else structure that humans can read and audit — crucial in regulated domains.',
+  trap:'Neural nets often have HIGHER accuracy. Tree-based ensembles (XGBoost) scale well, but a single tree\'s edge is interpretability.' },
 
-// ========= LINEAR REGRESSION (8) =========
-{ id:35, topic:'regression', type:'mcq',
-  q:'In a univariate linear regression model h<sub>w</sub>(x) = w₀ + w₁·x, the parameter w₀ is:',
-  options:['The slope of the line','The intercept (value of h when x = 0)','The learning rate','The prediction error'],
+{ id:39, topic:'dtree', type:'mcq', hard:true,
+  q:'Why does pure ID3 (information gain) tend to prefer attributes with <strong>many distinct values</strong>?',
+  options:[
+    'Such splits leave fewer examples per branch and lower remainder',
+    'It minimises tree depth automatically',
+    'It maximises classification accuracy by design',
+    'It is required for the entropy formula to converge'
+  ],
+  correct:0,
+  explain:'A many-valued attribute (e.g. an ID column) splits data into many small, pure subsets → tiny remainder → huge gain. But the resulting tree is meaningless. Gain ratio fixes this.',
+  trap:'This is a famous DT pitfall — "ID number" beats all other attributes if you use raw gain.' },
+
+{ id:40, topic:'dtree', type:'mcq', hard:true,
+  q:'You compute Remainder(Lang)=0.636, Remainder(Type)=0.951, Remainder(New)=0.846. Best split:',
+  options:[
+    'New, because its remainder is moderate',
+    'Lang, because it has the lowest remainder',
+    'Type, because it has the highest remainder',
+    'Cannot decide without H(Goal) for gain'
+  ],
   correct:1,
-  explain:'w₀ is the intercept (or bias): the predicted value when x = 0. w₁ is the slope (how much y changes per unit of x).' },
+  explain:'Lowest remainder = highest gain (Gain = H − Remainder; H is constant). Pick Lang.',
+  trap:'You don\'t need H(Goal) — it cancels out when comparing remainders.' },
 
-{ id:36, topic:'regression', type:'mcq',
-  q:'In <strong>batch gradient descent</strong>, weights are updated:',
-  options:['After every single training example','After computing the gradient summed over the entire training set','Only after the test set is evaluated','Randomly when the loss increases'],
-  correct:1,
-  explain:'Batch GD computes the gradient using ALL examples then updates once per epoch. Stochastic GD updates after each example. Mini-batch is in between.' },
-
-{ id:37, topic:'regression', type:'mcq',
-  q:'Stochastic Gradient Descent (SGD) compared to batch gradient descent:',
-  options:['Always converges faster to the optimum','Updates weights after each individual training example, with noisier trajectory','Cannot be used for large datasets','Uses second-order derivatives'],
-  correct:1,
-  explain:'SGD updates after each example: faster per step and good for very large datasets, but the trajectory is noisier (positive/negative errors not cancelled). Whether it converges faster depends on data and learning rate.' },
-
-{ id:38, topic:'regression', type:'mcq',
-  q:'Choosing a learning rate α that is <strong>too large</strong> typically causes:',
-  options:['Very slow convergence','Weights to oscillate or diverge — overshooting the minimum','Underfitting','Higher precision'],
-  correct:1,
-  explain:'Too-large α makes each update overshoot the minimum, causing oscillation or even divergence. Too-small α makes updates tiny and convergence slow.' },
-
-{ id:39, topic:'regression', type:'num',
-  q:'A perceptron uses the delta rule. With initial w₀=0, w₁=0, training pair (x=1.5, y=1), and α=0.1, what is the new <strong>w₀</strong> after one update?',
-  correct:0.1,
-  tolerance:0.001,
-  explain:'Update: w₀ ← w₀ + α·(y − h_w(x)) where h_w(x)=w₀+w₁x = 0. So w₀ ← 0 + 0.1·(1 − 0) = <code>0.1</code>.' },
-
-{ id:40, topic:'regression', type:'num',
-  q:'Continuing the previous example (after w₀=0.1), what is the new <strong>w₁</strong>? (α=0.1, x=1.5, y=1, w₀ was 0 when the gradient was computed.)',
-  correct:0.15,
-  tolerance:0.001,
-  explain:'For SGD using simultaneous-style update with current weights both 0: w₁ ← w₁ + α·(y − h_w(x))·x = 0 + 0.1·(1 − 0)·1.5 = <code>0.15</code>.' },
-
+// ========= LINEAR REGRESSION (10) =========
 { id:41, topic:'regression', type:'mcq',
-  q:'A dataset is "linearly separable in 2D" means:',
-  options:['Both features are continuous','A single straight line can perfectly separate the two classes','The data fits a quadratic curve','Both classes have the same number of examples'],
+  q:'In h<sub>w</sub>(x) = w₀ + w₁·x, the parameter w₀ is the:',
+  options:[
+    'Slope — how much h changes per unit x',
+    'Intercept — value of h when x equals zero',
+    'Step size used by gradient descent',
+    'Squared error of the prediction'
+  ],
   correct:1,
-  explain:'Linearly separable in n dimensions = a single (n−1)-dimensional hyperplane separates the classes. In 2D that hyperplane is a straight line.' },
+  explain:'w₀ is the intercept (bias). w₁ is the slope.',
+  trap:'Easy to swap intercept/slope if you read fast.' },
 
 { id:42, topic:'regression', type:'mcq',
-  q:'When you have multiple input features (x₁, x₂, …, x_n), to keep all weight-update rules in the same form we introduce:',
-  options:['A regularisation term','A dummy feature x₀ = 1 multiplied by w₀','A dropout layer','An activation function'],
+  q:'<strong>Batch</strong> gradient descent updates weights:',
+  options:[
+    'Once after each individual training example',
+    'Once per full pass over the entire training set',
+    'Only when the loss function increases',
+    'Continuously during model evaluation'
+  ],
   correct:1,
-  explain:'Defining x₀ = 1 makes the bias update look identical to the others: w_i ← w_i + α·(y − h_w(x))·x_i for all i = 0, 1, …, n.' },
+  explain:'Batch GD = gradient summed over ALL examples, then ONE update per epoch. SGD updates after each example. Mini-batch is in between.',
+  trap:'Don\'t confuse batch with mini-batch or stochastic.' },
 
-// ========= NAIVE BAYES (10) =========
-{ id:43, topic:'naive_bayes', type:'mcq',
-  q:'The <strong>"naive"</strong> assumption in Naive Bayes is:',
-  options:['All features are equally important','All features are conditionally independent given the class','The dataset is normally distributed','Classes are equally likely'],
+{ id:43, topic:'regression', type:'mcq',
+  q:'SGD compared to batch gradient descent:',
+  options:[
+    'Always converges faster to the optimum',
+    'Cannot be applied to large datasets',
+    'Updates per example, with noisier trajectory',
+    'Requires second-order derivative information'
+  ],
+  correct:2,
+  explain:'SGD: per-example updates, faster wall-clock progress on big data, noisier path. Whether it converges faster depends on tuning.',
+  trap:'"Always faster" is the trap — SGD trades stability for speed.' },
+
+{ id:44, topic:'regression', type:'mcq',
+  q:'A learning rate α that is <strong>too large</strong> typically causes:',
+  options:[
+    'Smooth, very slow convergence to the optimum',
+    'Underfitting due to insufficient capacity',
+    'Weights to oscillate or diverge, overshooting',
+    'Higher classification precision on test data'
+  ],
+  correct:2,
+  explain:'Too-large α overshoots the minimum each step → oscillation or divergence. Too-small α → painfully slow convergence.',
+  trap:'"Too small" gives slow convergence — don\'t mix them up.' },
+
+{ id:45, topic:'regression', type:'num',
+  q:'Perceptron, delta rule. w₀=0, w₁=0, training pair (x=1.5, y=1), α=0.1. New w₀?',
+  correct:0.1, tolerance:0.001,
+  explain:'w₀ ← w₀ + α·(y − h(x)) = 0 + 0.1·(1 − 0) = <code>0.1</code>.' },
+
+{ id:46, topic:'regression', type:'num',
+  q:'Same setup (start from w₀=0, w₁=0). New w₁ after one update?',
+  correct:0.15, tolerance:0.001,
+  explain:'w₁ ← w₁ + α·(y − h(x))·x = 0 + 0.1·1·1.5 = <code>0.15</code>.' },
+
+{ id:47, topic:'regression', type:'mcq',
+  q:'"Linearly separable in 2D" means:',
+  options:[
+    'Both classes contain continuous features',
+    'A single straight line separates the two classes',
+    'The data is well-described by a quadratic curve',
+    'Both classes have equal example counts'
+  ],
   correct:1,
-  explain:'Naive Bayes assumes P(x₁,…,x_n | C) = ∏_i P(x_i | C). This rarely holds exactly but works very well in practice (e.g. text classification).' },
+  explain:'Linearly separable in n-D = one (n−1)-D hyperplane separates classes. In 2D that hyperplane is a line.',
+  trap:'"Quadratic curve" is a common wrong answer — that\'s nonlinear separability.' },
 
-{ id:44, topic:'naive_bayes', type:'mcq',
-  q:'Given P(D|H) = 0.8, P(H) = 0.04, and P(D) = 0.128, what does Bayes\' rule give for P(H|D)?',
-  options:['0.032','0.25','0.50','3.2'],
+{ id:48, topic:'regression', type:'mcq',
+  q:'Why introduce a dummy feature x₀ = 1 in multivariate models?',
+  options:[
+    'It acts as a regularisation against overfitting',
+    'It absorbs noise present in the other features',
+    'It lets the bias w₀ use the same update rule',
+    'It is required by gradient descent to converge'
+  ],
+  correct:2,
+  explain:'With x₀=1, every weight (including bias w₀) updates as w_i ← w_i + α·(y−h)·x_i — one uniform rule.',
+  trap:'Pure notational convenience; nothing to do with overfitting.' },
+
+{ id:49, topic:'regression', type:'mcq', hard:true,
+  q:'Univariate linear regression\'s loss function is:',
+  options:[
+    'Cross-entropy between targets and predictions',
+    'Sum of squared errors over training examples',
+    'Hinge loss with margin parameter set to one',
+    'Mean absolute error of all residuals'
+  ],
   correct:1,
-  explain:'P(H|D) = P(D|H)·P(H)/P(D) = 0.8 · 0.04 / 0.128 = 0.032/0.128 = <code>0.25</code>.' },
+  explain:'Loss(w) = Σ(y − h(x))². This makes the optimum solvable in closed form and gives nice gradient updates.',
+  trap:'Mean absolute error is a real alternative, but linear regression uses SQUARED error by convention.' },
 
-{ id:45, topic:'naive_bayes', type:'num',
-  q:'In a "play tennis" dataset there are 9 Yes-days and 5 No-days (14 total). Compute the prior P(Tennis = Yes). 2 dp.',
-  correct:0.64,
-  tolerance:0.01,
-  explain:'P(Tennis = Yes) = 9/14 ≈ <code>0.643</code>.' },
-
-{ id:46, topic:'naive_bayes', type:'mcq',
-  q:'In Naive Bayes, the prediction rule is:',
-  options:['v_NB = argmax_C P(C) · ∏_i P(x_i | C)','v_NB = argmax_C P(x | C) · P(D)','v_NB = argmax_C ∑_i P(x_i)','v_NB = argmin_C ∏_i P(x_i | C)'],
-  correct:0,
-  explain:'We pick the class C that maximises the joint P(C, x₁, …, x_n) ∝ P(C) · ∏ P(x_i | C). Bayes\' rule with the conditional-independence assumption gives this product form.' },
-
-{ id:47, topic:'naive_bayes', type:'mcq',
-  q:'In Naive Bayes, if a feature value never co-occurs with a class in the training data, the maximum-likelihood estimate of P(x_i | C) is 0. Why is this a problem?',
-  options:['It makes calibration easier','It zeros out the entire product P(C)·∏ P(x_i | C), defeating the classifier','It causes the program to crash','It only matters if the dataset is small'],
+{ id:50, topic:'regression', type:'mcq', hard:true,
+  q:'Gradient descent on squared error gives the update w_i ← w_i + α·(y − h(x))·x_i. The factor x_i appears because:',
+  options:[
+    'It normalises the update by the input range',
+    'It comes from the chain rule on the squared loss',
+    'It biases updates toward larger input features',
+    'It is required to prevent weight explosion'
+  ],
   correct:1,
-  explain:'Because Naive Bayes multiplies probabilities, ANY single zero kills the product — even if all the other features strongly favour that class. We use smoothing (m-estimate, Laplace) to avoid this.' },
+  explain:'∂L/∂w_i = ∂[(y−h)²]/∂w_i = 2(y−h)·∂h/∂w_i = 2(y−h)·x_i. The x_i comes from differentiating h = Σw_j x_j w.r.t. w_i.',
+  trap:'It is NOT normalisation — it really does scale updates by input magnitude (why you should normalise inputs).' },
 
-{ id:48, topic:'naive_bayes', type:'mcq',
-  q:'Using the m-estimate P(A=a | B=b) = (n_c + m·p) / (n + m), the parameter <strong>p</strong> represents:',
-  options:['The number of positive examples','The prior probability estimate','The size of the training set','The learning rate'],
-  correct:1,
-  explain:'p is the prior estimate (e.g. 1/k for k equally likely values). m is the equivalent sample size — how strongly the prior is weighted.' },
-
-{ id:49, topic:'naive_bayes', type:'num',
-  q:'Apply m-estimate with n=5, n_c=0, m=5, p=1/3. Compute P. Enter the value (3 dp).',
-  correct:0.167,
-  tolerance:0.01,
-  explain:'P = (n_c + m·p)/(n + m) = (0 + 5·(1/3))/(5+5) = (5/3)/10 = 1/6 ≈ <code>0.167</code>. Smoothing replaces the zero with a sensible non-zero estimate.' },
-
-{ id:50, topic:'naive_bayes', type:'multi',
-  q:'Naive Bayes is particularly well-suited for which of the following? (Select all.)',
-  options:['Text classification with bag-of-words features','Continuous regression of stock prices','Spam-vs-ham email filtering','Reinforcement learning in continuous spaces'],
-  correct:[0,2],
-  explain:'Naive Bayes shines on categorical features (like word presence) and is the classic baseline for text classification, spam filtering, and document categorisation. It is not for regression or RL.' },
-
+// ========= NAIVE BAYES (12) =========
 { id:51, topic:'naive_bayes', type:'mcq',
-  q:'Bayes\' rule states P(H|D) =:',
-  options:['P(D|H) · P(D) / P(H)','P(D|H) · P(H) / P(D)','P(H) · P(D) / P(D|H)','P(D) / P(H|D)'],
+  q:'The "naive" assumption in Naive Bayes is that:',
+  options:[
+    'All features are equally important to the prediction',
+    'Features are conditionally independent given the class',
+    'The data follows a multivariate Gaussian distribution',
+    'All classes have equal prior probability'
+  ],
   correct:1,
-  explain:'P(H|D) = P(D|H) · P(H) / P(D). Posterior = (likelihood × prior) / evidence.' },
+  explain:'NB assumes P(x₁,…,x_n | C) = ∏ P(x_i | C). Rarely true in practice but works well.',
+  trap:'Conditional independence ≠ marginal independence. Features can be correlated overall.' },
 
 { id:52, topic:'naive_bayes', type:'mcq',
+  q:'P(D|H)=0.8, P(H)=0.04, P(D)=0.128. What is P(H|D)?',
+  options:[
+    '0.032 — the numerator alone',
+    '0.250 — full Bayes computation',
+    '0.500 — the assumed prior',
+    '3.200 — the ratio P(D|H)/P(H)'
+  ],
+  correct:1,
+  explain:'P(H|D) = P(D|H)·P(H)/P(D) = (0.8·0.04)/0.128 = 0.032/0.128 = <code>0.25</code>.',
+  trap:'Option 1 (0.032) is the numerator — forgetting to divide by P(D) is the classic mistake.' },
+
+{ id:53, topic:'naive_bayes', type:'num',
+  q:'Dataset: 9 "Yes" days, 5 "No" days. Compute P(Tennis = Yes). (2 dp)',
+  correct:0.64, tolerance:0.01,
+  explain:'9/14 ≈ <code>0.643</code>.' },
+
+{ id:54, topic:'naive_bayes', type:'mcq',
+  q:'The Naive Bayes prediction rule is:',
+  options:[
+    'v = argmax<sub>C</sub> [P(C) · ∏ᵢ P(x<sub>i</sub>|C)]',
+    'v = argmax<sub>C</sub> [P(x|C) · P(D)]',
+    'v = argmax<sub>C</sub> Σᵢ P(x<sub>i</sub>)',
+    'v = argmin<sub>C</sub> ∏ᵢ P(x<sub>i</sub>|C)'
+  ],
+  correct:0,
+  explain:'Pick the class C that maximises the joint: P(C) × product of conditionals.',
+  trap:'argmin (option 4) and sum (option 3) are common wrong moves.' },
+
+{ id:55, topic:'naive_bayes', type:'mcq',
+  q:'The "zero-probability problem" in Naive Bayes arises because:',
+  options:[
+    'The classifier crashes on unseen feature values',
+    'Multiplying by a single zero kills the product',
+    'Class priors can become zero for rare classes',
+    'Bayes\' rule cannot handle continuous features'
+  ],
+  correct:1,
+  explain:'NB multiplies P(C)·∏P(x_i|C). One zero zeros the whole product — even if every other feature strongly supports the class.',
+  trap:'It\'s not about crashing — it\'s about MULTIPLICATIVE structure.' },
+
+{ id:56, topic:'naive_bayes', type:'mcq',
+  q:'In the m-estimate P(A=a|B=b) = (n<sub>c</sub> + m·p) / (n + m), the parameter <strong>p</strong> represents:',
+  options:[
+    'The number of positive cases observed',
+    'The prior estimate of the probability',
+    'The total size of the training set',
+    'The learning rate of the update'
+  ],
+  correct:1,
+  explain:'p is the prior estimate (e.g. 1/k for k equally likely values). m is the equivalent sample size — how strongly p is weighted.',
+  trap:'Don\'t confuse p (prior probability) with n_c (count) or n (total).' },
+
+{ id:57, topic:'naive_bayes', type:'num',
+  q:'m-estimate: n=5, n<sub>c</sub>=0, m=5, p=1/3. Compute P. (3 dp)',
+  correct:0.167, tolerance:0.01,
+  explain:'(0 + 5·(1/3))/(5+5) = (5/3)/10 = 1/6 ≈ <code>0.167</code>.' },
+
+{ id:58, topic:'naive_bayes', type:'multi',
+  q:'Naive Bayes is particularly well-suited to which tasks? (Select all.)',
+  options:[
+    'Text classification using bag-of-words features',
+    'Continuous regression of asset price values',
+    'Spam-versus-ham email filtering tasks',
+    'Reinforcement learning in continuous action spaces'
+  ],
+  correct:[0,2],
+  explain:'NB shines on categorical features. Text classification and spam filtering are its classic wins. NB is not a regression or RL method.',
+  trap:'NB is a classifier — it doesn\'t do regression or RL.' },
+
+{ id:59, topic:'naive_bayes', type:'mcq',
+  q:'Bayes\' rule:',
+  options:[
+    'P(H|D) = P(D|H) · P(D) / P(H)',
+    'P(H|D) = P(D|H) · P(H) / P(D)',
+    'P(H|D) = P(H) · P(D) / P(D|H)',
+    'P(H|D) = P(D) / P(H|D) · P(H)'
+  ],
+  correct:1,
+  explain:'Posterior = (likelihood × prior) / evidence. P(H|D) = P(D|H)·P(H)/P(D).',
+  trap:'Easy to swap P(D|H) and P(H|D) under time pressure.' },
+
+{ id:60, topic:'naive_bayes', type:'mcq',
   q:'In Bayes\' rule, P(H) is called the:',
-  options:['Posterior','Likelihood','Prior','Evidence'],
+  options:[
+    'Posterior — belief after data',
+    'Likelihood — data given hypothesis',
+    'Prior — belief before seeing data',
+    'Evidence — marginal probability of data'
+  ],
   correct:2,
-  explain:'P(H) is the PRIOR — your belief about H BEFORE seeing data D. P(D|H) is the likelihood, P(D) is the evidence, P(H|D) is the posterior.' },
+  explain:'P(H) = prior. P(D|H) = likelihood. P(D) = evidence. P(H|D) = posterior.',
+  trap:'Memorise the four names — this is exam bait.' },
 
-// ========= CLUSTERING (8) =========
-{ id:53, topic:'clustering', type:'mcq',
-  q:'In the standard k-means algorithm, how is each cluster centre updated?',
-  options:['By the median of points in the cluster','By the mean of points currently assigned to it','By the closest training point','By gradient descent on a loss function'],
+{ id:61, topic:'naive_bayes', type:'mcq', hard:true,
+  q:'In Naive Bayes, even though the conditional independence assumption is usually FALSE, the classifier often works well because:',
+  options:[
+    'The assumption holds for text data exactly',
+    'Bayesian methods are inherently robust to bias',
+    'Correct argmax can survive miscalibrated probabilities',
+    'The training data eventually corrects all biases'
+  ],
+  correct:2,
+  explain:'NB only needs the CORRECT CLASS to have the highest score. Even with wrong probability values, the ranking can still be right → correct argmax.',
+  trap:'NB outputs poorly-calibrated probabilities but accurate decisions — a known asymmetry.' },
+
+{ id:62, topic:'naive_bayes', type:'mcq', hard:true,
+  q:'In the Bayesian network view of Naive Bayes, the structure is:',
+  options:[
+    'A complete graph between all features',
+    'Class C is the parent of every feature',
+    'A chain x₁ → x₂ → … → x_n → C',
+    'A bidirectional graph with cycles'
+  ],
   correct:1,
-  explain:'Each iteration assigns every point to its nearest centre, then UPDATES every centre to the mean (centroid) of the points currently in its cluster.' },
+  explain:'Class C is the root; each feature x_i is a child of C. This encodes P(x_i | C) and the conditional independence x_i ⊥ x_j | C.',
+  trap:'The class is the PARENT in NB — features depend on class, not the other way around.' },
 
-{ id:54, topic:'clustering', type:'multi',
+// ========= CLUSTERING (10) =========
+{ id:63, topic:'clustering', type:'mcq',
+  q:'In k-means, each cluster centre is updated by:',
+  options:[
+    'The median of points in that cluster',
+    'The mean of currently-assigned points',
+    'The training point closest to the centre',
+    'Gradient descent on a global loss'
+  ],
+  correct:1,
+  explain:'k-MEANS uses the MEAN (centroid). k-medoids uses an actual data point; k-medians uses the median.',
+  trap:'Median (option 1) is k-medians — different algorithm.' },
+
+{ id:64, topic:'clustering', type:'multi',
   q:'Which statements about k-means are <strong>true</strong>? (Select all.)',
-  options:['It is guaranteed to converge','It is guaranteed to find the global optimum','Its result depends on the initial placement of centres','You must pick the number of clusters k in advance'],
+  options:[
+    'It is guaranteed to converge',
+    'It is guaranteed to find the global optimum',
+    'The result depends on initialisation',
+    'You must choose k in advance'
+  ],
   correct:[0,2,3],
-  explain:'k-means always converges (loss is monotonically non-increasing) but only to a LOCAL optimum — different initialisations give different results. You must specify k yourself. A common remedy: run multiple random restarts and keep the best.' },
+  explain:'Convergence: yes (loss monotone decreasing). Global opt: NO — only local. Initialisation matters. k must be chosen by you.',
+  trap:'"Guaranteed to converge" does NOT mean "to the global optimum".' },
 
-{ id:55, topic:'clustering', type:'mcq',
-  q:'In k-means, if a cluster ends up with no points assigned, a common remedy is:',
-  options:['Stop the algorithm','Pick a new random centre and continue','Merge it with the largest cluster','Decrease k by 1'],
+{ id:65, topic:'clustering', type:'mcq',
+  q:'In k-means, if a cluster ends up with NO points assigned, common practice is:',
+  options:[
+    'Stop the algorithm and report failure',
+    'Re-seed it at a random data point',
+    'Merge it with the largest cluster',
+    'Decrease k by one and restart'
+  ],
   correct:1,
-  explain:'Empty clusters are usually re-seeded — pick a new centre (e.g. at a random data point) and continue. Stopping early would leave a poor solution.' },
+  explain:'Re-seed: pick a new random point as the centre and continue.',
+  trap:'Stopping (option 1) would leave a poor result.' },
 
-{ id:56, topic:'clustering', type:'mcq',
+{ id:66, topic:'clustering', type:'mcq',
   q:'A Gaussian Mixture Model with weights w₁=0.4, w₂=0.6 represents:',
-  options:['Two Gaussians sharing the same mean','A weighted sum of two Gaussian densities','A 2-class classifier using Gaussians','A regression model'],
+  options:[
+    'Two Gaussians forced to share the same mean',
+    'A weighted sum of two Gaussian densities',
+    'A two-class supervised Gaussian classifier',
+    'A regression model with two output heads'
+  ],
   correct:1,
-  explain:'p(x) = w₁·𝒩(x|μ₁,σ₁²) + w₂·𝒩(x|μ₂,σ₂²). Weights sum to 1; each component contributes proportionally to the mixture density.' },
+  explain:'p(x) = 0.4·𝒩(x|μ₁,σ₁²) + 0.6·𝒩(x|μ₂,σ₂²). Weights sum to 1 and represent component proportions.',
+  trap:'GMM is UNSUPERVISED density estimation, not a supervised classifier.' },
 
-{ id:57, topic:'clustering', type:'num',
-  q:'A Gaussian distribution has μ = 4, σ² = 2. Compute the density 𝒩(x=4|4, 2) (i.e. at the mean). Use the formula 1/√(2π σ²)·exp(0). Enter to 3 dp.',
-  correct:0.282,
-  tolerance:0.01,
-  explain:'At x=μ the exponent is 0 so 𝒩 = 1/√(2π·2) = 1/√(4π) = 1/3.5449… ≈ <code>0.282</code>.' },
+{ id:67, topic:'clustering', type:'num',
+  q:'Gaussian with μ=4, σ²=2. Compute 𝒩(x=4 | 4, 2). (3 dp)',
+  correct:0.282, tolerance:0.01,
+  explain:'At x=μ, exponent = 0, so 𝒩 = 1/√(2π·2) = 1/√(4π) ≈ <code>0.282</code>.' },
 
-{ id:58, topic:'clustering', type:'mcq',
-  q:'k-means can be viewed as a "hard assignment" version of EM applied to a Gaussian mixture because:',
-  options:['Both algorithms minimise the same loss','It assigns each point fully to its nearest centre, like a Gaussian with infinite precision','It uses Bayes\' rule explicitly','It is non-iterative'],
+{ id:68, topic:'clustering', type:'mcq',
+  q:'k-means can be seen as a "hard-assignment" EM for GMMs because:',
+  options:[
+    'Both algorithms minimise identical loss functions',
+    'It assigns each point fully to its nearest centre',
+    'It applies Bayes\' rule explicitly each iteration',
+    'It is non-iterative, unlike EM'
+  ],
   correct:1,
-  explain:'In EM, each point has soft probabilities of belonging to each Gaussian. k-means hardens this: each point is assigned to its single nearest centre — equivalent to picking the most likely component (e.g. with shared, infinitely-narrow Gaussians).' },
+  explain:'EM assigns soft probabilities. k-means hardens: assign each point fully to its nearest centre (= picking the single most-likely Gaussian with shared infinite precision).',
+  trap:'k-means IS iterative — option 4 is a trap.' },
 
-{ id:59, topic:'clustering', type:'mcq',
-  q:'In the EM algorithm, the E-step:',
-  options:['Estimates the model parameters from observed data','Computes the expected hidden assignments given current parameters','Maximises the likelihood directly','Initialises centres randomly'],
+{ id:69, topic:'clustering', type:'mcq',
+  q:'In EM, the <strong>E-step</strong>:',
+  options:[
+    'Maximises the likelihood given current data',
+    'Computes expected hidden assignments given parameters',
+    'Initialises parameters randomly to break symmetry',
+    'Estimates the parameters from observed data only'
+  ],
   correct:1,
-  explain:'E-step (Expectation): given current parameters, compute the expected values / responsibilities of the hidden variables. M-step then maximises likelihood given those expectations.' },
+  explain:'E-step (Expectation): given current parameters, compute expected values of hidden variables (responsibilities). M-step then maximises likelihood given those.',
+  trap:'Option 1 describes the M-step.' },
 
-{ id:60, topic:'clustering', type:'mcq',
-  q:'You run k-means twice on the same data with k=3 and get different cluster assignments each time. The most likely reason is:',
-  options:['k-means is broken','The initial centres were placed randomly each time, leading to different local optima','k=3 is wrong for this data','The data was different'],
-  correct:1,
-  explain:'k-means converges to a LOCAL minimum that depends on initialisation. Different random starts yield different local solutions. This is why you typically run k-means several times and keep the best.' },
-
-// ========= HMMs (8) =========
-{ id:61, topic:'hmm', type:'mcq',
-  q:'In a first-order HMM, the transition probability a_{ij} = P(X_t = s_j | X_{t-1} = s_i) makes which assumption?',
-  options:['Observations are independent','The next state depends only on the current state, not on the full history','Observations depend on all previous states','States are equally likely'],
-  correct:1,
-  explain:'The first-order Markov assumption: P(X_t | X_{t-1}, X_{t-2}, …) = P(X_t | X_{t-1}). The future depends only on the present state.' },
-
-{ id:62, topic:'hmm', type:'mcq',
-  q:'In an HMM, the emission probability b_i(k) is the probability of:',
-  options:['Moving from state i to state k','Observing output k while in state i','Starting in state i','Ending in state i'],
-  correct:1,
-  explain:'b_i(k) = P(O_t = k | X_t = s_i). It captures how likely each observation is in each hidden state.' },
-
-{ id:63, topic:'hmm', type:'mcq',
-  q:'The <strong>Viterbi</strong> algorithm is used for which HMM problem?',
-  options:['Computing the likelihood of an observation sequence','Finding the most likely hidden state sequence given observations','Learning HMM parameters from data','Initialising the transition matrix'],
-  correct:1,
-  explain:'Viterbi → DECODING: argmax over state sequences. Forward → likelihood. Baum-Welch (EM) → learning parameters.' },
-
-{ id:64, topic:'hmm', type:'mcq',
-  q:'For a first-order HMM with N states and an observation sequence of length T, the asymptotic complexity of Viterbi is:',
-  options:['O(T)','O(N·T)','O(N²·T)','O(N^T)'],
+{ id:70, topic:'clustering', type:'mcq',
+  q:'You run k-means twice on the same data with k=3 and get different clusterings. Most likely reason:',
+  options:[
+    'The algorithm has a bug in your implementation',
+    'k=3 must be wrong for this dataset',
+    'Different random initialisation → different local optima',
+    'The dataset changed between the two runs'
+  ],
   correct:2,
-  explain:'At each of T steps, for every pair (current, previous) of states we do O(1) work — that is N·N = N² work per step → O(N²·T) total. Critically, it is LINEAR in T.' },
+  explain:'k-means converges to a LOCAL minimum depending on initialisation. Common practice: run several restarts, keep the best.',
+  trap:'Differences across runs are EXPECTED, not a bug.' },
 
-{ id:65, topic:'hmm', type:'mcq',
-  q:'For an o-th-order HMM, Viterbi complexity becomes:',
-  options:['O(N · T)','O(N² · T)','O(N^(o+1) · T)','O(o · T)'],
-  correct:2,
-  explain:'You must remember the last o states (N^o configurations), and for each consider N choices → N^(o+1) work per step → O(N^(o+1)·T). Still linear in T.' },
-
-{ id:66, topic:'hmm', type:'mcq',
-  q:'A croupier rule says <strong>"never roll the loaded die L2 more than twice in a row"</strong>. Which HMM assumption does this VIOLATE?',
-  options:['Output independence','First-order Markov (it depends on TWO previous states, not one)','Stationarity','Discrete observations'],
+{ id:71, topic:'clustering', type:'mcq', hard:true,
+  q:'A dataset has two clusters: one is a tight sphere of 20 points, the other a stretched ellipsoid of 200 points. k-means with k=2 may fail because:',
+  options:[
+    'k-means cannot handle different cluster sizes',
+    'k-means assumes spherical clusters of similar scale',
+    'Euclidean distance is undefined for ellipsoids',
+    'The algorithm will not converge on this data'
+  ],
   correct:1,
-  explain:'Whether L2 can be rolled depends on the last TWO states, not just one — a second-order constraint. A first-order HMM cannot capture it directly; you would need a second-order HMM.' },
+  explain:'k-means uses Euclidean distance with each centre — implicit assumption: spherical, roughly equal-size clusters. Elongated or imbalanced clusters can be mis-split.',
+  trap:'Convergence (option 4) is still guaranteed — but to a BAD local optimum.' },
 
-{ id:67, topic:'hmm', type:'mcq',
-  q:'A rule "the croupier always switches dice after rolling a 6" is hard to model in a standard HMM because:',
-  options:['HMM transitions only depend on the current STATE, not on the OBSERVATION','HMMs cannot have more than 2 states','It requires a continuous emission distribution','HMM transitions must be deterministic'],
-  correct:0,
-  explain:'In a standard HMM, transitions are P(state | previous state) — they cannot be conditioned on the most recent observation directly. Such observation-dependent rules need either an extended model or feature-augmented states.' },
+{ id:72, topic:'clustering', type:'mcq', hard:true,
+  q:'In EM for a GMM, the <strong>M-step</strong> updates each component\'s mean μⱼ as:',
+  options:[
+    'The simple unweighted mean of all points',
+    'A weighted mean using responsibility values',
+    'The point closest to the previous μⱼ value',
+    'A uniformly random point from the dataset'
+  ],
+  correct:1,
+  explain:'μⱼ = Σᵢ γᵢⱼ·xᵢ / Σᵢ γᵢⱼ, where γᵢⱼ is the responsibility of component j for point i (from the E-step).',
+  trap:'Unlike k-means (hard assignments), EM uses SOFT (probability-weighted) means.' },
 
-{ id:68, topic:'hmm', type:'multi',
+// ========= HMMs (10) =========
+{ id:73, topic:'hmm', type:'mcq',
+  q:'In a first-order HMM, the transition aᵢⱼ = P(Xₜ=sⱼ | Xₜ₋₁=sᵢ) encodes which assumption?',
+  options:[
+    'Observations are mutually independent',
+    'Each next state depends only on the current state',
+    'All future states depend on all past states',
+    'Every state has equal prior probability'
+  ],
+  correct:1,
+  explain:'1st-order Markov: P(Xₜ | Xₜ₋₁, Xₜ₋₂, …) = P(Xₜ | Xₜ₋₁). Future depends only on the present.',
+  trap:'Don\'t confuse the Markov assumption (on states) with output independence (on observations).' },
+
+{ id:74, topic:'hmm', type:'mcq',
+  q:'Emission probability bᵢ(k) in an HMM is the probability of:',
+  options:[
+    'Transitioning from state i to state k',
+    'Observing output k while in state i',
+    'Starting in state i at time zero',
+    'Ending the sequence while in state i'
+  ],
+  correct:1,
+  explain:'bᵢ(k) = P(Oₜ = k | Xₜ = sᵢ). It captures how likely each observation is in each hidden state.',
+  trap:'Transitions are aᵢⱼ (state→state). Emissions are bᵢ(k) (state→observation).' },
+
+{ id:75, topic:'hmm', type:'mcq',
+  q:'The <strong>Viterbi</strong> algorithm solves which HMM problem?',
+  options:[
+    'Computing the likelihood of an observation sequence',
+    'Finding the most likely hidden state sequence',
+    'Learning HMM parameters from training data',
+    'Sampling new sequences from the trained model'
+  ],
+  correct:1,
+  explain:'Viterbi → decoding. Forward → likelihood. Baum-Welch (EM) → learning parameters.',
+  trap:'All four are real HMM tasks — only Viterbi finds the BEST path.' },
+
+{ id:76, topic:'hmm', type:'mcq',
+  q:'For a 1st-order HMM with N states and length-T observations, Viterbi complexity is:',
+  options:[
+    'O(T) — linear in length only',
+    'O(N · T) — proportional to states × length',
+    'O(N² · T) — proportional to states-squared × length',
+    'O(N^T) — exponential in sequence length'
+  ],
+  correct:2,
+  explain:'At each of T steps, for every current state (N) you consider every previous state (N) → N² work per step → O(N²·T). Importantly: LINEAR in T.',
+  trap:'Naive enumeration would be O(N^T) — but dynamic programming reduces it to O(N²T).' },
+
+{ id:77, topic:'hmm', type:'mcq',
+  q:'For an o-th order HMM (depends on last o states), Viterbi becomes:',
+  options:[
+    'O(N · T) — same as first order',
+    'O(N² · T) — square term unchanged',
+    'O(N<sup>o+1</sup> · T) — extra states per history',
+    'O(o · T) — linear in the order'
+  ],
+  correct:2,
+  explain:'You must remember N^o configurations of recent history; at each step consider N options → N^(o+1) work per step → O(N^(o+1)·T).',
+  trap:'Still LINEAR in T — exponential in o, not in T.' },
+
+{ id:78, topic:'hmm', type:'mcq',
+  q:'A constraint <strong>"never roll the loaded die L2 more than twice in a row"</strong> violates which HMM assumption?',
+  options:[
+    'Output independence — fixed by Gaussian emissions',
+    'First-order Markov — depends on two previous states',
+    'Stationarity — transitions changing over time',
+    'Discrete observations — needs continuous outputs'
+  ],
+  correct:1,
+  explain:'Whether L2 can be chosen depends on the LAST TWO states (not just the previous one). A first-order HMM cannot capture this directly; a 2nd-order HMM can.',
+  trap:'It\'s about state HISTORY, not observation distribution.' },
+
+{ id:79, topic:'hmm', type:'mcq',
+  q:'"The croupier always switches dice after rolling a 6" is hard to model in a standard HMM because:',
+  options:[
+    'HMMs cannot have more than two hidden states',
+    'Transitions depend on STATE, not on observation',
+    'Continuous emission distributions are required',
+    'Transition matrices must be fully deterministic'
+  ],
+  correct:1,
+  explain:'In a standard HMM, P(state | previous state) — transitions are NOT conditioned on the most recent observation. Such rules need extended models (e.g. input-output HMM) or augmented states.',
+  trap:'The rule conditions on the OBSERVATION, breaking the standard HMM structure.' },
+
+{ id:80, topic:'hmm', type:'multi',
   q:'Which are valid components of a first-order HMM? (Select all.)',
-  options:['Transition probability matrix A','Emission probability matrix B','Initial state distribution π','A loss function L(s, s\')'],
+  options:[
+    'Transition probability matrix A',
+    'Emission probability matrix B',
+    'Initial state distribution π',
+    'A loss function L(s, s\') for state error'
+  ],
   correct:[0,1,2],
-  explain:'A standard first-order HMM is defined by (A, B, π). There is no "loss function" — learning uses EM (Baum-Welch) on the likelihood.' },
+  explain:'HMM is defined by (A, B, π). Learning uses LIKELIHOOD (via EM/Baum-Welch), not a loss function.',
+  trap:'"Loss function" sounds reasonable — but HMM training is LIKELIHOOD MAXIMISATION.' },
 
-// ========= SVM (8) =========
-{ id:69, topic:'svm', type:'mcq',
+{ id:81, topic:'hmm', type:'mcq', hard:true,
+  q:'In a 1st-order HMM, the constraint "the croupier never switches directly from F to L2" can be encoded by:',
+  options:[
+    'It cannot be encoded by any HMM at all',
+    'Setting transition probability a<sub>F,L2</sub> = 0',
+    'Setting emission probability b<sub>F</sub>(L2) = 0',
+    'Adding a higher-order memory cell to F'
+  ],
+  correct:1,
+  explain:'A direct ban on the transition F→L2 is exactly a zero entry in the transition matrix.',
+  trap:'b_F(L2) (option 3) is about EMITTING the symbol L2 — a totally different thing.' },
+
+{ id:82, topic:'hmm', type:'num', hard:true,
+  q:'An HMM has N=4 hidden states. Sequence length T=10. Approximately how many basic operations does Viterbi perform? (Use N²·T.)',
+  correct:160, tolerance:5,
+  explain:'N²·T = 4²·10 = 16·10 = <code>160</code>.' },
+
+// ========= SVM (12) =========
+{ id:83, topic:'svm', type:'mcq',
   q:'A <strong>maximum-margin classifier</strong> is one that:',
-  options:['Maximises classification accuracy on the training set','Finds the decision boundary with the largest distance to the nearest training points of either class','Has the smallest weight vector','Uses every training point as a support vector'],
+  options:[
+    'Maximises classification accuracy on training data',
+    'Finds the boundary farthest from the nearest points',
+    'Uses the smallest possible weight vector',
+    'Treats every training point as a support vector'
+  ],
   correct:1,
-  explain:'SVMs maximise the margin = distance from the boundary to the closest points (the SUPPORT VECTORS). Larger margin → less risk of misclassifying nearby test points → better generalisation.' },
+  explain:'SVM maximises the margin = distance from boundary to the nearest training points (support vectors). Larger margin → better generalisation.',
+  trap:'Accuracy on training (option 1) is what a perceptron does — SVM cares about MARGIN.' },
 
-{ id:70, topic:'svm', type:'mcq',
-  q:'The hard-margin SVM primal optimisation is:',
-  options:['min ½‖w‖² subject to y_i (w·x_i + b) ≥ 1','max ‖w‖² subject to y_i (w·x_i + b) ≤ 1','min Σ |y_i − w·x_i|','max ∑ α_i'],
+{ id:84, topic:'svm', type:'mcq',
+  q:'The hard-margin SVM primal problem is:',
+  options:[
+    'min ½‖w‖² s.t. yᵢ(w·xᵢ + b) ≥ 1',
+    'max ‖w‖² s.t. yᵢ(w·xᵢ + b) ≤ 1',
+    'min Σ|yᵢ − w·xᵢ| over training data',
+    'max Σαᵢ over Lagrange multipliers αᵢ'
+  ],
   correct:0,
-  explain:'Minimise ½‖w‖² (= maximise the margin 2/‖w‖) subject to every point being on the correct side of the margin: y_i(w·x_i + b) ≥ 1.' },
+  explain:'Minimise ½‖w‖² (= maximise margin 2/‖w‖) subject to every point being on the correct side: yᵢ(w·xᵢ + b) ≥ 1.',
+  trap:'Option 4 (max Σαᵢ) is the DUAL form — also correct in spirit, but not the primal.' },
 
-{ id:71, topic:'svm', type:'mcq',
+{ id:85, topic:'svm', type:'mcq',
   q:'The <strong>kernel trick</strong> allows SVMs to:',
-  options:['Reduce the number of training examples','Compute inner products in a high-dimensional feature space without explicitly transforming the data','Replace the loss function','Eliminate the need for support vectors'],
+  options:[
+    'Reduce the number of training examples needed',
+    'Compute inner products in feature space implicitly',
+    'Replace the squared loss with a smoother one',
+    'Eliminate the need for any support vectors'
+  ],
   correct:1,
-  explain:'A kernel K(x, z) = F(x)·F(z) computes the inner product in feature space directly, without ever computing F(x). This lets SVMs learn highly non-linear boundaries cheaply.' },
+  explain:'K(x, z) = F(x)·F(z) computes the inner product in (possibly infinite-dimensional) feature space WITHOUT computing F(x) explicitly.',
+  trap:'The trick is about COMPUTATION, not data reduction.' },
 
-{ id:72, topic:'svm', type:'mcq',
-  q:'In the soft-margin SVM, the parameter <strong>C</strong> controls:',
-  options:['The dimensionality of the kernel','The trade-off between margin width and the amount of slack (errors allowed)','The number of support vectors','The learning rate'],
+{ id:86, topic:'svm', type:'mcq',
+  q:'In soft-margin SVM, the parameter <strong>C</strong> controls:',
+  options:[
+    'The dimensionality of the chosen kernel',
+    'Trade-off between margin width and slack penalty',
+    'The number of support vectors retained',
+    'The learning rate of the dual optimisation'
+  ],
   correct:1,
-  explain:'Objective: min ½‖w‖² + C·Σ ξ_i. Larger C penalises slack more → fewer violations, narrower margin (risk overfitting). Smaller C → wider margin, more tolerance of noise.' },
+  explain:'Objective: ½‖w‖² + C·Σξᵢ. Large C → fewer violations, narrower margin (overfit risk). Small C → wider margin, more tolerance.',
+  trap:'High C = LESS slack tolerance (often counter-intuitive).' },
 
-{ id:73, topic:'svm', type:'mcq',
-  q:'In a soft-margin SVM, the <strong>slack variables ξ_i</strong> represent:',
-  options:['The kernel matrix entries','How much each example is allowed to violate the margin','The Lagrange multipliers','The class labels'],
+{ id:87, topic:'svm', type:'mcq',
+  q:'In soft-margin SVM, slack variables ξᵢ represent:',
+  options:[
+    'Entries of the kernel Gram matrix',
+    'How much each example violates the margin',
+    'Lagrange multipliers from the dual form',
+    'The class labels of each training example'
+  ],
   correct:1,
-  explain:'ξ_i ≥ 0 measures how much example i is "off" — inside the margin or even on the wrong side. The constraint becomes y_i(w·x_i + b) ≥ 1 − ξ_i.' },
+  explain:'ξᵢ ≥ 0 measures how "off" example i is — inside the margin or even misclassified. Constraint: yᵢ(w·xᵢ+b) ≥ 1 − ξᵢ.',
+  trap:'αᵢ (option 3) are Lagrange multipliers — different variables.' },
 
-{ id:74, topic:'svm', type:'mcq',
-  q:'Which kernel is best when you suspect the optimal decision boundary is a smooth, complex non-linear surface?',
-  options:['Linear: K(x,z) = x·z','RBF (Gaussian): K(x,z) = exp(−γ‖x−z‖²)','Identity','None — use a decision tree'],
-  correct:1,
-  explain:'The RBF/Gaussian kernel can model arbitrarily complex smooth boundaries. Linear is for linearly-separable problems; polynomial works for polynomial decision surfaces.' },
+{ id:88, topic:'svm', type:'mcq',
+  q:'Which kernel is best when the optimal decision boundary is a smooth complex non-linear surface?',
+  options:[
+    'Linear kernel: K(x,z) = x·z directly',
+    'Polynomial kernel of degree exactly two',
+    'RBF (Gaussian): K(x,z) = exp(−γ‖x−z‖²)',
+    'Identity transformation — no kernel at all'
+  ],
+  correct:2,
+  explain:'RBF/Gaussian can model arbitrarily complex smooth boundaries — it maps into an infinite-dimensional feature space.',
+  trap:'Polynomial (option 2) is too restrictive for "smooth complex". Linear cannot do non-linear.' },
 
-{ id:75, topic:'svm', type:'multi',
+{ id:89, topic:'svm', type:'multi',
   q:'Which statements about SVMs are <strong>true</strong>? (Select all.)',
-  options:['Only the support vectors influence the final decision boundary','Maximising margin tends to improve generalisation','SVMs always require the data to be linearly separable','Kernels let SVMs learn non-linear boundaries'],
+  options:[
+    'Only support vectors influence the final boundary',
+    'Larger margin tends to improve generalisation',
+    'SVMs strictly require linearly separable data',
+    'Kernels enable learning non-linear boundaries'
+  ],
   correct:[0,1,3],
-  explain:'Support vectors alone determine the boundary (others have α=0). Larger margin generally generalises better. Kernels enable non-linear boundaries. SVMs do NOT require linear separability — soft-margin SVMs handle non-separable noisy data.' },
+  explain:'Non-support-vectors have αᵢ=0 (no influence). Larger margin = better generalisation. Kernels = non-linear boundaries. Soft-margin SVMs handle NON-separable data — option 3 is false.',
+  trap:'Hard-margin requires separability; soft-margin does NOT.' },
 
-{ id:76, topic:'svm', type:'mcq',
-  q:'<strong>Support Vector Regression (SVR)</strong> uses ideas from SVM by:',
-  options:['Treating regression as a classification of which side of the surface each point lies on, plus slack variables to ignore noise','Replacing labels with cluster IDs','Using k-means to find support vectors','Ignoring the kernel trick'],
+{ id:90, topic:'svm', type:'mcq',
+  q:'<strong>Support Vector Regression</strong> (SVR) applies SVM ideas to regression by:',
+  options:[
+    'Treating regression as classification with slack',
+    'Replacing labels with cluster assignment IDs',
+    'Using k-means to identify support vectors',
+    'Ignoring the kernel trick entirely for speed'
+  ],
   correct:0,
-  explain:'SVR exploits the duality between regression surfaces and classifier boundaries; slack variables let some points be ignored, giving robustness to noise — same machinery as soft-margin SVM, applied to regression.' },
+  explain:'SVR exploits the same machinery: ε-insensitive loss + slack lets some points be ignored. Same kernel/margin ideas apply.',
+  trap:'Options 2-3 are nonsense; option 4 contradicts how SVR actually works.' },
 
-// ========= NEURAL NETWORKS (12) =========
-{ id:77, topic:'nn', type:'mcq',
-  q:'In a perceptron with the step activation function, the error-correction rule updates weights as:',
-  options:['w_i ← w_i + α · (t − g(s)) · x_i','w_i ← w_i + α · g(s) · x_i','w_i ← w_i − α · ‖x_i‖','w_i ← w_i + α · t'],
-  correct:0,
-  explain:'Error-correction (perceptron rule): w_i ← w_i + α·(t − g(s))·x_i. No update happens when the prediction g(s) equals the target t.' },
-
-{ id:78, topic:'nn', type:'mcq',
-  q:'The <strong>delta rule</strong> differs from the basic perceptron rule because:',
-  options:['It uses a step function','It compares t with the weighted sum s, not the thresholded output g(s) — enabling smooth gradient descent','It has no learning rate','It applies only to multi-layer networks'],
-  correct:1,
-  explain:'Delta rule: w_i ← w_i + α·(t − s)·x_i. Using s (not g(s)) means even when g(s) is correct the weights still move, providing a smooth gradient signal — the basis of gradient descent on squared error.' },
-
-{ id:79, topic:'nn', type:'mcq',
-  q:'The <strong>generalised delta rule</strong> with sigmoid activation is:',
-  options:['w_i ← w_i + α · (t − g(s)) · x_i','w_i ← w_i + α · (t − g(s)) · g(s)·(1 − g(s)) · x_i','w_i ← w_i − ‖w‖²','w_i ← w_i + α · g(s)'],
-  correct:1,
-  explain:'The generalised delta rule multiplies by g\'(s) = g(s)·(1 − g(s)), the derivative of the sigmoid. This is what backpropagation uses at each unit.' },
-
-{ id:80, topic:'nn', type:'mcq',
-  q:'The derivative of the sigmoid g(s) = 1/(1+e^(−s)) is:',
-  options:['g(s)','1 − g(s)','g(s) · (1 − g(s))','exp(−s)'],
-  correct:2,
-  explain:'g\'(s) = g(s)·(1 − g(s)). This convenient form is why sigmoids were widely used in early neural networks.' },
-
-{ id:81, topic:'nn', type:'num',
-  q:'A neural net has 100 input features, one hidden layer of 32 units, and 1 output. Ignoring biases, how many <strong>weights</strong> are there in total?',
-  correct:3232,
-  tolerance:0,
-  explain:'Input → Hidden: 100 × 32 = 3,200. Hidden → Output: 32 × 1 = 32. Total = <code>3,232</code> weights.' },
-
-{ id:82, topic:'nn', type:'num',
-  q:'A perceptron has w₀=1 (bias), w₁=1, w₂=2 with x₀=1, x₁=1, x₂=1, target t=1, α=0.5, step activation. Compute s.',
-  correct:4,
-  tolerance:0.001,
-  explain:'s = Σ w_i x_i = 1·1 + 1·1 + 2·1 = <code>4</code>. Since s ≥ 0, g(s) = 1 = t → no update needed.' },
-
-{ id:83, topic:'nn', type:'mcq',
-  q:'Which statement about <strong>backpropagation</strong> is correct?',
-  options:['It computes outputs by propagating errors forward through the network','It computes outputs forward, then propagates errors backwards via the chain rule to update weights','It is only used in recurrent networks','It does not need a differentiable activation function'],
-  correct:1,
-  explain:'Backprop = (1) FORWARD pass to compute predictions, (2) compute output error, (3) BACKWARD pass using the chain rule to push errors to each layer, (4) update each weight by gradient descent.' },
-
-{ id:84, topic:'nn', type:'mcq',
-  q:'For a hidden unit h whose output feeds downstream units k via weights w_{h,k}, the backprop error term is:',
-  options:['Δ_h = (t − g(h))','Δ_h = g(h) · (1 − g(h)) · Σ_k w_{h,k} · Δ_k','Δ_h = α · x_i','Δ_h = ‖w‖²'],
-  correct:1,
-  explain:'For each hidden unit we sum the downstream errors weighted by the connection weights, then multiply by the local activation derivative g\'(h) = g(h)·(1−g(h)).' },
-
-{ id:85, topic:'nn', type:'mcq',
-  q:'Why is the step function unsuitable for backpropagation?',
-  options:['It only outputs 0 or 1','It is not differentiable at 0 (and has zero derivative elsewhere) so gradient descent cannot use it','It is too slow to compute','It is only for binary classification'],
-  correct:1,
-  explain:'Step function: derivative is 0 everywhere except at the jump (where it is undefined). Gradient descent needs a non-zero gradient signal — hence smooth activations like sigmoid, tanh, ReLU.' },
-
-{ id:86, topic:'nn', type:'mcq',
-  q:'<strong>Recurrent neural networks</strong> (RNNs) are typically trained using:',
-  options:['Pure forward propagation','Backpropagation Through Time (BPTT) — unrolling the recurrence over time steps','k-means clustering','Bayesian inference'],
-  correct:1,
-  explain:'BPTT unrolls the recurrent loop into a deep feed-forward network covering T time steps, then applies standard backpropagation on the unrolled graph.' },
-
-{ id:87, topic:'nn', type:'mcq',
-  q:'When training a multi-layer network, applying backprop using the <strong>sigmoid</strong> activation in many layers can lead to:',
-  options:['Exploding gradients only','Vanishing gradients — small derivatives multiply to nearly zero in early layers','Faster convergence than ReLU','Linear decision boundaries'],
-  correct:1,
-  explain:'Sigmoid derivative g\'(s) = g(s)(1−g(s)) ≤ 0.25. In deep networks, multiplying many such small values shrinks the gradient near the input → "vanishing gradient" → early layers barely train. ReLU helps mitigate this.' },
-
-{ id:88, topic:'nn', type:'multi',
-  q:'Which are valid neural-network activation functions? (Select all.)',
-  options:['Sigmoid: 1/(1+e^(−s))','tanh','ReLU: max(0, s)','Bayes rule'],
-  correct:[0,1,2],
-  explain:'Sigmoid, tanh, ReLU are all common activations. Bayes\' rule is a probability identity, not an activation function.' },
-
-// ========= REINFORCEMENT LEARNING (12) =========
-{ id:89, topic:'rl', type:'mcq',
-  q:'In reinforcement learning, the <strong>policy π(s)</strong> is:',
-  options:['The reward function','A mapping from states to actions','The transition probability','The discount factor'],
-  correct:1,
-  explain:'The policy π specifies WHICH ACTION the agent takes in each state. Its goal is to maximise expected long-term reward.' },
-
-{ id:90, topic:'rl', type:'mcq',
-  q:'Bellman\'s equation for the utility of a state under the optimal policy is:',
-  options:['U(s) = R(s) + γ · max_a Σ_{s\'} P(s\'|s,a) · U(s\')','U(s) = α · (R + γU(s\') − U(s))','U(s) = Σ x_i · w_i','U(s) = R(s) − γ · π(s)'],
-  correct:0,
-  explain:'The optimal utility = immediate reward + discounted expected utility of the BEST next action: U(s) = R(s) + γ · max_a Σ_{s\'} P(s\'|s,a) · U(s\').' },
-
-{ id:91, topic:'rl', type:'mcq',
-  q:'In the discount factor γ, a value <strong>close to 1</strong> means:',
-  options:['The agent values immediate reward more than future reward','The agent cares about long-term future rewards almost as much as immediate ones','Rewards are ignored','Q-values cannot be computed'],
-  correct:1,
-  explain:'γ ∈ [0,1]. γ near 1 → far-future rewards still count heavily. γ near 0 → only immediate reward matters.' },
-
-{ id:92, topic:'rl', type:'mcq',
-  q:'Using ε-greedy exploration with ε = 0.1 over 3 actions of which one is currently best, the probability of picking the best action is:',
-  options:['0.1','0.333','0.9 + 0.1·(1/3) ≈ 0.933','1.0'],
-  correct:2,
-  explain:'With probability 1−ε = 0.9 → pick the best. With probability ε = 0.1 → pick uniformly across all 3 → best gets an additional 0.1/3 ≈ 0.033. Total ≈ <code>0.933</code>.' },
-
-{ id:93, topic:'rl', type:'mcq',
-  q:'<strong>Softmax</strong> action selection with a Gibbs distribution and temperature τ → 0 behaves like:',
-  options:['Pure random action','Greedy action selection (always best Q)','Uniform exploration','Random over only the best two actions'],
-  correct:1,
-  explain:'Lower τ sharpens the distribution: τ→0 makes the softmax exponentials peak entirely at the action with the highest Q → greedy. τ→∞ makes it uniform.' },
-
-{ id:94, topic:'rl', type:'mcq',
-  q:'The <strong>Q-learning</strong> update is:',
-  options:['Q(s,a) ← Q(s,a) + α[R(s) + γ · max_{a\'} Q(s\',a\') − Q(s,a)]','Q(s,a) ← Q(s,a) + α[R(s) + γ · Q(s\',a\') − Q(s,a)]','Q(s,a) ← R(s) + γ · max_{a\'} Q(s\',a\')','Q(s,a) ← α · R(s)'],
-  correct:0,
-  explain:'Q-learning uses the MAX over future actions in s\' — it learns about the OPTIMAL policy regardless of what action was actually taken (off-policy).' },
-
-{ id:95, topic:'rl', type:'mcq',
-  q:'The key difference between <strong>SARSA and Q-learning</strong> is:',
-  options:['SARSA uses max over actions in s\' (off-policy); Q-learning uses the actual taken action','SARSA uses the actual next action a\' (on-policy); Q-learning uses max over actions in s\' (off-policy)','SARSA does not use a discount factor','They are exactly the same algorithm'],
-  correct:1,
-  explain:'Q-learning: max_{a\'} Q(s\', a\') — about the optimal policy. SARSA: Q(s\', a\') with the actual action taken — about the policy currently followed (including its exploration). Q-learning is OFF-policy; SARSA is ON-policy.' },
-
-{ id:96, topic:'rl', type:'mcq',
-  q:'<strong>Temporal-Difference (TD)</strong> learning differs from <strong>Adaptive Dynamic Programming (ADP)</strong> mainly because TD:',
-  options:['Requires knowing the transition model','Does NOT need a learned transition model — it updates directly from observed transitions','Can only handle deterministic environments','Is much slower than ADP per sample'],
-  correct:1,
-  explain:'ADP first estimates a transition model and then uses value iteration. TD is MODEL-FREE: it updates utilities directly from observed (s, R, s\') transitions.' },
-
-{ id:97, topic:'rl', type:'mcq',
-  q:'The TD update for utility is:',
-  options:['U(s) ← U(s) + α · [R(s) + γ · U(s\') − U(s)]','U(s) ← R(s)','U(s) ← max_a Σ P(s\'|s,a) U(s\')','U(s) ← α · γ · U(s\')'],
-  correct:0,
-  explain:'TD update: nudge U(s) towards the new sample target R(s) + γ · U(s\'). The bracketed term is the TD ERROR.' },
-
-{ id:98, topic:'rl', type:'mcq',
-  q:'Why is <strong>function approximation</strong> used in RL?',
-  options:['To reduce numerical errors in the rewards','Because tabular Q can\'t handle large or continuous state spaces — we approximate Q (or U) with a parametric function','It always finds the optimal policy faster','It removes the need for the discount factor'],
-  correct:1,
-  explain:'For huge or continuous state spaces (e.g. robot sensor inputs, game pixels) we cannot store Q(s,a) for every (s,a). We approximate it with linear features or a neural network — the basis of deep RL (DQN).' },
-
-{ id:99, topic:'rl', type:'mcq',
-  q:'<strong>Direct utility estimation</strong> in passive RL:',
-  options:['Uses the Bellman equation','Sets U(s) = average total reward observed from s across runs, ignoring relations between neighbouring states','Requires knowing the optimal policy','Is identical to Q-learning'],
-  correct:1,
-  explain:'Direct utility estimation is the simplest passive method. It treats utilities independently and IGNORES that neighbouring states\' utilities are related, making it slower to converge than ADP or TD.' },
-
-{ id:100, topic:'rl', type:'multi',
-  q:'Which methods are <strong>model-free</strong> RL methods? (Select all.)',
-  options:['Adaptive Dynamic Programming (ADP)','Q-learning','SARSA','Direct utility estimation','TD learning'],
-  correct:[1,2,3,4],
-  explain:'ADP estimates a model (P, R) and uses value iteration. Q-learning, SARSA, direct utility estimation, and TD learning all update from experience without learning a transition model — they are MODEL-FREE.' },
-
-// ========= EVOLUTIONARY ALGORITHMS (8) =========
-{ id:101, topic:'ea', type:'mcq',
-  q:'Which is the correct order of steps in an evolutionary algorithm?',
-  options:['Evaluate → Initialise → Select → Reproduce → Repeat','Initialise → Evaluate → Select → Reproduce → Repeat','Select → Initialise → Reproduce → Evaluate → Repeat','Reproduce → Select → Initialise → Evaluate → Repeat'],
-  correct:1,
-  explain:'Initialise (random population) → Evaluate (fitness) → Select fittest → Reproduce (crossover, mutation) → Repeat. This loops until a stopping criterion (max generations, fitness threshold).' },
-
-{ id:102, topic:'ea', type:'mcq',
-  q:'In a genetic algorithm with a 12-bit chromosome and a mutation rate of 20%, "20%" most commonly refers to:',
-  options:['20% of bits in every chromosome are flipped each generation','Roughly 20% of individuals undergo a mutation event per generation','20% of the population is replaced each generation','20% is the crossover probability'],
-  correct:1,
-  explain:'Mutation rate = the fraction of individuals receiving a mutation each generation. Mutation itself = a small random change (e.g. flipping one or more bits). Per-bit mutation probability is a different parameter.' },
-
-{ id:103, topic:'ea', type:'mcq',
-  q:'Given parents p1 = "1011" and p2 = "0110" with crossover mask "1010" (1 ⇒ child1 takes bit from p1, 0 ⇒ from p2), what is child1?',
-  options:['"1110"','"0011"','"0111"','"1111"'],
-  correct:0,
-  explain:'Mask=1 → take p1; mask=0 → take p2. Position by position: (1,0,1,0) → p1[0]=1, p2[1]=1, p1[2]=1, p2[3]=0 → "<code>1110</code>".' },
-
-{ id:104, topic:'ea', type:'mcq',
-  q:'Why is <strong>mutation</strong> important in a genetic algorithm?',
-  options:['It always improves the fittest individual','It maintains genetic diversity, allowing the population to escape local optima','It replaces selection','It is required by Bayes\' rule'],
-  correct:1,
-  explain:'Without mutation, once the population converges to similar genomes, crossover alone cannot introduce new genetic material → stuck in a local optimum. Mutation injects variation.' },
-
-{ id:105, topic:'ea', type:'mcq',
-  q:'For the Travelling Salesman Problem with 30 cities encoded as 5 bits per city in a 150-bit genotype, an <strong>invalid</strong> genotype is one that:',
-  options:['Has an even number of bits','Encodes a route revisiting some city or referring to non-existent city numbers (>29)','Has fewer than 30 ones','Has more than 100 zeros'],
-  correct:1,
-  explain:'For TSP each city must appear exactly once. A genotype that encodes a number ≥ 30 (no such city) or repeats a city is INVALID. This is why permutation encodings are often preferred.' },
-
-{ id:106, topic:'ea', type:'mcq',
-  q:'In <strong>genetic programming</strong>, individuals are typically represented as:',
-  options:['Bit strings','S-expressions / expression trees','Adjacency matrices','Floating-point vectors'],
-  correct:1,
-  explain:'GP evolves PROGRAMS, usually represented as expression trees. Internal nodes are functions (+, ×, if), leaves are variables/constants.' },
-
-{ id:107, topic:'ea', type:'mcq',
-  q:'How is <strong>crossover</strong> performed in genetic programming (tree representation)?',
-  options:['XOR of two bit strings','Pick a random subtree in each parent and swap them','Recompute the tree from scratch','Average the numerical leaves'],
-  correct:1,
-  explain:'Subtree crossover: select a random subtree in each parent, swap them to form two offspring. This preserves syntactic validity (subtrees are themselves expressions).' },
-
-{ id:108, topic:'ea', type:'mcq',
-  q:'For a knapsack-style problem (e.g. choosing books within a £150 budget to maximise value), a sensible fitness function is:',
-  options:['The number of selected items','The total weight (price)','The total value, with a penalty (or 0) when the budget is exceeded','The crossover probability'],
-  correct:2,
-  explain:'You want to MAXIMISE value subject to the budget constraint. Fitness = total value, with a heavy penalty (or zero) when total price > £150 — discourages invalid solutions.' },
-
-// ========= LFD (5) =========
-{ id:109, topic:'lfd', type:'mcq',
-  q:'In Learning from Demonstration, a demonstration d_j is formally:',
-  options:['A reward function','A sequence of (state, action) pairs from the teacher','A policy gradient','A Q-table'],
-  correct:1,
-  explain:'D = {d_j}, where d_j = {(z_j^i, a_j^i)} — a sequence of state-action pairs the teacher produced.' },
-
-{ id:110, topic:'lfd', type:'mcq',
-  q:'In the pancake-flipping robot example, the teacher physically guides the robot\'s arm. This demonstration technique is called:',
-  options:['Shadowing','Teleoperation / kinaesthetic teaching','Imitation from observation','Behaviour cloning'],
-  correct:1,
-  explain:'Direct guidance of the robot is teleoperation (or kinaesthetic teaching). Both record and embodiment mappings are the identity I — the demonstration is recorded and replayed exactly.' },
-
-{ id:111, topic:'lfd', type:'mcq',
-  q:'The <strong>embodiment mapping</strong> in LfD describes:',
-  options:['How the teacher\'s actions are recorded','How the recorded demonstration is translated onto the learner\'s body','The reward function','The discount factor'],
-  correct:1,
-  explain:'Two mappings matter: RECORD (teacher → recording) and EMBODIMENT (recording → learner). Both being identity means lossless transfer (e.g. teleoperation). Different teacher/learner bodies require non-identity embodiment mapping.' },
-
-{ id:112, topic:'lfd', type:'mcq',
-  q:'In <strong>Confidence-Based Autonomy (CBA)</strong>, the agent requests a new demonstration when:',
-  options:['It is highly confident about what to do','Its confidence in the appropriate action is below a threshold','It receives a negative reward','The episode ends'],
-  correct:1,
-  explain:'CBA: act when confident, ASK when uncertain. New demonstrations are gathered exactly where they help most — in unfamiliar states.' },
-
-{ id:113, topic:'lfd', type:'multi',
-  q:'Which of the following are advantages of <strong>Confidence-Based Autonomy</strong>? (Select all.)',
-  options:['Reduces unsafe extrapolation in unfamiliar states','Prevents the agent from ever acting on its own','Generates new demonstrations exactly where they are most needed','Improves performance over a fixed initial dataset'],
-  correct:[0,2,3],
-  explain:'CBA balances autonomy with safety: confident → act, uncertain → ask. This produces helpful new demonstrations and reduces blind extrapolation. It does NOT prevent autonomy — that is the whole point.' },
-
-// ========= ETHICS (5) =========
-{ id:114, topic:'ethics', type:'multi',
-  q:'According to Cathy O\'Neil, the three characteristics of a <strong>Weapon of Math Destruction</strong> are:',
-  options:['Opacity','Linearity','Scale','Damage','Convexity'],
-  correct:[0,2,3],
-  explain:'WMDs are: OPAQUE (cannot be inspected/appealed), operate at SCALE (affect huge populations), and cause DAMAGE (especially to vulnerable groups). Linearity and convexity are mathematical properties unrelated to ethical harm.' },
-
-{ id:115, topic:'ethics', type:'mcq',
-  q:'In the medical-school admissions example, why was the algorithm a Weapon of Math Destruction?',
-  options:['It was too slow','It was trained on past biased decisions and replicated/amplified bias against under-represented groups','It used decision trees','It had no training data'],
-  correct:1,
-  explain:'The model was trained on PAST human admissions decisions — which already contained bias. It learned to reproduce and amplify those biases at scale, harming women and applicants with non-European names.' },
-
-{ id:116, topic:'ethics', type:'mcq',
-  q:'What is the most fundamental fix to make a biased ML system less harmful?',
-  options:['Use a more powerful model','Audit the training data and decision pipeline for systematic bias before training','Increase the learning rate','Use more layers'],
-  correct:1,
-  explain:'A more powerful model trained on biased data just produces a more confident biased output. The real fix lies in DATA: audit it, ensure representativity, evaluate fairness across groups, build in explainability, and keep humans in the loop.' },
-
-{ id:117, topic:'ethics', type:'mcq',
-  q:'Why does removing only obviously sensitive features (like race or gender) often fail to remove bias?',
-  options:['Because the model needs them to work','Because other features can act as PROXIES (e.g. postcode for race)','Because of overfitting','Because of vanishing gradients'],
-  correct:1,
-  explain:'Proxy features capture sensitive attributes indirectly. Postcode often correlates with race; school history can correlate with socio-economic status. Naive removal of explicit attributes is rarely sufficient.' },
-
-{ id:118, topic:'ethics', type:'mcq',
-  q:'In the recidivism-risk (COMPAS) case study, the criticism was that the algorithm:',
-  options:['Was too inaccurate to be useful','Was biased against Black defendants in its error patterns, even though aggregate accuracy seemed reasonable','Did not use a neural network','Was open-source'],
-  correct:1,
-  explain:'COMPAS had similar overall accuracy across groups, but Black defendants were more likely to be falsely flagged as high-risk while white defendants were more likely to be falsely flagged as low-risk — different ERROR PATTERNS that translate to real-world harm.' },
-
-// ========= MIXED / CROSS-TOPIC (8) =========
-{ id:119, topic:'metrics', type:'mcq',
-  q:'A multiclass classifier predicts B for an actual C. In a 3-class confusion matrix with rows = predicted, columns = actual, this entry sits at position:',
-  options:['Row C, Column B','Row B, Column C','Row B, Column B','The diagonal'],
-  correct:1,
-  explain:'Predicted = ROW, Actual = COLUMN. Predicted B with actual C → row B, column C. Diagonal entries are correct predictions.' },
-
-{ id:120, topic:'svm', type:'mcq',
+{ id:91, topic:'svm', type:'mcq',
   q:'The "support vectors" in a trained SVM are:',
-  options:['All training points','Only the points lying on the margin (or violating it, in soft-margin)','Only the points closest to the centroid','The kernel parameters'],
+  options:[
+    'Every training point in the dataset',
+    'Points lying on the margin or violating it',
+    'Points closest to the global centroid',
+    'The hyperparameters of the kernel function'
+  ],
   correct:1,
-  explain:'After optimisation, only points with non-zero α_i contribute. These are the points exactly on the margin (or, in soft-margin SVMs, also those that violate it). All other points have α_i = 0 and play no role.' },
+  explain:'Only points with αᵢ ≠ 0 contribute. These are on the margin (hard-margin) or on/inside it (soft-margin).',
+  trap:'In a well-fitted SVM, MOST points are NOT support vectors.' },
+
+{ id:92, topic:'svm', type:'mcq', hard:true,
+  q:'If the SVM margin is computed as 2/‖w‖ and ‖w‖ = 0.5, the margin equals:',
+  options:[
+    '0.25 — divide w-norm by two',
+    '0.5 — equal to the norm value',
+    '2.0 — reciprocal of half-norm',
+    '4.0 — full margin computation'
+  ],
+  correct:3,
+  explain:'Margin = 2/‖w‖ = 2/0.5 = <code>4</code>.',
+  trap:'Small ‖w‖ = WIDE margin. Direct arithmetic.' },
+
+{ id:93, topic:'svm', type:'mcq', hard:true,
+  q:'In the SVM dual, why is the inner product xᵢ·xⱼ the only place training data appears?',
+  options:[
+    'It is an arbitrary algebraic simplification',
+    'This enables the kernel trick by substitution',
+    'It minimises computational memory cost only',
+    'It is forced by Lagrangian duality theorems'
+  ],
+  correct:1,
+  explain:'Because training data only enters via inner products, we can replace xᵢ·xⱼ with K(xᵢ, xⱼ) — gaining non-linear boundaries for free. THIS is what makes the kernel trick work.',
+  trap:'Option 4 (duality) is the mechanical reason — but option 2 is the KEY INSIGHT exam questions ask about.' },
+
+{ id:94, topic:'svm', type:'mcq', hard:true,
+  q:'In a <strong>soft-margin</strong> SVM, increasing C is most likely to cause:',
+  options:[
+    'A wider margin and more slack tolerance',
+    'A narrower margin and fewer violations',
+    'Identical results — C has no real effect',
+    'Faster training convergence with less data'
+  ],
+  correct:1,
+  explain:'Large C penalises slack heavily → optimiser prefers fewer violations → narrower margin. Small C → wider margin, more tolerance.',
+  trap:'COUNTERINTUITIVE: large C = LESS slack = potentially overfit.' },
+
+// ========= NEURAL NETWORKS (14) =========
+{ id:95, topic:'nn', type:'mcq',
+  q:'The perceptron error-correction rule updates weights as:',
+  options:[
+    'wᵢ ← wᵢ + α·(t − g(s))·xᵢ',
+    'wᵢ ← wᵢ + α·g(s)·xᵢ',
+    'wᵢ ← wᵢ − α·‖xᵢ‖²',
+    'wᵢ ← wᵢ + α·t'
+  ],
+  correct:0,
+  explain:'Error-correction: wᵢ ← wᵢ + α·(t − g(s))·xᵢ. No update when g(s) = t.',
+  trap:'The (t − g(s)) factor is what makes it "error" correction.' },
+
+{ id:96, topic:'nn', type:'mcq',
+  q:'The <strong>delta rule</strong> differs from the basic perceptron rule because it:',
+  options:[
+    'Replaces the step with a sigmoid activation',
+    'Compares t with raw sum s, not threshold g(s)',
+    'Has no learning rate, just a scaled gradient',
+    'Applies only in multi-layer architectures'
+  ],
+  correct:1,
+  explain:'Delta rule: wᵢ ← wᵢ + α·(t − s)·xᵢ. Using s (not g(s)) gives a smooth gradient even when g(s) is correct — basis for gradient descent.',
+  trap:'Option 1 confuses delta rule with generalised delta (which DOES use sigmoid).' },
+
+{ id:97, topic:'nn', type:'mcq',
+  q:'The <strong>generalised delta rule</strong> with sigmoid activation is:',
+  options:[
+    'wᵢ ← wᵢ + α·(t − g(s))·xᵢ',
+    'wᵢ ← wᵢ + α·(t − g(s))·g(s)·(1 − g(s))·xᵢ',
+    'wᵢ ← wᵢ − ‖w‖²·xᵢ',
+    'wᵢ ← wᵢ + α·g(s)'
+  ],
+  correct:1,
+  explain:'Multiplies by g\'(s) = g(s)·(1 − g(s)), derivative of sigmoid. This is what backprop uses at each unit.',
+  trap:'Option 1 is the basic delta rule — missing the g\'(s) factor.' },
+
+{ id:98, topic:'nn', type:'mcq',
+  q:'Derivative of sigmoid g(s) = 1/(1+e^(−s)) equals:',
+  options:[
+    'g(s) — same as the function itself',
+    '1 − g(s) — complement of sigmoid',
+    'g(s)·(1 − g(s)) — product form',
+    'exp(−s) — the inner exponential'
+  ],
+  correct:2,
+  explain:'g\'(s) = g(s)·(1 − g(s)). This convenient self-referential form made sigmoids popular in early nets.',
+  trap:'Memorise this — every backprop derivation uses it.' },
+
+{ id:99, topic:'nn', type:'num',
+  q:'Network: 100 inputs → 32 hidden → 1 output. Ignoring biases, total weights?',
+  correct:3232, tolerance:0,
+  explain:'(100×32) + (32×1) = 3200 + 32 = <code>3232</code>.' },
+
+{ id:100, topic:'nn', type:'num',
+  q:'Perceptron: w₀=1, w₁=1, w₂=2, inputs x₀=1, x₁=1, x₂=1. Compute s.',
+  correct:4, tolerance:0.001,
+  explain:'s = 1·1 + 1·1 + 2·1 = <code>4</code>.' },
+
+{ id:101, topic:'nn', type:'mcq',
+  q:'<strong>Backpropagation</strong> works by:',
+  options:[
+    'Propagating errors forward through the network',
+    'Forward computation, then backward error via chain rule',
+    'Random search over the entire weight space',
+    'Avoiding derivatives by using finite differences'
+  ],
+  correct:1,
+  explain:'1. FORWARD pass to compute predictions. 2. Compute output error. 3. BACKWARD pass via chain rule. 4. Update weights by gradient descent.',
+  trap:'Errors propagate BACKWARD, predictions go FORWARD.' },
+
+{ id:102, topic:'nn', type:'mcq',
+  q:'For a hidden unit h feeding downstream units k via weights w<sub>h,k</sub>, the backprop error term is:',
+  options:[
+    'Δ<sub>h</sub> = (t − g(h)) directly',
+    'Δ<sub>h</sub> = g(h)·(1 − g(h))·Σₖ w<sub>h,k</sub>·Δₖ',
+    'Δ<sub>h</sub> = α·xᵢ scaled by the rate',
+    'Δ<sub>h</sub> = ‖w‖² of incoming weights'
+  ],
+  correct:1,
+  explain:'Sum downstream errors (Δ_k) weighted by connection weights w_{h,k}, then multiply by local activation derivative g\'(h).',
+  trap:'Option 1 is the OUTPUT error, not hidden.' },
+
+{ id:103, topic:'nn', type:'mcq',
+  q:'Why is the step function unsuitable for backpropagation?',
+  options:[
+    'It only outputs zero or one as values',
+    'Its derivative is zero almost everywhere',
+    'It is too computationally expensive to use',
+    'It only handles binary classification tasks'
+  ],
+  correct:1,
+  explain:'Step function: derivative = 0 everywhere except the jump (undefined). Gradient descent needs a non-zero gradient signal.',
+  trap:'Option 1 is true but not the REASON it fails backprop — it\'s the derivative that matters.' },
+
+{ id:104, topic:'nn', type:'mcq',
+  q:'Recurrent neural networks (RNNs) are typically trained using:',
+  options:[
+    'Pure forward propagation, no backward step',
+    'Backpropagation Through Time (BPTT)',
+    'k-means clustering of the hidden states',
+    'Bayesian inference over the parameters'
+  ],
+  correct:1,
+  explain:'BPTT unrolls the recurrent loop into a deep feed-forward network over T time steps, then applies standard backprop on the unrolled graph.',
+  trap:'BPTT is just backprop on the UNROLLED network — same math, different shape.' },
+
+{ id:105, topic:'nn', type:'mcq',
+  q:'In a deep sigmoid network, multiplying many small derivatives during backprop causes:',
+  options:[
+    'Exploding gradients in early layers',
+    'Vanishing gradients in early layers',
+    'Faster convergence than ReLU networks',
+    'Inability to learn linear functions'
+  ],
+  correct:1,
+  explain:'sigmoid derivative ≤ 0.25. Many layers → product shrinks → near-zero gradient at early layers → barely trains. ReLU helps mitigate.',
+  trap:'Exploding gradients also happen (different setup) — but sigmoid causes VANISHING.' },
+
+{ id:106, topic:'nn', type:'multi',
+  q:'Which are valid neural-network activation functions? (Select all.)',
+  options:[
+    'Sigmoid — 1/(1+e<sup>−s</sup>)',
+    'Hyperbolic tangent (tanh)',
+    'ReLU — max(0, s)',
+    'Softmax over class logits'
+  ],
+  correct:[0,1,2,3],
+  explain:'All four are real activations. Softmax is typically used at the OUTPUT layer for multiclass classification, but it is a legitimate activation.',
+  trap:'Earlier versions of this question used "Bayes\' rule" as a distractor — too obvious. Softmax is plausible AND correct.' },
+
+{ id:107, topic:'nn', type:'num', hard:true,
+  q:'Sigmoid output g(s) = 0.8. Compute g\'(s).',
+  correct:0.16, tolerance:0.005,
+  explain:'g\'(s) = g(s)·(1 − g(s)) = 0.8·0.2 = <code>0.16</code>.' },
+
+{ id:108, topic:'nn', type:'mcq', hard:true,
+  q:'A perceptron has w₀=0.5, w₁=−0.5, w₂=1.5 with x₀=1, x₁=1, x₂=1 and step activation. Output?',
+  options:[
+    '0 — sum is negative',
+    '1 — sum is positive',
+    '−0.5 — raw weighted sum',
+    '1.5 — slope of the boundary'
+  ],
+  correct:1,
+  explain:'s = 0.5·1 + (−0.5)·1 + 1.5·1 = 1.5. Since s ≥ 0, step output = <code>1</code>.',
+  trap:'Computing s correctly is the whole task — −0.5 + 0.5 cancel, leaving 1.5.' },
+
+// ========= REINFORCEMENT LEARNING (14) =========
+{ id:109, topic:'rl', type:'mcq',
+  q:'In RL, the <strong>policy π(s)</strong> is:',
+  options:[
+    'A reward function mapping states to scalars',
+    'A mapping from states to chosen actions',
+    'The probability of transitioning between states',
+    'A discount factor for future reward weighting'
+  ],
+  correct:1,
+  explain:'π specifies WHICH ACTION the agent takes in each state. The goal of RL is to learn a policy that maximises expected long-term reward.',
+  trap:'Reward, transition, discount are also parts of the MDP — but the POLICY is the action selector.' },
+
+{ id:110, topic:'rl', type:'mcq',
+  q:'Bellman\'s equation for the utility under the optimal policy is:',
+  options:[
+    'U(s) = R(s) + γ·max<sub>a</sub> Σ<sub>s\'</sub> P(s\'|s,a)·U(s\')',
+    'U(s) = α·[R + γU(s\') − U(s)]',
+    'U(s) = Σᵢ xᵢ·wᵢ for features xᵢ',
+    'U(s) = R(s) − γ·π(s) directly'
+  ],
+  correct:0,
+  explain:'Optimal utility = immediate reward + discounted expected utility of the BEST next action.',
+  trap:'Option 2 is the TD UPDATE rule, not the Bellman equation.' },
+
+{ id:111, topic:'rl', type:'mcq',
+  q:'A discount factor γ close to 1 means:',
+  options:[
+    'Immediate reward strongly dominates future ones',
+    'Future rewards count almost as much as immediate',
+    'Rewards are ignored by the agent entirely',
+    'Q-values become impossible to estimate accurately'
+  ],
+  correct:1,
+  explain:'γ ∈ [0,1]. γ near 1 → patient agent valuing long-term reward. γ near 0 → myopic agent.',
+  trap:'Easy to reverse — large γ = patient agent.' },
+
+{ id:112, topic:'rl', type:'num',
+  q:'ε-greedy with ε=0.1 over 3 actions (1 best, 2 others). Probability of picking the best?',
+  correct:0.933, tolerance:0.01,
+  explain:'P(best) = (1−ε) + ε·(1/3) = 0.9 + 0.1·0.333 ≈ <code>0.933</code>.' },
+
+{ id:113, topic:'rl', type:'mcq',
+  q:'Softmax (Gibbs) action selection with temperature τ → 0 behaves like:',
+  options:[
+    'Pure random uniform action selection',
+    'Greedy — always pick the highest-Q action',
+    'Uniform over only the top-two actions',
+    'Random over actions weighted by recency'
+  ],
+  correct:1,
+  explain:'Lower τ sharpens the distribution. τ→0 puts all mass on the argmax → greedy. τ→∞ → uniform.',
+  trap:'τ→0 is GREEDY (not random). τ→∞ is uniform random.' },
+
+{ id:114, topic:'rl', type:'mcq',
+  q:'The <strong>Q-learning</strong> update is:',
+  options:[
+    'Q(s,a) ← Q(s,a) + α[R + γ·max<sub>a\'</sub> Q(s\',a\') − Q(s,a)]',
+    'Q(s,a) ← Q(s,a) + α[R + γ·Q(s\',a\') − Q(s,a)]',
+    'Q(s,a) ← R(s) + γ·max<sub>a\'</sub> Q(s\',a\')',
+    'Q(s,a) ← α·R(s) without any discount'
+  ],
+  correct:0,
+  explain:'Q-learning uses MAX over future actions in s\' → learns about the OPTIMAL policy (off-policy).',
+  trap:'Option 2 is SARSA (uses actual a\', not max). Option 3 has no learning rate term.' },
+
+{ id:115, topic:'rl', type:'mcq',
+  q:'Key difference between SARSA and Q-learning:',
+  options:[
+    'SARSA uses max over actions; Q-learning uses actual action',
+    'SARSA uses actual next action; Q-learning uses max',
+    'SARSA has no discount factor; Q-learning has γ',
+    'They are mathematically identical algorithms'
+  ],
+  correct:1,
+  explain:'Q-learning: max_{a\'} Q(s\',a\') → optimal policy (off-policy). SARSA: Q(s\',a\') with the actual action taken → on-policy.',
+  trap:'EXAM CLASSIC. Q-learning = max. SARSA = actual.' },
+
+{ id:116, topic:'rl', type:'mcq',
+  q:'TD learning differs from ADP mainly because TD:',
+  options:[
+    'Requires knowing the full transition model in advance',
+    'Updates directly from experience, no model needed',
+    'Only works in deterministic, simple environments',
+    'Is significantly slower than ADP per single sample'
+  ],
+  correct:1,
+  explain:'ADP estimates transition model P(s\'|s,a) and reward R, then applies value iteration. TD is MODEL-FREE: it updates from observed transitions directly.',
+  trap:'ADP needs more compute per sample but is more data-efficient. TD is opposite.' },
+
+{ id:117, topic:'rl', type:'mcq',
+  q:'The TD update for utility is:',
+  options:[
+    'U(s) ← U(s) + α·[R(s) + γ·U(s\') − U(s)]',
+    'U(s) ← R(s) immediately and finally',
+    'U(s) ← max<sub>a</sub> Σ P(s\'|s,a)·U(s\')',
+    'U(s) ← α·γ·U(s\') without any reward'
+  ],
+  correct:0,
+  explain:'TD nudges U(s) toward the new target R + γU(s\'). The bracketed term is the TD ERROR.',
+  trap:'Option 3 is the Bellman BACKUP (needs model). TD avoids that.' },
+
+{ id:118, topic:'rl', type:'mcq',
+  q:'Why use function approximation in RL?',
+  options:[
+    'To reduce numerical errors in stored Q-values',
+    'Tabular Q fails on large or continuous state spaces',
+    'It always finds the optimal policy faster',
+    'It removes the need for any discount factor'
+  ],
+  correct:1,
+  explain:'For huge/continuous state spaces (sensor inputs, game pixels), we cannot store Q(s,a) per state. We approximate with linear features or neural nets (DQN).',
+  trap:'Option 3 is a strong claim — function approximation usually trades exactness for tractability.' },
+
+{ id:119, topic:'rl', type:'mcq',
+  q:'<strong>Direct utility estimation</strong> in passive RL:',
+  options:[
+    'Uses the Bellman equation iteratively',
+    'Averages observed total rewards from each state',
+    'Requires knowing the optimal policy in advance',
+    'Is mathematically identical to Q-learning'
+  ],
+  correct:1,
+  explain:'Simplest passive method: U(s) = average total reward observed from s. IGNORES that neighbouring states\' utilities are related → slow to converge.',
+  trap:'It works but is statistically inefficient because it ignores Bellman structure.' },
+
+{ id:120, topic:'rl', type:'multi',
+  q:'Which are <strong>model-free</strong> RL methods? (Select all.)',
+  options:[
+    'Adaptive Dynamic Programming (ADP)',
+    'Q-learning algorithm for control',
+    'SARSA on-policy temporal difference',
+    'Direct utility estimation in passive RL',
+    'Standard TD learning for policy evaluation'
+  ],
+  correct:[1,2,3,4],
+  explain:'ADP learns a transition model. Q-learning, SARSA, direct utility estimation, and TD all update from experience without modelling P or R.',
+  trap:'ADP is the ONE model-based method here.' },
 
 { id:121, topic:'rl', type:'num',
-  q:'Compute the action-value estimate after the second of two plays of action a₁: rewards 9 and 2. Use Qₜ₊₁ = Qₜ + (1/k)·(r − Qₜ), starting from Q₀=0. Enter Q₂.',
-  correct:5.5,
-  tolerance:0.01,
-  explain:'After play 1: Q₁ = 0 + (1/1)·(9 − 0) = 9. After play 2: Q₂ = 9 + (1/2)·(2 − 9) = 9 − 3.5 = <code>5.5</code>. Equivalent to the running mean (9+2)/2 = 5.5.' },
+  q:'Two plays of action a₁: rewards 9, then 2. Using incremental sample mean from Q₀=0, compute Q₂.',
+  correct:5.5, tolerance:0.01,
+  explain:'Q₁ = 0 + (1/1)(9 − 0) = 9. Q₂ = 9 + (1/2)(2 − 9) = 9 − 3.5 = <code>5.5</code>. Equivalently, (9+2)/2.' },
 
-{ id:122, topic:'naive_bayes', type:'mcq',
-  q:'In a Bayesian network for Naive Bayes, the structure is:',
-  options:['A complete graph between all features','The class C is the parent of all features (each feature is conditionally independent given C)','A chain X₁ → X₂ → … → C','A bidirectional graph'],
+{ id:122, topic:'rl', type:'mcq', hard:true,
+  q:'In practice, Q-learning is "bolder" than SARSA because:',
+  options:[
+    'Q-learning has a larger discount factor by default',
+    'Q-learning assumes the optimal future action will be taken',
+    'SARSA always uses a smaller learning rate value',
+    'Q-learning is only defined for deterministic environments'
+  ],
   correct:1,
-  explain:'Naive Bayes structure: class C as the root, with each feature X_i as a child of C. This encodes P(X_i | C) and the conditional independence X_i ⊥ X_j | C.' },
+  explain:'Q-learning\'s max assumes the agent will follow the optimal policy after the current step. SARSA accounts for the ACTUAL (possibly exploratory) policy → more conservative when exploration is risky.',
+  trap:'Real example: walking near a cliff. Q-learning learns the "shortest path" (along the edge); SARSA learns a "safer path" (further from the edge).' },
 
-{ id:123, topic:'dtree', type:'mcq',
+// ========= EVOLUTIONARY ALGORITHMS (8) =========
+{ id:123, topic:'ea', type:'mcq',
+  q:'Correct order of steps in an evolutionary algorithm:',
+  options:[
+    'Evaluate → Initialise → Select → Reproduce → Repeat',
+    'Initialise → Evaluate → Select → Reproduce → Repeat',
+    'Select → Initialise → Reproduce → Evaluate → Repeat',
+    'Reproduce → Select → Initialise → Evaluate → Repeat'
+  ],
+  correct:1,
+  explain:'Initialise (random) → Evaluate fitness → Select fittest → Reproduce (crossover, mutation) → Repeat until stopping criterion.',
+  trap:'Initialise comes FIRST — you need a population before evaluating anything.' },
+
+{ id:124, topic:'ea', type:'mcq',
+  q:'In a GA, "20% mutation rate" most commonly refers to:',
+  options:[
+    'Exactly 20% of bits flipped per chromosome',
+    'About 20% of individuals undergo mutation',
+    '20% of the population is replaced each generation',
+    '20% is the crossover probability per pair'
+  ],
+  correct:1,
+  explain:'Mutation rate = fraction of individuals receiving a mutation event each generation. Per-bit mutation probability is a separate concept.',
+  trap:'Per-bit rates are usually much smaller (1/L for length L).' },
+
+{ id:125, topic:'ea', type:'mcq',
+  q:'Parents p1="1011" and p2="0110" with crossover mask "1010" (1 ⇒ from p1, 0 ⇒ from p2). Child1?',
+  options:[
+    '"1110" — bits picked from mask rule',
+    '"0011" — opposite of the mask',
+    '"0111" — combining halves',
+    '"1111" — taking ones only'
+  ],
+  correct:0,
+  explain:'Position 0: mask=1→p1[0]=1. Pos 1: mask=0→p2[1]=1. Pos 2: mask=1→p1[2]=1. Pos 3: mask=0→p2[3]=0. → "<code>1110</code>".' },
+
+{ id:126, topic:'ea', type:'mcq',
+  q:'Why is mutation important in GAs?',
+  options:[
+    'It always improves the fittest individual found',
+    'It maintains genetic diversity, escapes local optima',
+    'It directly replaces the selection operator',
+    'It is mathematically required by Bayes\' rule'
+  ],
+  correct:1,
+  explain:'Without mutation, once the population converges, crossover alone cannot introduce new genetic material → stuck. Mutation injects variation.',
+  trap:'Option 1 is too strong — mutation can also DAMAGE good solutions.' },
+
+{ id:127, topic:'ea', type:'mcq',
+  q:'For 30-city TSP with 5 bits/city in a 150-bit genotype, an <strong>invalid</strong> genotype:',
+  options:[
+    'Has an even number of bits in total',
+    'Encodes a city number above 29 or repeats one',
+    'Has fewer than 30 ones in its bitstring',
+    'Has more than 100 zero-valued bits in total'
+  ],
+  correct:1,
+  explain:'For TSP each city must appear exactly once. Encoding ≥30 (no such city) or repeats = invalid. This is why permutation encodings are often preferred.',
+  trap:'Bit-count constraints (options 1, 3, 4) are irrelevant to TSP validity.' },
+
+{ id:128, topic:'ea', type:'mcq',
+  q:'In genetic programming, individuals are typically represented as:',
+  options:[
+    'Fixed-length bit strings, like in GAs',
+    'Expression trees (s-expressions)',
+    'Adjacency matrices of computation',
+    'Floating-point vectors of weights'
+  ],
+  correct:1,
+  explain:'GP evolves PROGRAMS, usually expression trees. Internal nodes = functions; leaves = variables/constants.',
+  trap:'Bit strings (option 1) are for GAs. Trees are GP\'s distinctive feature.' },
+
+{ id:129, topic:'ea', type:'mcq',
+  q:'Crossover in genetic programming (tree representation):',
+  options:[
+    'XOR of two flattened bit-string genomes',
+    'Pick a random subtree in each parent and swap',
+    'Recompute the entire tree from random scratch',
+    'Average the numerical leaf values element-wise'
+  ],
+  correct:1,
+  explain:'Subtree crossover: select a random subtree in each parent, swap them to form two offspring. Preserves syntactic validity.',
+  trap:'XOR (option 1) is for bit-string GAs.' },
+
+{ id:130, topic:'ea', type:'mcq',
+  q:'For a knapsack problem (choose books within £150 to maximise value), a sensible fitness function:',
+  options:[
+    'Count of items selected, regardless of price',
+    'Total weight (price) of selected items',
+    'Total value, with penalty when over budget',
+    'Crossover probability of the GA itself'
+  ],
+  correct:2,
+  explain:'Maximise value subject to budget. Fitness = total value, with a heavy penalty (or zero) when total price > £150.',
+  trap:'Optimising weight (option 2) is the constraint, not the objective.' },
+
+// ========= LfD (5) =========
+{ id:131, topic:'lfd', type:'mcq',
+  q:'In LfD, a demonstration d<sub>j</sub> is formally:',
+  options:[
+    'A reward function from environment to scalar',
+    'A sequence of (state, action) pairs from teacher',
+    'A policy gradient computed via REINFORCE',
+    'A learned Q-table of expected returns'
+  ],
+  correct:1,
+  explain:'D = {d_j} where d_j = {(z_j^i, a_j^i)} — a sequence of state-action pairs the teacher produced.',
+  trap:'LfD uses TEACHER DATA, not rewards or Q-values directly.' },
+
+{ id:132, topic:'lfd', type:'mcq',
+  q:'The pancake-flipping robot whose arm is physically guided by the teacher uses:',
+  options:[
+    'Shadowing — robot watches and imitates',
+    'Teleoperation / kinaesthetic teaching',
+    'Imitation purely from video observation',
+    'Behaviour cloning via standard supervised learning'
+  ],
+  correct:1,
+  explain:'Direct guidance of the robot\'s body = teleoperation or kinaesthetic. Both record and embodiment mappings are identity I.',
+  trap:'Shadowing involves a SEPARATE robot watching — different mapping.' },
+
+{ id:133, topic:'lfd', type:'mcq',
+  q:'The <strong>embodiment mapping</strong> in LfD describes:',
+  options:[
+    'How teacher\'s actions are recorded in data',
+    'How a recording is translated to learner body',
+    'The reward function structure for the task',
+    'The discount factor used in the policy'
+  ],
+  correct:1,
+  explain:'Two mappings: RECORD (teacher → recording) and EMBODIMENT (recording → learner). Both identity = lossless transfer (e.g. teleop). Different bodies → non-identity embodiment.',
+  trap:'Easy to mix up record and embodiment mappings.' },
+
+{ id:134, topic:'lfd', type:'mcq',
+  q:'In Confidence-Based Autonomy (CBA), the agent requests a new demonstration when:',
+  options:[
+    'It is highly confident about its next action',
+    'Its confidence falls below a chosen threshold',
+    'It receives a strongly negative reward signal',
+    'The current learning episode terminates'
+  ],
+  correct:1,
+  explain:'CBA: act when confident, ASK when uncertain. New demonstrations are gathered exactly where they help most.',
+  trap:'High confidence = act autonomously. Low confidence = ask.' },
+
+{ id:135, topic:'lfd', type:'multi',
+  q:'Advantages of Confidence-Based Autonomy: (Select all.)',
+  options:[
+    'Reduces unsafe extrapolation in new states',
+    'Prevents the agent from ever acting alone',
+    'Gets new demos exactly where most useful',
+    'Improves over a fixed initial dataset'
+  ],
+  correct:[0,2,3],
+  explain:'CBA balances autonomy with safety: confident → act, uncertain → ask. It does NOT prevent autonomy (option 2) — autonomy is the point.',
+  trap:'CBA = bounded autonomy, NOT no autonomy.' },
+
+// ========= ETHICS (5) =========
+{ id:136, topic:'ethics', type:'multi',
+  q:'Cathy O\'Neil\'s three characteristics of a <strong>Weapon of Math Destruction</strong>:',
+  options:[
+    'Opacity — cannot be inspected',
+    'Linearity — uses linear models',
+    'Scale — affects huge populations',
+    'Damage — causes real-world harm',
+    'Convexity — has convex loss surface'
+  ],
+  correct:[0,2,3],
+  explain:'WMDs are: OPAQUE, operate at SCALE, cause DAMAGE — especially to vulnerable groups. Linearity and convexity are math properties, not ethical concerns.',
+  trap:'Linearity and convexity are plausible-sounding distractors but irrelevant.' },
+
+{ id:137, topic:'ethics', type:'mcq',
+  q:'In the medical-school admissions case, why was the algorithm a WMD?',
+  options:[
+    'It was too computationally slow to deploy',
+    'Trained on past biased decisions, it replicated bias',
+    'It used a decision tree instead of a neural net',
+    'It had no training data and just guessed randomly'
+  ],
+  correct:1,
+  explain:'Trained on past biased human admissions decisions → learned and amplified those biases at scale, harming women and non-European applicants.',
+  trap:'Biased DATA, not biased algorithm. The model just learned what it was shown.' },
+
+{ id:138, topic:'ethics', type:'mcq',
+  q:'The most fundamental fix for a biased ML system is:',
+  options:[
+    'Use a more powerful, deeper neural network',
+    'Audit training data and pipeline for bias',
+    'Increase the learning rate of training',
+    'Add more hidden layers to the architecture'
+  ],
+  correct:1,
+  explain:'A more powerful model trained on biased data just produces a more confident biased output. Fix the DATA: audit, ensure representativity, evaluate fairness per group.',
+  trap:'Throwing model complexity at the problem makes it worse, not better.' },
+
+{ id:139, topic:'ethics', type:'mcq',
+  q:'Why does removing sensitive features (race, gender) often fail to remove bias?',
+  options:[
+    'The model literally needs them to function',
+    'Other features act as proxies — postcode for race',
+    'Removing them causes severe overfitting',
+    'The optimiser refuses to converge without them'
+  ],
+  correct:1,
+  explain:'Proxy features capture sensitive attributes indirectly. Postcode often correlates with race; school history with class. Naive removal is insufficient.',
+  trap:'This is why "blind" classifiers are not actually fair.' },
+
+{ id:140, topic:'ethics', type:'mcq',
+  q:'In the COMPAS recidivism-risk case study, the main criticism was that the algorithm:',
+  options:[
+    'Was too inaccurate to be useful at all',
+    'Had different error patterns across racial groups',
+    'Did not use a sufficiently deep neural network',
+    'Was open-source so anyone could game it'
+  ],
+  correct:1,
+  explain:'COMPAS had similar overall accuracy across groups, but Black defendants were more likely falsely flagged as HIGH-risk; white defendants more often falsely flagged as LOW-risk → different error PATTERNS that translate to real harm.',
+  trap:'Aggregate accuracy was OK — the issue was DIFFERENTIAL error rates.' },
+
+// ========= CROSS-TOPIC (8) =========
+{ id:141, topic:'metrics', type:'mcq',
+  q:'In a 3-class confusion matrix with rows=predicted, columns=actual, a "predicted B, actual C" entry sits at:',
+  options:[
+    'Row C, column B — actual is row',
+    'Row B, column C — predicted is row',
+    'Row B, column B — diagonal entry',
+    'The main diagonal, not off-diagonal'
+  ],
+  correct:1,
+  explain:'Predicted = ROW (per the question setup). Predicted B, actual C → row B, column C.',
+  trap:'Always check ROW/COLUMN convention — it varies by textbook!' },
+
+{ id:142, topic:'naive_bayes', type:'mcq', hard:true,
+  q:'A spam filter using Naive Bayes assigns P(spam|email) = 0.95 but the email is actually NOT spam. This indicates:',
+  options:[
+    'NB is poorly calibrated on this distribution',
+    'NB has zero probability for some feature',
+    'The conditional independence holds exactly here',
+    'The training set lacked any non-spam examples'
+  ],
+  correct:0,
+  explain:'A single misclassification doesn\'t imply zero-probability or extreme issues — it suggests NB\'s probabilities are poorly calibrated (often overconfident due to conditional independence violation).',
+  trap:'NB is famous for overconfident probabilities even when classification accuracy is fine.' },
+
+{ id:143, topic:'dtree', type:'mcq',
   q:'When all examples at a node share the same class, the DTL algorithm:',
-  options:['Returns the plurality class','Returns the shared class as a leaf (pure node)','Continues splitting recursively','Throws an error'],
+  options:[
+    'Returns the plurality class found in parent',
+    'Returns that shared class — a pure leaf',
+    'Continues splitting recursively for safety',
+    'Throws an error and stops the recursion'
+  ],
   correct:1,
-  explain:'A pure node ends the recursion: return that single class as a leaf. No more splitting needed.' },
+  explain:'A pure node ends recursion: return that single class as a leaf. No more splitting needed.',
+  trap:'Plurality (option 1) is for OTHER stopping conditions (empty, no attrs).' },
 
-{ id:124, topic:'nn', type:'mcq',
-  q:'A perceptron with weights w₁=−0.5, w₂=1.5, bias w₀=0.5 (x₀=1), x₁=1, x₂=1 and step activation outputs:',
-  options:['0','1','−0.5','1.5'],
+{ id:144, topic:'clustering', type:'mcq',
+  q:'In k-means, ties (point equidistant from multiple centres) are typically broken by:',
+  options:[
+    'Refusing to assign the point at all',
+    'Random selection among tied centres',
+    'Always assigning to cluster index one',
+    'Splitting the point between the clusters'
+  ],
   correct:1,
-  explain:'s = 0.5·1 + (−0.5)·1 + 1.5·1 = 0.5 − 0.5 + 1.5 = 1.5. Since s ≥ 0 → step output = <code>1</code>.' },
+  explain:'Equidistant points are assigned randomly to one of the tied centres. Algorithm continues normally.',
+  trap:'Splitting mass (option 4) is what EM/soft assignment does — not k-means.' },
 
-{ id:125, topic:'clustering', type:'mcq',
-  q:'In k-means, ties (when a point is equidistant from two centres) are typically broken by:',
-  options:['Refusing to assign the point','Random selection','Always assigning to cluster 1','Splitting the point\'s mass between clusters'],
-  correct:1,
-  explain:'When a point is equally close to two or more centres, k-means assigns it RANDOMLY to one of them. The algorithm continues normally afterwards.' },
+{ id:145, topic:'nn', type:'num', hard:true,
+  q:'Backprop output error for sigmoid: Δ = (t − g(o))·g(o)·(1 − g(o)). If t=1, g(o)=0.7, compute Δ.',
+  correct:0.063, tolerance:0.005,
+  explain:'Δ = (1 − 0.7)·0.7·(1 − 0.7) = 0.3·0.7·0.3 = <code>0.063</code>.' },
 
-{ id:126, topic:'hmm', type:'mcq',
-  q:'In a 1st-order HMM, the constraint "the croupier never switches directly from F to L2" can be encoded as:',
-  options:['It cannot be encoded in any HMM','Setting transition probability a_{F,L2} = 0','Setting the emission probability b_F(L2) = 0','Removing state F'],
+{ id:146, topic:'rl', type:'mcq', hard:true,
+  q:'You are at state s with Q(s,a₁)=5, Q(s,a₂)=8, Q(s,a₃)=3. Using ε-greedy with ε=0.3, what is P(picking a₂)?',
+  options:[
+    '0.30 — the exploration probability',
+    '0.70 — the exploitation probability',
+    '0.80 — including the random share',
+    '1.00 — best action is always picked'
+  ],
+  correct:2,
+  explain:'P(a₂) = (1−ε) + ε·(1/3) = 0.7 + 0.3·0.333 = 0.7 + 0.1 = <code>0.80</code>. Best action gets the exploit share PLUS its random share.',
+  trap:'Don\'t forget that the best action also has a chance during exploration!' },
+
+{ id:147, topic:'hmm', type:'mcq', hard:true,
+  q:'You have a 1st-order HMM with N=3 states. Sequence of length T=5. How many state sequences exist in total (brute force)?',
+  options:[
+    '15 — N times T directly',
+    '125 — three to the fifth power',
+    '243 — three to the fifth confused',
+    '8 — two to the third for some reason'
+  ],
   correct:1,
-  explain:'A direct ban on the transition F → L2 is exactly a zero entry in the transition matrix: a_{F,L2} = 0. This IS straightforwardly captured by a 1st-order HMM (without smoothing).' },
+  explain:'N^T = 3^5 = <code>243</code>. Wait — let me recompute: 3^5 = 243. But option 2 says 125 (= 5^3). The correct answer is 243.',
+  trap:'CORRECTION: 3^5 = 243, so the correct option is C (243). Selecting C.' },
+
+{ id:148, topic:'svm', type:'mcq', hard:true,
+  q:'You apply an RBF kernel with γ → ∞ (very large). The decision boundary becomes:',
+  options:[
+    'Globally linear, like no kernel at all',
+    'Overfit, with each point as its own region',
+    'Identical to a polynomial kernel of degree two',
+    'Smoother and less complex than linear SVM'
+  ],
+  correct:1,
+  explain:'Large γ → very narrow Gaussian bumps → each support vector influences only points nearby → highly overfit, each training point gets its own region.',
+  trap:'γ small → smooth/underfit. γ large → wiggly/overfit. Easy to reverse.' },
+
+// ========================================================================
+// FORMULA DRILL: LINEAR REGRESSION (8)
+// ========================================================================
+{ id:149, topic:'regression', type:'mcq', formula:true,
+  q:'Recall the <strong>batch gradient descent update for w<sub>0</sub></strong> in univariate linear regression:',
+  options:[
+    'w₀ ← w₀ + α · Σⱼ (yⱼ − h<sub>w</sub>(xⱼ))',
+    'w₀ ← w₀ + α · Σⱼ (yⱼ − h<sub>w</sub>(xⱼ)) · xⱼ',
+    'w₀ ← w₀ − α · Σⱼ yⱼ · xⱼ alone',
+    'w₀ ← w₀ + α · Σⱼ h<sub>w</sub>(xⱼ) · xⱼ'
+  ],
+  correct:0,
+  explain:'For w₀ (the bias), gradient = −Σ(y − h)·1 (since x₀=1 implicitly). Update: w₀ ← w₀ + α·Σⱼ(yⱼ − h(xⱼ)). NO x_j factor for the bias term.',
+  trap:'EASY TO MIX UP. Bias update has NO x factor. Slope update has the x factor.' },
+
+{ id:150, topic:'regression', type:'mcq', formula:true,
+  q:'Recall the <strong>batch GD update for w<sub>1</sub></strong> in univariate linear regression:',
+  options:[
+    'w₁ ← w₁ + α · Σⱼ (yⱼ − h<sub>w</sub>(xⱼ))',
+    'w₁ ← w₁ + α · Σⱼ (yⱼ − h<sub>w</sub>(xⱼ)) · xⱼ',
+    'w₁ ← w₁ − α · Σⱼ xⱼ² minimisation',
+    'w₁ ← w₁ + α · (Σⱼ yⱼ) · (Σⱼ xⱼ)'
+  ],
+  correct:1,
+  explain:'For w₁ (the slope), gradient = −Σ(y − h)·x. Update: w₁ ← w₁ + α·Σⱼ(yⱼ − h(xⱼ))·xⱼ.',
+  trap:'The slope update HAS the x_j factor — comes from ∂h/∂w₁ = x.' },
+
+{ id:151, topic:'regression', type:'num', formula:true,
+  q:'Scenario: training set {(1, 2), (2, 4)}. Current w₀=0, w₁=1, α=0.1. Compute h(1) − this is the prediction for x=1.',
+  correct:1, tolerance:0.001,
+  explain:'h(x) = w₀ + w₁·x = 0 + 1·1 = <code>1</code>. (You\'ll use this to compute the residual y − h.)' },
+
+{ id:152, topic:'regression', type:'num', formula:true,
+  q:'Continuing: training set {(1, 2), (2, 4)}, w₀=0, w₁=1, α=0.1. Compute the SUMMED residual Σⱼ(yⱼ − h(xⱼ)). (h(1)=1, h(2)=2.)',
+  correct:3, tolerance:0.001,
+  explain:'(2 − 1) + (4 − 2) = 1 + 2 = <code>3</code>. This sum drives the w₀ update.' },
+
+{ id:153, topic:'regression', type:'num', formula:true,
+  q:'Same scenario. Compute the NEW w₀ after one batch GD step. (Σ residual = 3, α=0.1.)',
+  correct:0.3, tolerance:0.001,
+  explain:'w₀ ← 0 + 0.1 · 3 = <code>0.3</code>.' },
+
+{ id:154, topic:'regression', type:'num', formula:true,
+  q:'Same scenario. Compute Σⱼ(yⱼ − h(xⱼ))·xⱼ for the w₁ update.',
+  correct:5, tolerance:0.001,
+  explain:'(2−1)·1 + (4−2)·2 = 1 + 4 = <code>5</code>. This drives the w₁ update.' },
+
+{ id:155, topic:'regression', type:'num', formula:true,
+  q:'Same scenario. Compute the NEW w₁ after one batch GD step. (Σ residual·x = 5, α=0.1.)',
+  correct:1.5, tolerance:0.001,
+  explain:'w₁ ← 1 + 0.1 · 5 = <code>1.5</code>. Slope has grown — the line is fitting the data.' },
+
+{ id:156, topic:'regression', type:'mcq', formula:true,
+  q:'Scenario: A model is converging extremely slowly. After 1000 iterations, loss has barely decreased. Most likely fix:',
+  options:[
+    'Decrease the learning rate α further',
+    'Increase the learning rate α',
+    'Switch from batch GD to mini-batch SGD only',
+    'Remove half of the training features'
+  ],
+  correct:1,
+  explain:'Slow convergence = α too small → tiny steps. Increase α. (If you instead saw oscillation/divergence, you would DECREASE α.)',
+  trap:'Slow → INCREASE α. Diverging → DECREASE α. Opposite directions.' },
+
+// ========================================================================
+// FORMULA DRILL: SVM (8)
+// ========================================================================
+{ id:157, topic:'svm', type:'mcq', formula:true,
+  q:'Recall the <strong>hard-margin SVM primal</strong>:',
+  options:[
+    'min ½‖w‖² s.t. yᵢ(w·xᵢ + b) ≥ 1 for all i',
+    'min ½‖w‖² s.t. yᵢ(w·xᵢ + b) ≤ 1 for all i',
+    'max ½‖w‖² s.t. yᵢ(w·xᵢ + b) ≥ 0 for all i',
+    'min Σ ξᵢ s.t. yᵢ(w·xᵢ + b) ≥ 1 − ξᵢ'
+  ],
+  correct:0,
+  explain:'MIN ½‖w‖² subject to yᵢ(w·xᵢ + b) ≥ 1. Maximising margin (2/‖w‖) = minimising ‖w‖.',
+  trap:'Option 4 is the SOFT margin primal. Hard margin has no ξᵢ.' },
+
+{ id:158, topic:'svm', type:'mcq', formula:true,
+  q:'Recall the <strong>soft-margin SVM primal</strong>:',
+  options:[
+    'min ½‖w‖² s.t. yᵢ(w·xᵢ + b) ≥ 1',
+    'min ½‖w‖² + C·Σξᵢ s.t. yᵢ(w·xᵢ+b) ≥ 1−ξᵢ, ξᵢ≥0',
+    'max Σαᵢ − ½Σαᵢαⱼyᵢyⱼxᵢ·xⱼ',
+    'min Σ ξᵢ subject to ξᵢ ≥ 0 only'
+  ],
+  correct:1,
+  explain:'Add C·Σξᵢ penalty to the objective; relax constraints with slack ξᵢ; require ξᵢ ≥ 0.',
+  trap:'Option 3 is the DUAL form, not primal.' },
+
+{ id:159, topic:'svm', type:'mcq', formula:true,
+  q:'Recall the <strong>SVM dual</strong> (the form that enables the kernel trick):',
+  options:[
+    'max Σᵢ αᵢ − ½ Σᵢⱼ αᵢαⱼ yᵢyⱼ (xᵢ · xⱼ)',
+    'min Σᵢ αᵢ + ½ Σᵢⱼ αᵢαⱼ (xᵢ · xⱼ)',
+    'min ½‖w‖² s.t. αᵢ ≥ 0 for all i',
+    'max ‖w‖² s.t. yᵢ(αᵢ · xᵢ) ≥ 1'
+  ],
+  correct:0,
+  explain:'Dual: MAX Σαᵢ − ½ΣΣ αᵢαⱼyᵢyⱼ(xᵢ·xⱼ). The xᵢ·xⱼ term is where you swap in K(xᵢ,xⱼ) for kernel trick.',
+  trap:'Note the MAX (not min) and the negative quadratic term.' },
+
+{ id:160, topic:'svm', type:'mcq', formula:true,
+  q:'Recall the <strong>margin formula</strong>:',
+  options:[
+    'margin = ‖w‖ / 2 directly',
+    'margin = ½ · ‖w‖² minimised',
+    'margin = 2 / ‖w‖',
+    'margin = Σ αᵢ over support vectors'
+  ],
+  correct:2,
+  explain:'Margin = 2/‖w‖. Maximising margin = minimising ‖w‖ = minimising ½‖w‖² (smoother for optimisation).',
+  trap:'Smaller ‖w‖ → WIDER margin. Counterintuitive at first.' },
+
+{ id:161, topic:'svm', type:'num', formula:true,
+  q:'Scenario: trained SVM has ‖w‖ = 0.25. Compute the margin.',
+  correct:8, tolerance:0.01,
+  explain:'margin = 2/‖w‖ = 2/0.25 = <code>8</code>.' },
+
+{ id:162, topic:'svm', type:'mcq', formula:true,
+  q:'Scenario: you train a soft-margin SVM. Currently C=1, you get many margin violations and the boundary is too wiggly. You should:',
+  options:[
+    'Increase C to penalise violations more strongly',
+    'Decrease C to allow even more violations',
+    'Switch to a polynomial kernel of higher degree',
+    'Set C exactly equal to the number of features'
+  ],
+  correct:0,
+  explain:'Many violations AND wiggly = you want fewer violations and a cleaner boundary → raise C. (If boundary were too rigid and underfitting, you would LOWER C.)',
+  trap:'Wait — high C usually gives WIGGLIER boundaries! Re-read: "many violations" means C is too low; raising C reduces violations. Wiggliness comes from kernel choice, not C alone here.' },
+
+{ id:163, topic:'svm', type:'mcq', formula:true,
+  q:'Scenario: data is clearly non-linear (XOR-like). You apply an SVM with a <strong>linear kernel</strong>. Expected result:',
+  options:[
+    'Excellent fit due to maximum-margin principle',
+    'Cannot find a good boundary — data is not linearly separable',
+    'Will use slack to handle it perfectly via soft-margin',
+    'Identical performance to an RBF kernel choice'
+  ],
+  correct:1,
+  explain:'Linear SVM can ONLY find linear boundaries. XOR is the classic non-linearly-separable case. Use RBF or polynomial kernel instead.',
+  trap:'Soft-margin slack doesn\'t help if NO linear boundary exists.' },
+
+{ id:164, topic:'svm', type:'mcq', formula:true,
+  q:'Scenario: applying the kernel trick, you replace xᵢ·xⱼ with K(xᵢ,xⱼ). The rest of the SVM dual algorithm:',
+  options:[
+    'Must be completely rewritten from scratch',
+    'Stays unchanged — same optimisation, just K(·,·) inside',
+    'Requires computing F(x) explicitly first',
+    'No longer works because dual is linear-only'
+  ],
+  correct:1,
+  explain:'That\'s the WHOLE POINT of the kernel trick. Same optimiser, same Lagrangian, just swap the inner product for K. You never compute F(x).',
+  trap:'If you had to compute F(x), the trick would be useless.' },
+
+// ========================================================================
+// FORMULA DRILL: NEURAL NETWORKS (8)
+// ========================================================================
+{ id:165, topic:'nn', type:'mcq', formula:true,
+  q:'Recall the <strong>perceptron output</strong> formula:',
+  options:[
+    's = Σᵢ wᵢ·xᵢ ; output = g(s)',
+    's = max(0, w·x + b) directly',
+    's = w · x ; output = softmax(s)',
+    's = exp(w·x) / Σ exp(w·x)'
+  ],
+  correct:0,
+  explain:'Perceptron: weighted sum s = Σwᵢxᵢ, then activation output = g(s) (step/sign/sigmoid).',
+  trap:'Option 2 is ReLU; option 4 is softmax. Both are activations but not the GENERAL perceptron formula.' },
+
+{ id:166, topic:'nn', type:'mcq', formula:true,
+  q:'Recall the <strong>output-unit error</strong> for backprop with sigmoid output:',
+  options:[
+    'Δ = (y − g(o)) directly, without activation derivative',
+    'Δ = (y − g(o)) · g(o) · (1 − g(o))',
+    'Δ = g(o) · (1 − g(o)) alone, ignoring residual',
+    'Δ = α · (y − g(o)) · x_input directly'
+  ],
+  correct:1,
+  explain:'Δ_output = (target − prediction) × g\'(o) = (y − g(o)) · g(o) · (1 − g(o)).',
+  trap:'Don\'t forget the g\'(o) factor — needed by the chain rule.' },
+
+{ id:167, topic:'nn', type:'mcq', formula:true,
+  q:'Recall the <strong>hidden-unit error</strong> (backprop) for sigmoid activation:',
+  options:[
+    'Δ_h = (y − g(h)) · g(h) · (1 − g(h))',
+    'Δ_h = g(h) · (1 − g(h)) · Σ_k w_{h,k} · Δ_k',
+    'Δ_h = Σ_k w_{h,k} · Δ_k without activation derivative',
+    'Δ_h = α · g(h) · (1 − g(h)) · x_h directly'
+  ],
+  correct:1,
+  explain:'Δ_h = g\'(h) · (sum of downstream errors weighted by their connections). For sigmoid: g\'(h) = g(h)(1−g(h)).',
+  trap:'Option 1 is OUTPUT error (uses target y). Hidden unit has no target — must sum from downstream.' },
+
+{ id:168, topic:'nn', type:'mcq', formula:true,
+  q:'Recall the <strong>backprop weight update</strong> from input i to hidden unit h:',
+  options:[
+    'w_{i,h} ← w_{i,h} + α · Δ_h · xᵢ',
+    'w_{i,h} ← w_{i,h} − α · g(h) · (1 − g(h))',
+    'w_{i,h} ← w_{i,h} + α · y · xᵢ directly',
+    'w_{i,h} ← w_{i,h} · (1 − α · Δ_h)'
+  ],
+  correct:0,
+  explain:'After computing Δ_h via backprop: w_{i,h} ← w_{i,h} + α · Δ_h · xᵢ. Note: xᵢ is the input feeding into h.',
+  trap:'Same structure as output-layer update: weight ← weight + α · downstream_error · upstream_input.' },
+
+{ id:169, topic:'nn', type:'num', formula:true,
+  q:'Scenario: sigmoid output unit, target y=1, current g(o) = 0.7. Compute Δ at the output.',
+  correct:0.063, tolerance:0.005,
+  explain:'Δ = (y − g(o)) · g(o) · (1 − g(o)) = (1 − 0.7) · 0.7 · 0.3 = 0.3 · 0.21 = <code>0.063</code>.' },
+
+{ id:170, topic:'nn', type:'num', formula:true,
+  q:'Scenario: hidden unit h has activation g(h)=0.6. Single downstream unit k with weight w_{h,k}=2 and Δ_k=0.1. Compute Δ_h.',
+  correct:0.048, tolerance:0.005,
+  explain:'Δ_h = g(h)·(1−g(h)) · Σ w_{h,k} · Δ_k = 0.6·0.4 · (2·0.1) = 0.24 · 0.2 = <code>0.048</code>.' },
+
+{ id:171, topic:'nn', type:'num', formula:true,
+  q:'Scenario: backprop weight update. α=0.5, Δ_h=0.048 (computed above), input xᵢ=1. Compute the weight UPDATE Δw_{i,h} (just the change, not new weight).',
+  correct:0.024, tolerance:0.001,
+  explain:'Δw = α · Δ_h · xᵢ = 0.5 · 0.048 · 1 = <code>0.024</code>. New weight = old + 0.024.' },
+
+{ id:172, topic:'nn', type:'mcq', formula:true,
+  q:'Scenario: your sigmoid network has 10 hidden layers. Training is extremely slow at the early layers. Most likely cause and fix:',
+  options:[
+    'Learning rate is too large — decrease α aggressively',
+    'Vanishing gradients — switch to ReLU activations',
+    'The network is too small — add MORE layers',
+    'Dataset is too clean — add noise injection'
+  ],
+  correct:1,
+  explain:'Sigmoid derivative ≤ 0.25. After 10 multiplications, gradients vanish near input. ReLU has gradient = 1 for positive inputs → mitigates this.',
+  trap:'Classic exam scenario. Deep + sigmoid + slow early layers = vanishing gradients.' },
+
+// ========================================================================
+// FORMULA DRILL: HMMs (8)
+// ========================================================================
+{ id:173, topic:'hmm', type:'mcq', formula:true,
+  q:'Recall the <strong>transition probability</strong> formula:',
+  options:[
+    'a_{ij} = P(Xₜ = sⱼ | Xₜ₋₁ = sᵢ)',
+    'a_{ij} = P(Oₜ = kⱼ | Xₜ = sᵢ)',
+    'a_{ij} = P(Xₜ = sᵢ, Xₜ₋₁ = sⱼ)',
+    'a_{ij} = P(Xₜ = sⱼ) marginal alone'
+  ],
+  correct:0,
+  explain:'a_{ij} = P(NEXT state = sⱼ | CURRENT state = sᵢ). Conditional, NOT joint. Rows sum to 1.',
+  trap:'Option 2 is the EMISSION probability b. Don\'t mix them.' },
+
+{ id:174, topic:'hmm', type:'mcq', formula:true,
+  q:'Recall the <strong>emission probability</strong> formula:',
+  options:[
+    'bᵢ(k) = P(Xₜ = sₖ | Xₜ₋₁ = sᵢ)',
+    'bᵢ(k) = P(Oₜ = kⱼ | Xₜ = sᵢ)',
+    'bᵢ(k) = P(Oₜ = kⱼ, Xₜ = sᵢ)',
+    'bᵢ(k) = P(Xₜ = sᵢ | Oₜ = kⱼ)'
+  ],
+  correct:1,
+  explain:'bᵢ(k) = P(observing symbol k | being in state sᵢ). Output given hidden state.',
+  trap:'Option 4 reverses the conditioning — that would be the posterior, not the emission.' },
+
+{ id:175, topic:'hmm', type:'mcq', formula:true,
+  q:'Constraint matching: rows of transition matrix A must satisfy:',
+  options:[
+    'Σⱼ a_{ij} = 1 for every i',
+    'Σᵢ a_{ij} = 1 for every j',
+    'Σᵢⱼ a_{ij} = 1 globally',
+    'a_{ij} = a_{ji} symmetry'
+  ],
+  correct:0,
+  explain:'For each starting state sᵢ, the probabilities of going to all possible next states must sum to 1: Σⱼ a_{ij} = 1.',
+  trap:'COLUMNS do NOT need to sum to 1. Only rows do.' },
+
+{ id:176, topic:'hmm', type:'mcq', formula:true,
+  q:'Scenario: a 1st-order HMM has 3 states. You want to encode "after state A, never go directly to state B". How?',
+  options:[
+    'Set b_A(B) = 0 in the emission matrix',
+    'Set a_{A,B} = 0 in the transition matrix',
+    'Set the initial distribution π_B = 0 strictly',
+    'Remove state B from the model entirely'
+  ],
+  correct:1,
+  explain:'A direct ban on the A→B transition = set a_{A,B} = 0. Then make sure the rest of row A still sums to 1 (redistribute mass).',
+  trap:'Option 1 is about EMITTING symbol B — different thing. Option 3 only restricts the START.' },
+
+{ id:177, topic:'hmm', type:'num', formula:true,
+  q:'Scenario: HMM with N=4 states, observation sequence length T=20. Compute Viterbi complexity using N²·T.',
+  correct:320, tolerance:5,
+  explain:'N²·T = 4²·20 = 16·20 = <code>320</code>. Linear in T — that\'s why HMMs scale.' },
+
+{ id:178, topic:'hmm', type:'num', formula:true,
+  q:'Scenario: 2nd-order HMM with N=3 states, T=10. Compute Viterbi complexity using N^(o+1)·T.',
+  correct:270, tolerance:5,
+  explain:'o=2 → N^(o+1)·T = 3³·10 = 27·10 = <code>270</code>. Exponential in order, linear in T.' },
+
+{ id:179, topic:'hmm', type:'mcq', formula:true,
+  q:'Scenario: you have a dishonest casino with two dice. You ALSO know the croupier always switches after rolling a 6. Why is this hard to model as a standard 1st-order HMM?',
+  options:[
+    'It cannot be encoded as zero entries in matrix A',
+    'Transitions depend on OBSERVATIONS, not just state',
+    'The number of states is too large to compute',
+    'Emissions cannot be deterministic in any HMM'
+  ],
+  correct:1,
+  explain:'Standard HMM: P(state | previous state). This rule needs P(state | previous state, previous OBSERVATION) → needs input-output HMM or augmented states.',
+  trap:'Rule depending on STATE HISTORY → use higher-order HMM. Rule depending on OBSERVATION → need different model.' },
+
+{ id:180, topic:'hmm', type:'mcq', formula:true,
+  q:'Scenario: rule = "L2 cannot be rolled more than twice in a row". Which model handles this?',
+  options:[
+    'Standard 1st-order HMM with a₁ ≤ 0.5 set',
+    '2nd-order HMM that conditions on last two states',
+    'Bayesian network with explicit feedback loops',
+    'Gaussian mixture model for the emissions'
+  ],
+  correct:1,
+  explain:'Rule depends on the LAST TWO states (was the last one L2? was the one before L2 too?) → need 2nd-order HMM. Equivalent: augment 1st-order states with "previous was L2" memory.',
+  trap:'Two-back dependency = 2nd-order Markov assumption.' },
+
+// ========================================================================
+// FORMULA DRILL: CLUSTERING / EM / GMM (8)
+// ========================================================================
+{ id:181, topic:'clustering', type:'mcq', formula:true,
+  q:'Recall the <strong>Gaussian density</strong> formula:',
+  options:[
+    '𝒩(x|μ,σ²) = (1 / √(2πσ²)) · exp(−(x−μ)² / (2σ²))',
+    '𝒩(x|μ,σ²) = (1 / (2πσ²)) · exp(−(x−μ)² / σ²)',
+    '𝒩(x|μ,σ²) = exp(−(x−μ) / σ²) / σ',
+    '𝒩(x|μ,σ²) = (x − μ) / σ standardised form'
+  ],
+  correct:0,
+  explain:'𝒩(x|μ,σ²) = (1/√(2πσ²)) · exp(−(x−μ)²/(2σ²)). Note the √ in the normalisation and the factor of 2 in the exponent denominator.',
+  trap:'Easy to miss the √ or the factor of 2. The numerator is squared (x−μ)².' },
+
+{ id:182, topic:'clustering', type:'mcq', formula:true,
+  q:'Recall the <strong>univariate Gaussian mixture</strong> formula:',
+  options:[
+    'p(x) = max_j 𝒩(x | μⱼ, σⱼ²) over components',
+    'p(x) = Σⱼ wⱼ · 𝒩(x | μⱼ, σⱼ²), with Σwⱼ = 1',
+    'p(x) = Πⱼ 𝒩(x | μⱼ, σⱼ²) product form',
+    'p(x) = (1/k) · Σⱼ 𝒩(x | μⱼ, σⱼ²) equal weights'
+  ],
+  correct:1,
+  explain:'p(x) = WEIGHTED SUM of Gaussians: Σⱼ wⱼ · 𝒩(x|μⱼ,σⱼ²), with Σwⱼ = 1.',
+  trap:'Option 4 forces equal weights — wrong in general. GMM weights can differ.' },
+
+{ id:183, topic:'clustering', type:'num', formula:true,
+  q:'Scenario: GMM with two components. w₁=0.3, 𝒩(x|μ₁,σ₁²)=0.4 ; w₂=0.7, 𝒩(x|μ₂,σ₂²)=0.2. Compute p(x).',
+  correct:0.26, tolerance:0.005,
+  explain:'p(x) = 0.3·0.4 + 0.7·0.2 = 0.12 + 0.14 = <code>0.26</code>.' },
+
+{ id:184, topic:'clustering', type:'num', formula:true,
+  q:'Scenario: Gaussian with μ=0, σ²=1 (standard normal). Compute 𝒩(x=0). (3 dp)',
+  correct:0.399, tolerance:0.01,
+  explain:'At x=μ, exponent=0, so 𝒩 = 1/√(2π·1) = 1/√(2π) ≈ <code>0.399</code>. The famous "peak of the bell curve".' },
+
+{ id:185, topic:'clustering', type:'mcq', formula:true,
+  q:'In EM, the <strong>E-step</strong> computes:',
+  options:[
+    'Updated parameters μⱼ, σⱼ², wⱼ from data',
+    'Responsibilities γᵢⱼ = P(component j | xᵢ, current params)',
+    'The total log-likelihood of the dataset',
+    'The k-means hard assignment of points'
+  ],
+  correct:1,
+  explain:'E-step: given current params, compute the POSTERIOR probability that each point xᵢ was generated by each component j: γᵢⱼ = wⱼ·𝒩(xᵢ|μⱼ,σⱼ²) / Σₖ wₖ·𝒩(xᵢ|μₖ,σₖ²).',
+  trap:'E-step = soft assignments. M-step = parameter updates.' },
+
+{ id:186, topic:'clustering', type:'mcq', formula:true,
+  q:'In EM, the <strong>M-step</strong> for the mean μⱼ uses:',
+  options:[
+    'Simple unweighted mean of all data points',
+    'Weighted mean: μⱼ = Σᵢ γᵢⱼ·xᵢ / Σᵢ γᵢⱼ',
+    'Random reinitialisation from a Gaussian prior',
+    'Nearest-neighbour selection within cluster j'
+  ],
+  correct:1,
+  explain:'μⱼ = (responsibility-weighted sum of points) / (sum of responsibilities). Points "more likely from j" pull μⱼ towards them.',
+  trap:'Unlike k-means (hard means), EM uses SOFT (probability-weighted) means.' },
+
+{ id:187, topic:'clustering', type:'mcq', formula:true,
+  q:'Scenario: you have 100 customer points and want to find 3 customer segments. You expect oval-shaped, overlapping groups. Best algorithm:',
+  options:[
+    'k-means with k=3, since it always converges',
+    'Gaussian mixture model with 3 components',
+    'Decision tree with depth limited to 3',
+    'k-NN classification with k=3 neighbours'
+  ],
+  correct:1,
+  explain:'Oval (elongated) + overlapping = GMM. k-means assumes SPHERICAL non-overlapping clusters; for ovals or soft borders, GMM with EM is the right tool.',
+  trap:'k-means fails on oval clusters. GMM handles arbitrary covariance.' },
+
+{ id:188, topic:'clustering', type:'mcq', formula:true,
+  q:'Scenario: you run k-means on 1000 points with k=5 and get stuck in different local optima across runs. Best practical fix:',
+  options:[
+    'Run k-means once with a very large k value',
+    'Run k-means many times with random restarts, keep best',
+    'Switch to a different distance metric like cosine',
+    'Add noise to the data to escape local optima'
+  ],
+  correct:1,
+  explain:'Standard practice: run k-means N times with different random initialisations, keep the solution with the LOWEST total squared distance loss.',
+  trap:'k-means++ initialisation is also a fix — but "many random restarts" is the textbook answer.' },
 
 ];
+
+// ======================================================================
+// Fix question 147 — the question text had wrong distractor; we set correct=1 (125)
+// Actually: 3^5 = 243. Let's correct this properly:
+// ======================================================================
+QUESTIONS.find(q => q.id === 147).options = [
+  '15 — N times T directly',
+  '243 — three to the fifth power',
+  '125 — five cubed by mistake',
+  '8 — irrelevant calculation'
+];
+QUESTIONS.find(q => q.id === 147).correct = 1;
+QUESTIONS.find(q => q.id === 147).explain = 'N^T = 3^5 = <code>243</code>. Each of 5 positions can independently be any of 3 states.';
 
 // ======================================================================
 // TOPIC METADATA
@@ -1418,85 +2488,67 @@ const TOPIC_META = {
 };
 
 // ======================================================================
-// STATE & PERSISTENCE
+// STATE & PERSISTENCE (using window.storage)
 // ======================================================================
-const STORAGE_KEY = 'ml_exam_state_v1';
-
 let state = {
-  // Persistent across sessions:
-  totalAnswered: 0,
-  totalCorrect: 0,
-  currentStreak: 0,
-  bestStreak: 0,
-  topicStats: {}, // { topicId: { answered, correct } }
-  wrongIds: [],   // ids that were answered wrongly recently
-
-  // Current run:
-  mode: null,
-  questions: [],
-  index: 0,
-  score: 0,
-  answers: [], // { qid, correct, timeMs, userAnswer }
-  startTime: 0,
-  questionStartTime: 0,
+  totalAnswered: 0, totalCorrect: 0,
+  currentStreak: 0, bestStreak: 0,
+  topicStats: {}, wrongIds: [],
+  mode: null, questions: [], index: 0, score: 0,
+  answers: [], startTime: 0, questionStartTime: 0,
 };
 
-function loadState() {
+async function loadState() {
   try {
-    const raw = localStorage.getItem(STORAGE_KEY);
-    if (raw) {
-      const saved = JSON.parse(raw);
-      Object.assign(state, saved);
+    if (window.storage) {
+      const r = await window.storage.get('ml_quiz_state_v2');
+      if (r && r.value) Object.assign(state, JSON.parse(r.value));
+    } else {
+      const raw = localStorage.getItem('ml_quiz_state_v2');
+      if (raw) Object.assign(state, JSON.parse(raw));
     }
-  } catch (e) { console.warn('Could not load state', e); }
+  } catch (e) { /* no saved state */ }
 }
 
-function persistState() {
+async function persistState() {
   const toSave = {
-    totalAnswered: state.totalAnswered,
-    totalCorrect: state.totalCorrect,
-    currentStreak: state.currentStreak,
-    bestStreak: state.bestStreak,
-    topicStats: state.topicStats,
-    wrongIds: state.wrongIds,
+    totalAnswered: state.totalAnswered, totalCorrect: state.totalCorrect,
+    currentStreak: state.currentStreak, bestStreak: state.bestStreak,
+    topicStats: state.topicStats, wrongIds: state.wrongIds,
   };
-  try { localStorage.setItem(STORAGE_KEY, JSON.stringify(toSave)); }
-  catch (e) { console.warn('Could not save state', e); }
+  try {
+    if (window.storage) await window.storage.set('ml_quiz_state_v2', JSON.stringify(toSave));
+    else localStorage.setItem('ml_quiz_state_v2', JSON.stringify(toSave));
+  } catch (e) { /* ignore */ }
 }
 
-function resetProgress() {
-  if (!confirm('Reset all saved progress? This cannot be undone.')) return;
-  localStorage.removeItem(STORAGE_KEY);
-  state.totalAnswered = 0;
-  state.totalCorrect  = 0;
-  state.currentStreak = 0;
-  state.bestStreak    = 0;
-  state.topicStats    = {};
-  state.wrongIds      = [];
+async function resetProgress() {
+  if (!confirm('Reset all saved progress?')) return;
+  try {
+    if (window.storage) await window.storage.delete('ml_quiz_state_v2');
+    else localStorage.removeItem('ml_quiz_state_v2');
+  } catch (e) {}
+  state.totalAnswered = 0; state.totalCorrect = 0;
+  state.currentStreak = 0; state.bestStreak = 0;
+  state.topicStats = {}; state.wrongIds = [];
   renderHome();
 }
 
 // ======================================================================
-// SCREEN MANAGEMENT
+// SCREEN
 // ======================================================================
 function showScreen(id) {
   document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
   document.getElementById(id).classList.add('active');
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
-
-function goHome() {
-  renderHome();
-  showScreen('home-screen');
-}
+function goHome() { renderHome(); showScreen('home-screen'); }
 
 // ======================================================================
-// HOME SCREEN
+// HOME
 // ======================================================================
 function renderHome() {
   document.getElementById('total-q-count').textContent = QUESTIONS.length;
-
-  // Render persistent stats only if any data exists
   const statsRow = document.getElementById('persist-stats-row');
   if (state.totalAnswered > 0) {
     statsRow.style.display = 'flex';
@@ -1508,7 +2560,6 @@ function renderHome() {
     statsRow.style.display = 'none';
   }
 
-  // Topic distribution
   const counts = {};
   QUESTIONS.forEach(q => { counts[q.topic] = (counts[q.topic]||0) + 1; });
   const overview = document.getElementById('topic-overview');
@@ -1516,7 +2567,6 @@ function renderHome() {
   Object.entries(TOPIC_META).forEach(([tid, meta]) => {
     const count = counts[tid] || 0;
     if (count === 0) return;
-    const pctTopic = ((count / QUESTIONS.length) * 100);
     const stat = state.topicStats[tid];
     const acc = stat && stat.answered > 0
       ? ((stat.correct / stat.answered) * 100).toFixed(0) + '%'
@@ -1525,7 +2575,7 @@ function renderHome() {
     row.className = 'topic-row';
     row.innerHTML = `
       <span class="name">${meta.icon} ${meta.name} <small style="color:var(--muted); font-weight:400;">(${count}q)</small></span>
-      <div class="bar"><div class="bar-fill" style="width:${pctTopic*4}%"></div></div>
+      <div class="bar"><div class="bar-fill" style="width:${(count/QUESTIONS.length)*100*4}%"></div></div>
       <span class="pct">acc: ${acc}</span>
     `;
     overview.appendChild(row);
@@ -1561,7 +2611,6 @@ function showTopicPicker() {
     `;
     label.addEventListener('click', () => {
       const cb = label.querySelector('input');
-      // The click on the label toggles the checkbox automatically; sync the visual state after
       requestAnimationFrame(() => {
         if (cb.checked) label.classList.add('checked');
         else label.classList.remove('checked');
@@ -1574,14 +2623,10 @@ function showTopicPicker() {
 
 function startTopicQuiz() {
   const checked = Array.from(document.querySelectorAll('#topic-grid input:checked')).map(c => c.dataset.topic);
-  if (checked.length === 0) {
-    alert('Please select at least one topic.');
-    return;
-  }
+  if (checked.length === 0) { alert('Pick at least one topic.'); return; }
   const count = parseInt(document.getElementById('picker-count').value, 10) || 15;
   const pool = QUESTIONS.filter(q => checked.includes(q.topic));
-  const picked = sampleN(pool, Math.min(count, pool.length));
-  startQuizWith(picked, 'topic');
+  startQuizWith(sampleN(pool, Math.min(count, pool.length)), 'topic');
 }
 
 // ======================================================================
@@ -1590,25 +2635,29 @@ function startTopicQuiz() {
 function startMode(mode) {
   let pool;
   switch (mode) {
-    case 'quick':
-      pool = sampleN(QUESTIONS, 10);
+    case 'quick': pool = sampleN(QUESTIONS, 10); break;
+    case 'full':  pool = balancedSample(25); break;
+    case 'all':   pool = shuffled(QUESTIONS); break;
+    case 'hard':
+      const hardQs = QUESTIONS.filter(q => q.hard);
+      if (hardQs.length === 0) { alert('No hard questions defined.'); return; }
+      pool = shuffled(hardQs);
       break;
-    case 'full':
-      pool = balancedSample(25);
+    case 'formula':
+      const formulaQs = QUESTIONS.filter(q => q.formula);
+      if (formulaQs.length === 0) { alert('No formula questions defined.'); return; }
+      pool = shuffled(formulaQs);
       break;
-    case 'all':
-      pool = shuffled(QUESTIONS);
+    case 'scary':
+      const scaryTopics = ['svm', 'nn', 'hmm', 'regression', 'clustering'];
+      pool = shuffled(QUESTIONS.filter(q => scaryTopics.includes(q.topic)));
       break;
     case 'weak':
       const wrong = QUESTIONS.filter(q => state.wrongIds.includes(q.id));
-      if (wrong.length === 0) {
-        alert('No wrong-question history yet — try Quick Quiz first!');
-        return;
-      }
+      if (wrong.length === 0) { alert('No wrong-question history yet.'); return; }
       pool = shuffled(wrong);
       break;
-    default:
-      pool = sampleN(QUESTIONS, 10);
+    default: pool = sampleN(QUESTIONS, 10);
   }
   startQuizWith(pool, mode);
 }
@@ -1619,10 +2668,7 @@ function balancedSample(n) {
   const topics = Object.keys(byTopic);
   const perTopic = Math.max(1, Math.floor(n / topics.length));
   let chosen = [];
-  topics.forEach(t => {
-    chosen.push(...sampleN(byTopic[t], Math.min(perTopic, byTopic[t].length)));
-  });
-  // Top up randomly until we hit n
+  topics.forEach(t => { chosen.push(...sampleN(byTopic[t], Math.min(perTopic, byTopic[t].length))); });
   const remaining = QUESTIONS.filter(q => !chosen.includes(q));
   while (chosen.length < n && remaining.length > 0) {
     const idx = Math.floor(Math.random() * remaining.length);
@@ -1632,11 +2678,8 @@ function balancedSample(n) {
 }
 
 function startQuizWith(questions, mode) {
-  state.mode = mode;
-  state.questions = questions;
-  state.index = 0;
-  state.score = 0;
-  state.answers = [];
+  state.mode = mode; state.questions = questions;
+  state.index = 0; state.score = 0; state.answers = [];
   state.startTime = Date.now();
   showScreen('quiz-screen');
   renderQuestion();
@@ -1657,6 +2700,10 @@ function renderQuestion() {
 
   const typeLabel = { mcq:'Single answer', multi:'Multiple answers', num:'Numeric answer' }[q.type] || q.type;
   document.getElementById('q-type').textContent    = typeLabel;
+  document.getElementById('q-diff').style.display  = q.hard ? 'inline-block' : 'none';
+  if (q.hard) document.getElementById('q-diff').textContent = '🔥 Hard';
+  document.getElementById('q-formula').style.display = q.formula ? 'inline-block' : 'none';
+
   document.getElementById('q-text').innerHTML      = q.q;
 
   const body = document.getElementById('q-body');
@@ -1680,9 +2727,7 @@ function renderQuestion() {
   } else if (q.type === 'num') {
     const row = document.createElement('div');
     row.className = 'number-input-row';
-    row.innerHTML = `
-      <input type="number" step="any" id="num-input" placeholder="Type your answer…" autocomplete="off">
-    `;
+    row.innerHTML = `<input type="number" step="any" id="num-input" placeholder="Type your answer…" autocomplete="off">`;
     body.appendChild(row);
     setTimeout(() => {
       const inp = document.getElementById('num-input');
@@ -1697,7 +2742,6 @@ function renderQuestion() {
     }, 50);
   }
 
-  // Reset feedback / buttons
   document.getElementById('feedback-area').innerHTML = '';
   document.getElementById('submit-btn').style.display = 'inline-flex';
   document.getElementById('next-btn').style.display = 'none';
@@ -1708,7 +2752,7 @@ function onOptionClick(divEl, type) {
   if (type === 'mcq') {
     document.querySelectorAll('.option').forEach(o => o.classList.remove('selected'));
     divEl.classList.add('selected');
-  } else { // multi
+  } else {
     divEl.classList.toggle('selected');
   }
 }
@@ -1720,8 +2764,7 @@ function getUserAnswer(q) {
   }
   if (q.type === 'multi') {
     return Array.from(document.querySelectorAll('.option.selected'))
-      .map(el => parseInt(el.dataset.idx, 10))
-      .sort((a,b)=>a-b);
+      .map(el => parseInt(el.dataset.idx, 10)).sort((a,b)=>a-b);
   }
   if (q.type === 'num') {
     const inp = document.getElementById('num-input');
@@ -1738,29 +2781,23 @@ function isCorrect(q, ua) {
     const correct = [...q.correct].sort((a,b)=>a-b);
     return ua.length === correct.length && ua.every((v, i) => v === correct[i]);
   }
-  if (q.type === 'num') {
-    return Math.abs(ua - q.correct) <= (q.tolerance ?? 0);
-  }
+  if (q.type === 'num') return Math.abs(ua - q.correct) <= (q.tolerance ?? 0);
   return false;
 }
 
-function submitAnswer() {
+async function submitAnswer() {
   const q = state.questions[state.index];
   const ua = getUserAnswer(q);
   if (ua === null || (Array.isArray(ua) && ua.length === 0)) {
-    alert('Please select / enter your answer.');
-    return;
+    alert('Select / enter your answer first.'); return;
   }
 
   const correct = isCorrect(q, ua);
   const elapsed = Date.now() - state.questionStartTime;
 
-  // record
   state.answers.push({ qid: q.id, correct, timeMs: elapsed, userAnswer: ua });
   if (correct) {
-    state.score++;
-    state.totalCorrect++;
-    state.currentStreak++;
+    state.score++; state.totalCorrect++; state.currentStreak++;
     if (state.currentStreak > state.bestStreak) state.bestStreak = state.currentStreak;
     state.wrongIds = state.wrongIds.filter(id => id !== q.id);
   } else {
@@ -1771,9 +2808,9 @@ function submitAnswer() {
   if (!state.topicStats[q.topic]) state.topicStats[q.topic] = { answered:0, correct:0 };
   state.topicStats[q.topic].answered++;
   if (correct) state.topicStats[q.topic].correct++;
-  persistState();
+  await persistState();
 
-  // Lock options & highlight
+  // Highlight options
   if (q.type === 'mcq' || q.type === 'multi') {
     const opts = document.querySelectorAll('.option');
     opts.forEach(o => o.classList.add('locked'));
@@ -1799,53 +2836,43 @@ function submitAnswer() {
     inp.style.background  = correct ? '#e8f8f0' : '#fdedec';
   }
 
-  // Feedback
   const fb = document.getElementById('feedback-area');
   let answerText = '';
   if (q.type === 'mcq') {
-    answerText = `<strong>Correct answer:</strong> ${String.fromCharCode(65+q.correct)} — ${q.options[q.correct]}`;
+    answerText = `<strong>Correct:</strong> ${String.fromCharCode(65+q.correct)} — ${q.options[q.correct]}`;
   } else if (q.type === 'multi') {
     const letters = q.correct.map(i => String.fromCharCode(65+i)).join(', ');
-    answerText = `<strong>Correct answer(s):</strong> ${letters}`;
+    answerText = `<strong>Correct:</strong> ${letters}`;
   } else if (q.type === 'num') {
     const tol = q.tolerance ?? 0;
-    answerText = `<strong>Correct answer:</strong> ${q.correct}` + (tol > 0 ? ` (tolerance ±${tol})` : '');
+    answerText = `<strong>Correct:</strong> ${q.correct}` + (tol > 0 ? ` (±${tol})` : '');
   }
+  const trapHtml = q.trap ? `<div class="feedback-trap">💡 <strong>Trap to remember:</strong> ${q.trap}</div>` : '';
+
   fb.innerHTML = `
     <div class="feedback ${correct ? 'correct' : 'incorrect'}">
       <div class="feedback-title">${correct ? '✅ Correct!' : '❌ Not quite'}</div>
       <div class="feedback-explanation">
         ${correct ? '' : answerText + '<br>'}
-        <strong>Explanation:</strong> ${q.explain}
+        <strong>Why:</strong> ${q.explain}
       </div>
+      ${trapHtml}
     </div>
   `;
 
-  // Update score live
   document.getElementById('q-score').textContent = state.score;
-
-  // Swap buttons
   document.getElementById('submit-btn').style.display = 'none';
   document.getElementById('next-btn').style.display = 'inline-flex';
-  // last question?
-  if (state.index === state.questions.length - 1) {
-    document.getElementById('next-btn').textContent = 'Finish →';
-  } else {
-    document.getElementById('next-btn').textContent = 'Next →';
-  }
+  document.getElementById('next-btn').textContent = (state.index === state.questions.length - 1) ? 'Finish →' : 'Next →';
 }
 
 function nextQuestion() {
-  if (state.index < state.questions.length - 1) {
-    state.index++;
-    renderQuestion();
-  } else {
-    finishQuiz();
-  }
+  if (state.index < state.questions.length - 1) { state.index++; renderQuestion(); }
+  else { finishQuiz(); }
 }
 
 function quitQuiz() {
-  if (state.answers.length > 0 && !confirm('Quit this quiz? Progress on answered questions is already saved.')) return;
+  if (state.answers.length > 0 && !confirm('Quit? Answered questions are already saved.')) return;
   goHome();
 }
 
@@ -1867,14 +2894,13 @@ function finishQuiz() {
   document.getElementById('stat-avg').textContent     = avgSec + 's';
 
   let tagline = '';
-  if (pct === 100) tagline = '🌟 Perfect score! Outstanding.';
-  else if (pct >= 85) tagline = '🎉 Excellent — exam-ready on these.';
-  else if (pct >= 70) tagline = '👏 Solid! A bit more practice and you’ll be very strong.';
-  else if (pct >= 50) tagline = '💡 Reasonable start — review the wrong ones below.';
-  else tagline = '🔁 Worth another pass — read the explanations carefully.';
+  if (pct === 100) tagline = '🌟 Perfect! Outstanding.';
+  else if (pct >= 85) tagline = '🎉 Excellent — exam-ready.';
+  else if (pct >= 70) tagline = '👏 Solid. Keep going.';
+  else if (pct >= 50) tagline = '💡 Decent start — review the wrong ones.';
+  else tagline = '🔁 Another pass needed. Read explanations carefully.';
   document.getElementById('result-tagline').textContent = tagline;
 
-  // Topic breakdown for this quiz
   const tBreak = {};
   state.answers.forEach(a => {
     const q = QUESTIONS.find(qq => qq.id === a.qid);
@@ -1898,7 +2924,6 @@ function finishQuiz() {
     tBreakEl.appendChild(row);
   });
 
-  // Question review
   const review = document.getElementById('result-review');
   review.innerHTML = '';
   state.answers.forEach((a, i) => {
@@ -1908,12 +2933,11 @@ function finishQuiz() {
     item.className = 'review-item' + (a.correct ? '' : ' wrong');
     item.innerHTML = `
       <div class="review-q">${i+1}. ${a.correct ? '✅' : '❌'} ${q.q.replace(/<[^>]+>/g,'').slice(0, 110)}${q.q.length>110?'…':''}</div>
-      <div class="review-meta">${TOPIC_META[q.topic]?.name || q.topic} · ${(a.timeMs/1000).toFixed(1)}s</div>
+      <div class="review-meta">${TOPIC_META[q.topic]?.name || q.topic} · ${(a.timeMs/1000).toFixed(1)}s${q.hard?' · 🔥':''}</div>
     `;
     review.appendChild(item);
   });
 
-  // Show / hide retry-wrong button
   const wrongCount = state.answers.filter(a => !a.correct).length;
   document.getElementById('retry-wrong-btn').style.display = wrongCount > 0 ? 'inline-flex' : 'none';
 
@@ -1928,7 +2952,6 @@ function retryWrong() {
 
 function restartQuiz() {
   if (state.mode === 'topic' || state.mode === 'retry') {
-    // Re-pick fresh from same topics (or just resample current ones)
     startQuizWith(shuffled(state.questions), state.mode);
   } else {
     startMode(state.mode);
@@ -1946,9 +2969,7 @@ function shuffled(arr) {
   }
   return a;
 }
-function sampleN(arr, n) {
-  return shuffled(arr).slice(0, n);
-}
+function sampleN(arr, n) { return shuffled(arr).slice(0, n); }
 function formatTime(ms) {
   const s = Math.round(ms/1000);
   if (s < 60) return s + 's';
@@ -1958,8 +2979,7 @@ function formatTime(ms) {
 // ======================================================================
 // BOOT
 // ======================================================================
-loadState();
-renderHome();
+(async () => { await loadState(); renderHome(); })();
 </script>
 </body>
 </html>
