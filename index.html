@@ -243,6 +243,140 @@ input[type="number"]:focus, select:focus { outline: none; border-color: var(--pr
 .persist-stats span { color: var(--muted); }
 .persist-stats strong { color: var(--primary); font-size: 16px; }
 
+/* ============== FLASHCARDS ============== */
+.flashcard {
+  perspective: 1800px;
+  position: relative;
+  min-height: 320px;
+  margin: 0 auto;
+  cursor: pointer;
+  transition: transform 0.6s ease;
+  transform-style: preserve-3d;
+}
+.flashcard.flipped { transform: rotateY(180deg); }
+.fc-face {
+  position: absolute;
+  inset: 0;
+  background: white;
+  border: 2px solid #e8d9b8;
+  border-radius: 14px;
+  padding: 32px 30px;
+  box-shadow: 0 4px 20px rgba(120, 80, 30, 0.08);
+  display: flex;
+  flex-direction: column;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  overflow-y: auto;
+}
+.fc-face::-webkit-scrollbar { width: 4px; }
+.fc-face::-webkit-scrollbar-thumb { background: #e8d9b8; border-radius: 2px; }
+
+.fc-back {
+  transform: rotateY(180deg);
+  background: linear-gradient(180deg, #fffef9 0%, #faf6e8 100%);
+}
+.fc-prompt {
+  font-size: 28px;
+  line-height: 1.3;
+  color: var(--primary);
+  font-weight: 600;
+  text-align: center;
+  margin: auto 0;
+  letter-spacing: -0.01em;
+}
+.fc-prompt em { color: var(--accent); font-style: italic; }
+.fc-hint {
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  color: #b0a48a;
+  text-transform: uppercase;
+  text-align: center;
+  margin-top: 16px;
+}
+.fc-hint::before { content: '↻ '; }
+
+.fc-back-label {
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  color: #b0a48a;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.fc-back-label::after {
+  content: ''; flex: 1; height: 1px; background: #e8d9b8;
+}
+.fc-formula-box {
+  background: white;
+  border: 1.5px solid #f39c12;
+  border-radius: 6px;
+  padding: 18px 20px;
+  margin: 6px 0 14px;
+  font-family: 'Cambria Math', 'Times New Roman', serif;
+  font-size: 18px;
+  line-height: 1.65;
+  text-align: center;
+  color: var(--primary);
+  position: relative;
+}
+.fc-formula-box::before {
+  content: 'ƒ';
+  position: absolute;
+  top: -12px;
+  left: 14px;
+  background: #faf6e8;
+  padding: 0 8px;
+  font-style: italic;
+  color: #f39c12;
+  font-size: 16px;
+  font-weight: 700;
+}
+.fc-where {
+  font-size: 13.5px;
+  color: #5d5547;
+  line-height: 1.65;
+  margin-top: 12px;
+}
+.fc-where strong {
+  font-family: 'Cambria Math', monospace;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--accent);
+  background: #fef0e8;
+  padding: 1px 6px;
+  border-radius: 3px;
+  margin-right: 6px;
+}
+.fc-where p { margin-bottom: 6px; }
+.fc-body {
+  font-size: 14.5px;
+  line-height: 1.7;
+  color: #2c3e50;
+}
+.fc-body strong { color: var(--primary); }
+.fc-note {
+  margin-top: 14px;
+  padding: 11px 14px;
+  background: #fef9ee;
+  border-left: 3px solid #f39c12;
+  border-radius: 0 4px 4px 0;
+  font-size: 13px;
+  color: #5d4a1f;
+}
+.fc-note::before { content: '★ '; color: #f39c12; }
+.fc-trap {
+  margin-top: 12px;
+  padding: 11px 14px;
+  background: #fdedec;
+  border-left: 3px solid #e74c3c;
+  border-radius: 0 4px 4px 0;
+  font-size: 13px;
+  color: #6b2c1c;
+}
+.fc-trap::before { content: '⚠ '; color: #e74c3c; }
+
 @media (max-width: 600px) {
   header h1 { font-size: 22px; }
   .card { padding: 18px; }
@@ -250,6 +384,10 @@ input[type="number"]:focus, select:focus { outline: none; border-color: var(--pr
   .question-text { font-size: 15px; }
   .option { font-size: 14px; padding: 10px 12px; }
   .btn { padding: 10px 18px; font-size: 14px; }
+  .fc-prompt { font-size: 22px; }
+  .fc-formula-box { font-size: 15px; padding: 14px; }
+  .fc-face { padding: 22px 18px; }
+  .flashcard { min-height: 280px; }
 }
 </style>
 </head>
@@ -268,8 +406,39 @@ input[type="number"]:focus, select:focus { outline: none; border-color: var(--pr
       <span>Best streak: <strong id="overall-streak">0</strong> 🔥</span>
     </div>
 
+    <div class="card" style="background: linear-gradient(135deg, #fff5e6 0%, #fef9ee 100%); border: 2px solid #f39c12;">
+      <h2 style="color: #b45309;">📇 Flashcards — formulas & concepts</h2>
+      <p style="color: #6b5527; margin-bottom: 14px; font-size: 14px;">Statement-style cards. See a concept name → flip → reveal formula/definition. Best for fast memorisation before the exam.</p>
+      <div id="fc-due-banner" style="display:none; background: #fef0e8; border: 1.5px solid #e74c3c; border-radius: 8px; padding: 12px 14px; margin-bottom: 14px; cursor:pointer;" onclick="fcStartMode('fc-due')">
+        <div style="color:#c0392b; font-weight:600; font-size:14px;">↻ <span id="fc-due-count">0</span> cards in your review queue</div>
+        <div style="color:#6b2c1c; font-size:12px; margin-top:2px;">Tap to drill the ones you marked "again"</div>
+      </div>
+      <div class="mode-grid">
+        <button class="mode-btn" data-mode="fc-formulas" style="background:#fef9ee; border:2px solid #f39c12;">
+          <span class="icon">📐</span>
+          <span class="title" style="color:#b45309;">All Formulas</span>
+          <span class="desc">39 formula cards across all topics</span>
+        </button>
+        <button class="mode-btn" data-mode="fc-scary" style="background:#fef9ee; border:2px solid #f39c12;">
+          <span class="icon">😱</span>
+          <span class="title" style="color:#b45309;">Scary Topics</span>
+          <span class="desc">SVM, NN, HMM, regression, clustering</span>
+        </button>
+        <button class="mode-btn" data-mode="fc-all" style="background:#fef9ee; border:2px solid #f39c12;">
+          <span class="icon">📚</span>
+          <span class="title" style="color:#b45309;">All Cards</span>
+          <span class="desc">All 83 cards, full review</span>
+        </button>
+        <button class="mode-btn" data-mode="fc-topic" style="background:#fef9ee; border:2px solid #f39c12;">
+          <span class="icon">🎯</span>
+          <span class="title" style="color:#b45309;">Pick Topic</span>
+          <span class="desc">Cards from one topic</span>
+        </button>
+      </div>
+    </div>
+
     <div class="card">
-      <h2>Choose your practice mode</h2>
+      <h2>Multiple choice quiz</h2>
       <p style="color: var(--muted); margin-bottom: 12px;">Each question now has balanced-length options and plausible distractors. Watch for the orange "trap" notes in feedback.</p>
       <div class="mode-grid">
         <button class="mode-btn" data-mode="quick">
@@ -402,6 +571,74 @@ input[type="number"]:focus, select:focus { outline: none; border-color: var(--pr
         <button class="btn btn-secondary" onclick="goHome()">🏠 Home</button>
         <button class="btn btn-primary" onclick="retryWrong()" id="retry-wrong-btn">🔧 Retry wrong</button>
         <button class="btn btn-success" onclick="restartQuiz()">🔁 Restart</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- FLASHCARD TOPIC PICKER -->
+  <div id="fc-picker-screen" class="screen">
+    <div class="card">
+      <h2>📇 Pick a topic for flashcards</h2>
+      <p style="color: var(--muted); font-size: 14px;">Tap a topic to start its deck.</p>
+      <div id="fc-topic-grid" style="display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 10px; margin-top: 16px;"></div>
+      <div class="quiz-controls">
+        <button class="btn btn-secondary" onclick="goHome()">← Back</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- FLASHCARD DECK SCREEN -->
+  <div id="fc-deck-screen" class="screen">
+    <div class="card" style="background: linear-gradient(135deg, #fff 0%, #fefaf2 100%);">
+      <div class="quiz-header">
+        <div class="quiz-meta">
+          <span>Card <strong id="fc-current">1</strong> / <strong id="fc-total">10</strong></span>
+          <span style="color: var(--success);">✓ <strong id="fc-known">0</strong> known</span>
+          <span style="color: var(--accent);">↻ <strong id="fc-again">0</strong> again</span>
+        </div>
+        <div class="progress-bar"><div class="progress-fill" id="fc-progress" style="width: 0%;"></div></div>
+      </div>
+
+      <div style="margin-bottom: 16px;">
+        <span class="topic-tag" id="fc-topic-tag">Topic</span>
+        <span class="topic-tag" id="fc-type-tag" style="background: #fef9ee; color: #b45309;">Type</span>
+      </div>
+
+      <div id="flashcard" class="flashcard" onclick="flipFlashcard()">
+        <div class="fc-face fc-front" id="fc-front"></div>
+        <div class="fc-face fc-back" id="fc-back"></div>
+      </div>
+
+      <div style="text-align:center; margin-top: 12px; font-size: 12px; color: var(--muted);">
+        Tap card to flip · <kbd style="background:#f0f0f0; padding:2px 6px; border-radius:3px; font-family:monospace;">Space</kbd> flip · <kbd style="background:#f0f0f0; padding:2px 6px; border-radius:3px; font-family:monospace;">←/→</kbd> navigate
+      </div>
+
+      <div class="quiz-controls" style="margin-top: 16px;">
+        <button class="btn btn-secondary" onclick="goHome()">🏠 Home</button>
+        <button class="btn btn-secondary" onclick="fcPrev()" id="fc-prev-btn">← Prev</button>
+        <button class="btn" style="background:#fef0f0; color:#c0392b; border:2px solid #e74c3c;" onclick="fcAgain()">↻ Again</button>
+        <button class="btn" style="background:#e8f8f0; color:#1e8e4f; border:2px solid #27ae60;" onclick="fcKnown()">✓ Got it</button>
+        <button class="btn btn-primary" onclick="fcNext()" id="fc-next-btn">Next →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- FLASHCARD DONE -->
+  <div id="fc-done-screen" class="screen">
+    <div class="card">
+      <div class="results-summary">
+        <h2 style="text-align:center; color:#b45309;">📇 Deck complete</h2>
+        <p style="color: var(--muted); font-size: 16px; text-align:center;" id="fc-done-sub"></p>
+      </div>
+      <div class="results-stats">
+        <div class="stat-box"><div class="num" id="fc-done-known" style="color:#27ae60;">0</div><div class="lbl">Known</div></div>
+        <div class="stat-box"><div class="num" id="fc-done-again" style="color:#e74c3c;">0</div><div class="lbl">Again</div></div>
+        <div class="stat-box"><div class="num" id="fc-done-total">0</div><div class="lbl">Total</div></div>
+      </div>
+      <div class="quiz-controls">
+        <button class="btn btn-secondary" onclick="goHome()">🏠 Home</button>
+        <button class="btn btn-primary" onclick="fcReviewAgain()" id="fc-review-btn">↻ Review "again" only</button>
+        <button class="btn btn-success" onclick="fcRestart()">🔁 Restart deck</button>
       </div>
     </div>
   </div>
@@ -2560,6 +2797,15 @@ function renderHome() {
     statsRow.style.display = 'none';
   }
 
+  // Flashcard review queue
+  const fcDueBanner = document.getElementById('fc-due-banner');
+  if (fcDueBanner && fcState && fcState.reviewQueue && fcState.reviewQueue.size > 0) {
+    fcDueBanner.style.display = 'block';
+    document.getElementById('fc-due-count').textContent = fcState.reviewQueue.size;
+  } else if (fcDueBanner) {
+    fcDueBanner.style.display = 'none';
+  }
+
   const counts = {};
   QUESTIONS.forEach(q => { counts[q.topic] = (counts[q.topic]||0) + 1; });
   const overview = document.getElementById('topic-overview');
@@ -2587,6 +2833,7 @@ document.querySelectorAll('.mode-btn').forEach(btn => {
     const mode = btn.dataset.mode;
     if (mode === 'reset') return resetProgress();
     if (mode === 'topic') return showTopicPicker();
+    if (mode && mode.startsWith('fc-')) return fcStartMode(mode);
     startMode(mode);
   });
 });
@@ -2976,10 +3223,576 @@ function formatTime(ms) {
   return Math.floor(s/60) + 'm ' + (s%60) + 's';
 }
 
+// FLASHCARDS — statement-style. Prompt = concept name. Back = formula/definition.
+const FLASHCARDS = [
+  // ===== 01. INTRO =====
+  { topic:'intro', type:'concept',
+    prompt:'Supervised learning',
+    body:'Training data has <strong>labelled (x, y) pairs</strong>. Goal: predict y for new x. Tasks: classification (discrete y), regression (continuous y).' },
+  { topic:'intro', type:'concept',
+    prompt:'Unsupervised learning',
+    body:'Training data has <strong>only x, no labels</strong>. Goal: find structure. Tasks: clustering, density estimation, dimensionality reduction.' },
+  { topic:'intro', type:'concept',
+    prompt:'Reinforcement learning',
+    body:'Agent observes state, takes action, gets <strong>reward</strong>. Goal: learn a policy π(s) that maximises expected long-term reward.' },
+  { topic:'intro', type:'concept',
+    prompt:'Classification vs regression',
+    body:'<strong>Classification</strong> → predicts a discrete category (spam/ham, species). <strong>Regression</strong> → predicts a continuous numerical value (price, temperature).',
+    note:'EXAM TIP: "category" = classification. "Number / price / score" = regression. "Group / discover structure" = clustering.' },
+  { topic:'intro', type:'concept',
+    prompt:'Feature vector',
+    body:'The <strong>complete set of features</strong> describing one example. Each feature is a measurable input property (petal length, sepal width). The label is what you want to predict.' },
+  { topic:'intro', type:'concept',
+    prompt:'Overfitting',
+    body:'HIGH training accuracy, LOW test accuracy. Model has memorised training noise instead of learning the general pattern.' },
+  { topic:'intro', type:'concept',
+    prompt:'Underfitting',
+    body:'LOW accuracy on BOTH training and test data. Model is too simple to capture the underlying pattern.' },
+  { topic:'intro', type:'concept',
+    prompt:'Generalisation',
+    body:'Performance on <strong>unseen data</strong>. The real goal of learning. Estimated via test set or cross-validation.' },
+  { topic:'intro', type:'concept',
+    prompt:'Hypothesis h<sub>w</sub>(x)',
+    body:'The function the learner outputs, parameterised by <strong>weights w</strong>. Training adjusts w so h_w(x) maps inputs to good predictions.' },
+
+  // ===== 02. k-NN =====
+  { topic:'knn', type:'formula',
+    prompt:'Euclidean distance',
+    formula:'d(i, j) = √[ Σ<sub>k</sub> (x<sub>ik</sub> − x<sub>jk</sub>)² ]',
+    where:'<p><strong>x<sub>ik</sub>, x<sub>jk</sub></strong> the k-th feature of examples i and j</p>',
+    note:'Squared differences summed, then square root. Sensitive to feature scale — standardise inputs first.' },
+  { topic:'knn', type:'formula',
+    prompt:'Manhattan distance',
+    formula:'d(i, j) = Σ<sub>k</sub> |x<sub>ik</sub> − x<sub>jk</sub>|',
+    where:'<p>Sum of absolute differences per dimension (L1).</p>',
+    note:'Less sensitive to outliers than Euclidean.' },
+  { topic:'knn', type:'concept',
+    prompt:'k-NN — lazy learning',
+    body:'No real training phase. The classifier just <strong>stores the training set</strong> as-is. All work happens at prediction time: compute distances to every stored point, find k closest, vote.' },
+  { topic:'knn', type:'concept',
+    prompt:'Choosing k in k-NN',
+    body:'<strong>k = 1:</strong> boundary hugs training points → overfits noise.<br><strong>k = 5:</strong> smoother boundary, better generalisation.<br><strong>k too large:</strong> loses local detail → underfits.',
+    trap:'Small k → OVERFIT. Large k → UNDERFIT. Easy to reverse under pressure.' },
+
+  // ===== 03. METRICS =====
+  { topic:'metrics', type:'concept',
+    prompt:'Confusion matrix (binary)',
+    body:'Rows = predicted, cols = actual.<br><br><strong>Pred Positive:</strong> TP | FP<br><strong>Pred Negative:</strong> FN | TN',
+    note:'FN = "Failed to Notice" — actually positive but predicted negative.' },
+  { topic:'metrics', type:'formula',
+    prompt:'Accuracy',
+    formula:'Accuracy = (TP + TN) / (TP + TN + FP + FN)',
+    where:'<p>Fraction of all predictions that are correct.</p>',
+    trap:'Misleading on imbalanced data. "Always predict negative" on 95% negatives → 95% accuracy with zero recall.' },
+  { topic:'metrics', type:'formula',
+    prompt:'Precision',
+    formula:'Precision = TP / (TP + FP)',
+    where:'<p>Of all predicted positive, fraction actually positive.</p>',
+    note:'Optimise when FALSE POSITIVES are costly (spam filter: don\'t block legit email).' },
+  { topic:'metrics', type:'formula',
+    prompt:'Recall (sensitivity, TPR)',
+    formula:'Recall = TP / (TP + FN)',
+    where:'<p>Of all actual positives, fraction we detected.</p>',
+    note:'Optimise when FALSE NEGATIVES are costly (medical screening: don\'t miss a sick patient).' },
+  { topic:'metrics', type:'formula',
+    prompt:'F1 score',
+    formula:'F<sub>1</sub> = 2 · (Precision · Recall) / (Precision + Recall)',
+    where:'<p>Harmonic mean of precision and recall. Always sits between them.</p>',
+    note:'Penalises imbalance: if either P or R is very low, F1 is very low.' },
+  { topic:'metrics', type:'concept',
+    prompt:'k-fold cross-validation',
+    body:'Split data into k folds. Train on k−1, test on the remaining one. Repeat k times. Average the scores.<br><br>Benefits: more reliable than a single split · uses all data for both · reduces variance · exposes overfitting.' },
+
+  // ===== 04. DECISION TREES =====
+  { topic:'dtree', type:'concept',
+    prompt:'Decision Tree Learning (DTL) algorithm',
+    body:'<strong>Recursive:</strong><br>1. No examples → return parent\'s plurality.<br>2. All same class → return that class (pure leaf).<br>3. No attributes left → return plurality.<br>4. Otherwise pick best attribute A (highest info gain).<br>5. For each value v of A → recurse on examples where A=v.' },
+  { topic:'dtree', type:'formula',
+    prompt:'Entropy of a boolean variable',
+    formula:'B(q) = −[ q · log<sub>2</sub>(q) + (1−q) · log<sub>2</sub>(1−q) ]',
+    where:'<p><strong>q</strong> probability of positive class</p><p><strong>B(q)</strong> entropy in bits</p>',
+    note:'B(0) = B(1) = 0 (pure). B(0.5) = 1 (max impurity). Convention: 0·log(0) = 0.' },
+  { topic:'dtree', type:'formula',
+    prompt:'Total entropy of the dataset',
+    formula:'H(Goal) = B( p / (p + n) )',
+    where:'<p><strong>p</strong> number of positive examples</p><p><strong>n</strong> number of negative examples</p>',
+    note:'Baseline entropy before any split — what info gain reduces.' },
+  { topic:'dtree', type:'formula',
+    prompt:'Remainder (expected entropy after splitting on A)',
+    formula:'Remainder(A) = Σ<sub>i</sub> [ (p<sub>i</sub>+n<sub>i</sub>)/(p+n) ] · B( p<sub>i</sub>/(p<sub>i</sub>+n<sub>i</sub>) )',
+    where:'<p><strong>p<sub>i</sub>, n<sub>i</sub></strong> pos/neg in the i-th branch</p><p>Sum over all values of A</p>',
+    note:'Weighted average of the entropies of A\'s branches.' },
+  { topic:'dtree', type:'formula',
+    prompt:'Information Gain',
+    formula:'Gain(A) = H(Goal) − Remainder(A)',
+    where:'<p>Pick attribute with HIGHEST gain (equivalently, LOWEST remainder).</p>',
+    trap:'Raw gain prefers attributes with many distinct values (e.g. ID columns). Gain ratio fixes this.' },
+  { topic:'dtree', type:'formula',
+    prompt:'Gini impurity of a set S',
+    formula:'G(S) = 1 − [ (p/(p+n))² + (n/(p+n))² ]',
+    where:'<p>0 when pure. Up to 0.5 when balanced.</p>',
+    note:'Alternative to entropy. For an attribute: G(S,A) = Σ (|S<sub>i</sub>|/|S|) · G(S<sub>i</sub>). Pick LOWEST.' },
+
+  // ===== 05. LINEAR REGRESSION =====
+  { topic:'regression', type:'formula',
+    prompt:'Univariate linear regression hypothesis',
+    formula:'h<sub>w</sub>(x) = w<sub>0</sub> + w<sub>1</sub>·x',
+    where:'<p><strong>w<sub>0</sub></strong> intercept (bias) — value when x = 0</p><p><strong>w<sub>1</sub></strong> slope — change in y per unit x</p>',
+    trap:'w₀ = intercept. w₁ = slope. Easy to swap.' },
+  { topic:'regression', type:'formula',
+    prompt:'Squared error loss',
+    formula:'Loss(w) = Σ<sub>j</sub> ( y<sub>j</sub> − h<sub>w</sub>(x<sub>j</sub>) )²',
+    where:'<p><strong>y<sub>j</sub></strong> true target of example j</p><p>Goal: minimise Loss(w).</p>',
+    note:'Squaring penalises large errors more heavily AND gives a nice gradient.' },
+  { topic:'regression', type:'formula',
+    prompt:'Batch GD updates (univariate)',
+    formula:'w<sub>0</sub> ← w<sub>0</sub> + α · Σ<sub>j</sub> (y<sub>j</sub> − h<sub>w</sub>(x<sub>j</sub>))<br><br>w<sub>1</sub> ← w<sub>1</sub> + α · Σ<sub>j</sub> (y<sub>j</sub> − h<sub>w</sub>(x<sub>j</sub>)) · x<sub>j</sub>',
+    where:'<p><strong>α</strong> learning rate (e.g. 0.01)</p><p><strong>j</strong> sums over the WHOLE training set</p>',
+    trap:'Bias update has NO x factor. Slope update HAS the x factor.' },
+  { topic:'regression', type:'concept',
+    prompt:'Batch GD vs Stochastic GD',
+    body:'<strong>Batch:</strong> sum errors over ALL examples, ONE update per epoch.<br><br><strong>SGD:</strong> update after EACH example. Faster per step, noisier path, good for huge datasets.' },
+  { topic:'regression', type:'concept',
+    prompt:'Learning rate α',
+    body:'<strong>Too small:</strong> slow convergence, many iterations.<br><strong>Too large:</strong> oscillation or divergence — overshoots minimum.',
+    trap:'Slow → INCREASE α. Diverging → DECREASE α. Opposite fixes for opposite symptoms.' },
+  { topic:'regression', type:'concept',
+    prompt:'Linearly separable',
+    body:'A dataset of dimension n is linearly separable if a single <strong>(n−1)-dimensional hyperplane</strong> separates the classes. In 2D = a line. XOR is the classic counter-example.' },
+
+  // ===== 06. NAIVE BAYES =====
+  { topic:'naive_bayes', type:'formula',
+    prompt:'Bayes\' Rule',
+    formula:'P(H | D) = P(D | H) · P(H) / P(D)',
+    where:'<p><strong>P(H|D)</strong> posterior (after seeing data)</p><p><strong>P(D|H)</strong> likelihood</p><p><strong>P(H)</strong> prior</p><p><strong>P(D)</strong> evidence (normaliser)</p>',
+    note:'Posterior = (likelihood × prior) / evidence.' },
+  { topic:'naive_bayes', type:'concept',
+    prompt:'The "naive" assumption',
+    body:'Given the class, features are <strong>conditionally independent</strong>:<br><br>P(x₁,…,x<sub>n</sub> | C) = ∏<sub>i</sub> P(x<sub>i</sub> | C)<br><br>Rarely true, works well anyway — especially for text.' },
+  { topic:'naive_bayes', type:'formula',
+    prompt:'Naive Bayes prediction rule',
+    formula:'v<sub>NB</sub> = argmax<sub>C</sub> [ P(C) · ∏<sub>i</sub> P(x<sub>i</sub> | C) ]',
+    where:'<p><strong>P(C)</strong> prior — fraction of training data in class C</p><p><strong>P(x<sub>i</sub>|C)</strong> likelihood of feature given class</p>',
+    note:'Pick the class that maximises the product of prior and conditionals.' },
+  { topic:'naive_bayes', type:'concept',
+    prompt:'Zero-probability problem',
+    body:'If a feature value NEVER co-occurs with a class in training, P(x_i|C) = 0 by MLE. Since NB MULTIPLIES probabilities, a single zero kills the whole product.',
+    trap:'Solution: smoothing (m-estimate / Laplace). Never use raw MLE counts in NB.' },
+  { topic:'naive_bayes', type:'formula',
+    prompt:'m-estimate (Laplace-like smoothing)',
+    formula:'P(A=a | B=b) = (n<sub>c</sub> + m·p) / (n + m)',
+    where:'<p><strong>n</strong> total cases where B = b</p><p><strong>n<sub>c</sub></strong> cases where A=a AND B=b</p><p><strong>m</strong> equivalent sample size</p><p><strong>p</strong> prior estimate (e.g. 1/k)</p>',
+    note:'m=0 recovers raw MLE.' },
+
+  // ===== 07. CLUSTERING =====
+  { topic:'clustering', type:'concept',
+    prompt:'k-means algorithm',
+    body:'<strong>1. Init:</strong> choose k random centres.<br><strong>2. Assign:</strong> each point to its nearest centre.<br><strong>3. Update:</strong> move each centre to the MEAN of its assigned points.<br><strong>4. Repeat</strong> until assignments stop changing.',
+    note:'Guaranteed to converge to a LOCAL optimum. Run multiple random starts.' },
+  { topic:'clustering', type:'concept',
+    prompt:'k-means limitations',
+    body:'· Must specify k in advance<br>· Result depends on initialisation (local optima)<br>· Assumes spherical, similar-size clusters<br>· Sensitive to outliers<br>· Empty cluster fix: re-seed at a random point' },
+  { topic:'clustering', type:'formula',
+    prompt:'Gaussian density',
+    formula:'𝒩(x | μ, σ²) = (1 / √(2π σ²)) · exp( −(x−μ)² / (2σ²) )',
+    where:'<p><strong>μ</strong> mean</p><p><strong>σ²</strong> variance</p>',
+    trap:'Don\'t miss the √ in the normaliser or the factor of 2 in the exponent denominator.' },
+  { topic:'clustering', type:'formula',
+    prompt:'Univariate Gaussian mixture',
+    formula:'p(x) = Σ<sub>j</sub> w<sub>j</sub> · 𝒩(x | μ<sub>j</sub>, σ<sub>j</sub>²)',
+    where:'<p><strong>w<sub>j</sub></strong> weight of component j, with Σw<sub>j</sub> = 1</p><p><strong>μ<sub>j</sub>, σ<sub>j</sub>²</strong> mean and variance of component j</p>',
+    note:'A weighted SUM (not product, not max) of Gaussians.' },
+  { topic:'clustering', type:'concept',
+    prompt:'EM algorithm',
+    body:'Alternates two steps to fit a mixture model:<br><br><strong>E-step:</strong> given parameters, compute expected hidden assignments (responsibilities).<br><br><strong>M-step:</strong> given assignments, update parameters (weights, means, variances) to max likelihood.',
+    note:'k-means = hard-assignment version of EM for GMMs.' },
+
+  // ===== 08. HMMs =====
+  { topic:'hmm', type:'concept',
+    prompt:'HMM assumptions (1st-order)',
+    body:'<strong>Markov assumption:</strong> P(next state) depends ONLY on the current state, not full history.<br><br><strong>Output independence:</strong> P(observation) depends ONLY on the current state.' },
+  { topic:'hmm', type:'formula',
+    prompt:'Transition matrix A',
+    formula:'a<sub>ij</sub> = P(X<sub>t</sub> = s<sub>j</sub> | X<sub>t−1</sub> = s<sub>i</sub>)',
+    where:'<p>Probability of moving FROM state i TO state j.</p><p>Rows sum to 1: Σ<sub>j</sub> a<sub>ij</sub> = 1.</p>',
+    trap:'ROWS sum to 1. Columns generally do not.' },
+  { topic:'hmm', type:'formula',
+    prompt:'Emission matrix B',
+    formula:'b<sub>i</sub>(k<sub>j</sub>) = P(O<sub>t</sub> = k<sub>j</sub> | X<sub>t</sub> = s<sub>i</sub>)',
+    where:'<p>Probability of emitting observation k<sub>j</sub> while in state i.</p>',
+    trap:'Don\'t confuse with transitions. a = state→state. b = state→observation.' },
+  { topic:'hmm', type:'concept',
+    prompt:'Three classic HMM problems',
+    body:'<strong>Likelihood</strong> — P(obs | HMM) → <em>Forward algorithm</em><br><br><strong>Decoding</strong> — most likely hidden state sequence → <em>Viterbi</em><br><br><strong>Learning</strong> — best HMM parameters from data → <em>Baum-Welch (EM)</em>' },
+  { topic:'hmm', type:'formula',
+    prompt:'Viterbi complexity',
+    formula:'1st order: O(N² · T)<br><br>o-th order: O(N<sup>o+1</sup> · T)',
+    where:'<p><strong>N</strong> number of states</p><p><strong>T</strong> length of observation sequence</p>',
+    note:'Linear in T (HMMs scale). Exponential in order o.' },
+  { topic:'hmm', type:'concept',
+    prompt:'Constraint depends on last 2 states',
+    body:'E.g. "never roll L2 more than twice in a row". A first-order HMM only conditions on the immediately previous state — cannot encode this.',
+    note:'Fix: use 2nd-order HMM, OR augment states with memory ("was the previous L2?").' },
+  { topic:'hmm', type:'concept',
+    prompt:'Constraint depends on observation',
+    body:'E.g. "the croupier switches dice after rolling a 6". Standard HMM transitions depend on STATE, not OBSERVATIONS.',
+    note:'Needs an input-output HMM or augmented states.' },
+  { topic:'hmm', type:'concept',
+    prompt:'Encoding "never go directly from A to B"',
+    body:'Set the transition matrix entry <strong>a<sub>A,B</sub> = 0</strong>. Redistribute the remaining mass among other outgoing transitions so row A still sums to 1.' },
+
+  // ===== 09. SVM =====
+  { topic:'svm', type:'concept',
+    prompt:'Maximum-margin classifier',
+    body:'Finds the hyperplane MAXIMISING the margin — the distance between the boundary and the nearest training points (the <strong>support vectors</strong>). Wider margin → better generalisation.' },
+  { topic:'svm', type:'formula',
+    prompt:'Hard-margin SVM (primal)',
+    formula:'minimise   (1/2) · ‖w‖²<br><br>subject to   y<sub>i</sub> · (w·x<sub>i</sub> + b) ≥ 1   ∀ i',
+    where:'<p><strong>w</strong> weight vector (normal to hyperplane)</p><p><strong>b</strong> bias</p><p><strong>y<sub>i</sub></strong> class label (±1)</p>',
+    note:'Margin = 2/‖w‖. Minimising ‖w‖² maximises margin.' },
+  { topic:'svm', type:'formula',
+    prompt:'Soft-margin SVM (primal)',
+    formula:'minimise   (1/2)‖w‖² + C · Σ<sub>i</sub> ξ<sub>i</sub><br><br>s.t.   y<sub>i</sub>·(w·x<sub>i</sub> + b) ≥ 1 − ξ<sub>i</sub>,   ξ<sub>i</sub> ≥ 0',
+    where:'<p><strong>ξ<sub>i</sub></strong> slack — how much example i may violate margin</p><p><strong>C</strong> trade-off between margin and violations</p>',
+    trap:'LARGE C → fewer violations, narrower margin (risk overfit). SMALL C → wider margin, more tolerance.' },
+  { topic:'svm', type:'formula',
+    prompt:'SVM dual (enables kernels)',
+    formula:'maximise   Σ<sub>i</sub> α<sub>i</sub> − (1/2) · Σ<sub>i,j</sub> α<sub>i</sub>α<sub>j</sub> y<sub>i</sub>y<sub>j</sub> (x<sub>i</sub> · x<sub>j</sub>)',
+    where:'<p><strong>α<sub>i</sub></strong> Lagrange multipliers (≠ 0 only for support vectors)</p><p><strong>x<sub>i</sub>·x<sub>j</sub></strong> inner product — swap for K(x<sub>i</sub>, x<sub>j</sub>)</p>',
+    note:'MAX (not min). Negative quadratic term. Inner product is the only place data appears → kernel trick.' },
+  { topic:'svm', type:'concept',
+    prompt:'Kernel trick',
+    body:'Replace every x<sub>i</sub>·x<sub>j</sub> in the SVM dual with K(x<sub>i</sub>, x<sub>j</sub>) = F(x<sub>i</sub>)·F(x<sub>j</sub>). Computes the inner product in feature space WITHOUT computing F(x).',
+    note:'Result: non-linear boundary in original space, while still solving a linear problem.' },
+  { topic:'svm', type:'concept',
+    prompt:'RBF kernel — γ extremes',
+    body:'<strong>γ → 0:</strong> very smooth boundary, may underfit.<br><strong>γ → ∞:</strong> each support vector only influences nearby points → wiggly boundary, severe overfit.',
+    trap:'γ small → smooth. γ large → wiggly. Easy to reverse.' },
+
+  // ===== 10. NEURAL NETWORKS =====
+  { topic:'nn', type:'formula',
+    prompt:'Perceptron output',
+    formula:'s = Σ<sub>i</sub> w<sub>i</sub>·x<sub>i</sub><br><br>output = g(s)',
+    where:'<p><strong>w<sub>i</sub></strong> weight of input i (w<sub>0</sub> is bias, x<sub>0</sub>=1)</p><p><strong>g</strong> activation function</p>' },
+  { topic:'nn', type:'formula',
+    prompt:'Sigmoid and its derivative',
+    formula:'g(s) = 1 / (1 + e<sup>−s</sup>)<br><br>g\'(s) = g(s) · (1 − g(s))',
+    where:'<p>Smooth, outputs (0, 1), differentiable.</p>',
+    note:'g\'(s) ≤ 0.25 — that\'s why deep sigmoid nets suffer from VANISHING GRADIENTS.' },
+  { topic:'nn', type:'formula',
+    prompt:'Perceptron error-correction rule',
+    formula:'w<sub>i</sub> ← w<sub>i</sub> + α · (t − g(s)) · x<sub>i</sub>',
+    where:'<p><strong>t</strong> target output</p><p><strong>g(s)</strong> current output after activation</p><p><strong>α</strong> learning rate</p>',
+    note:'No update when g(s) = t.' },
+  { topic:'nn', type:'formula',
+    prompt:'Delta rule',
+    formula:'w<sub>i</sub> ← w<sub>i</sub> + α · (t − s) · x<sub>i</sub>',
+    where:'<p>Uses raw sum <strong>s</strong>, not the thresholded output g(s).</p>',
+    note:'Smooth, proportional to error size → enables gradient descent on squared error.' },
+  { topic:'nn', type:'formula',
+    prompt:'Output-unit error (backprop, sigmoid)',
+    formula:'Δ = (y − g(o)) · g(o) · (1 − g(o))',
+    where:'<p><strong>y</strong> target value</p><p><strong>g(o)</strong> output activation</p><p><strong>g(o)(1−g(o))</strong> sigmoid derivative</p>',
+    trap:'Don\'t forget the g\'(o) factor — chain rule requires it.' },
+  { topic:'nn', type:'formula',
+    prompt:'Hidden-unit error (backprop)',
+    formula:'Δ<sub>h</sub> = g(h) · (1 − g(h)) · Σ<sub>k</sub> w<sub>h,k</sub> · Δ<sub>k</sub>',
+    where:'<p><strong>w<sub>h,k</sub></strong> weight from hidden h to downstream k</p><p><strong>Δ<sub>k</sub></strong> error at downstream unit k</p>',
+    note:'Hidden units have no target → sum downstream errors weighted by connections, multiply by g\'(h).' },
+  { topic:'nn', type:'formula',
+    prompt:'Backprop weight update',
+    formula:'w<sub>i,h</sub> ← w<sub>i,h</sub> + α · Δ<sub>h</sub> · x<sub>i</sub>',
+    where:'<p>Same form at every layer: weight ← weight + α · downstream-error · upstream-input.</p>' },
+  { topic:'nn', type:'concept',
+    prompt:'Vanishing gradients',
+    body:'Sigmoid derivative ≤ 0.25. In deep nets, multiplying many of these through backprop shrinks gradient signal at early layers → training stalls.',
+    note:'Fix: ReLU activation (gradient = 1 for positive inputs).' },
+
+  // ===== 11. RL =====
+  { topic:'rl', type:'concept',
+    prompt:'Policy π(s)',
+    body:'A mapping from states to actions. The agent\'s decision rule. Goal of RL: learn the policy that maximises expected long-term reward.' },
+  { topic:'rl', type:'formula',
+    prompt:'Bellman equation (optimal utility)',
+    formula:'U(s) = R(s) + γ · max<sub>a</sub> Σ<sub>s\'</sub> P(s\' | s, a) · U(s\')',
+    where:'<p><strong>R(s)</strong> immediate reward</p><p><strong>γ</strong> discount factor [0,1]</p><p><strong>P(s\'|s,a)</strong> transition probability</p>',
+    note:'Optimal utility = immediate reward + discounted utility of BEST next action.' },
+  { topic:'rl', type:'formula',
+    prompt:'Optimal policy from utilities',
+    formula:'π*(s) = argmax<sub>a</sub> Σ<sub>s\'</sub> P(s\' | s, a) · U(s\')',
+    where:'<p>Once utilities converge, pick action with highest expected utility in each state.</p>' },
+  { topic:'rl', type:'formula',
+    prompt:'TD update rule',
+    formula:'U<sup>π</sup>(s) ← U<sup>π</sup>(s) + α · [ R(s) + γ·U<sup>π</sup>(s\') − U<sup>π</sup>(s) ]',
+    where:'<p><strong>s\'</strong> observed next state</p><p><strong>α</strong> learning rate</p>',
+    note:'MODEL-FREE: no transition model needed. Bracket = TD ERROR.' },
+  { topic:'rl', type:'formula',
+    prompt:'Q-learning update (OFF-policy)',
+    formula:'Q(s,a) ← Q(s,a) + α · [ R(s) + γ · max<sub>a\'</sub> Q(s\', a\') − Q(s,a) ]',
+    where:'<p><strong>max<sub>a\'</sub></strong> best future value (even if that action wasn\'t taken)</p>',
+    note:'OFF-policy: learns about OPTIMAL policy regardless of behaviour.' },
+  { topic:'rl', type:'formula',
+    prompt:'SARSA update (ON-policy)',
+    formula:'Q(s,a) ← Q(s,a) + α · [ R(s) + γ · Q(s\', a\') − Q(s,a) ]',
+    where:'<p><strong>a\'</strong> action ACTUALLY taken in s\'</p>',
+    note:'ON-policy: evaluates policy being followed.',
+    trap:'Q-learning = max. SARSA = actual. Q-learning is bolder; SARSA more conservative near cliffs.' },
+  { topic:'rl', type:'formula',
+    prompt:'Softmax (Boltzmann) action selection',
+    formula:'P(a<sub>i</sub>) = exp(Q(a<sub>i</sub>)/τ) / Σ<sub>j</sub> exp(Q(a<sub>j</sub>)/τ)',
+    where:'<p><strong>τ</strong> temperature</p>',
+    note:'τ → 0: greedy. τ → ∞: uniform random.' },
+  { topic:'rl', type:'concept',
+    prompt:'ε-greedy exploration',
+    body:'With probability (1−ε): pick best known action (exploit). With probability ε: pick uniformly at random (explore).' },
+  { topic:'rl', type:'concept',
+    prompt:'TD vs ADP',
+    body:'<strong>ADP:</strong> learns full transition model P, then value iteration. Data-efficient per sample, heavy computation.<br><br><strong>TD:</strong> model-free, updates only along observed transitions. Cheap per sample, scales better.' },
+
+  // ===== 12. EVOLUTIONARY =====
+  { topic:'ea', type:'concept',
+    prompt:'Evolutionary algorithm loop',
+    body:'<strong>1. Initialise</strong> random population.<br><strong>2. Evaluate</strong> fitness of each individual.<br><strong>3. Select</strong> fittest as parents.<br><strong>4. Reproduce</strong> via crossover + mutation.<br><strong>5. Repeat</strong> until stopping criterion.' },
+  { topic:'ea', type:'concept',
+    prompt:'Crossover (genetic algorithm)',
+    body:'Combine two parents using a crossover MASK (bit string). At each position: mask=1 → child1 takes from parent1; mask=0 → child1 takes from parent2 (reversed for child2).' },
+  { topic:'ea', type:'concept',
+    prompt:'Why mutation is essential',
+    body:'Maintains GENETIC DIVERSITY. Without it, once the population converges, crossover alone cannot escape local optima. Mutation flips bits randomly with small probability.' },
+  { topic:'ea', type:'concept',
+    prompt:'Genetic programming',
+    body:'Like GA, but individuals are PROGRAMS — represented as <strong>expression trees</strong> (s-expressions). Internal nodes = functions; leaves = variables/constants. Crossover swaps random subtrees.' },
+
+  // ===== 13. LfD =====
+  { topic:'lfd', type:'formula',
+    prompt:'Demonstration set notation',
+    formula:'D = { d<sub>j</sub> }   where   d<sub>j</sub> = { (z<sub>j</sub><sup>i</sup>, a<sub>j</sub><sup>i</sup>) }',
+    where:'<p><strong>d<sub>j</sub></strong> one demonstration</p><p><strong>z<sub>j</sub><sup>i</sup></strong> state at step i</p><p><strong>a<sub>j</sub><sup>i</sup></strong> action at step i</p>' },
+  { topic:'lfd', type:'concept',
+    prompt:'Demonstration techniques',
+    body:'<strong>Teleoperation:</strong> teacher directly drives the robot. Mappings = identity.<br><br><strong>Shadowing:</strong> robot watches and replicates. Non-trivial mappings.<br><br><strong>Kinaesthetic:</strong> physically moving the robot\'s limbs.' },
+  { topic:'lfd', type:'concept',
+    prompt:'Record vs embodiment mapping',
+    body:'<strong>Record:</strong> how the teacher\'s actions are RECORDED. Identity = recorded exactly.<br><br><strong>Embodiment:</strong> how the recording is translated onto the LEARNER. Identity = same body. Non-identity = different bodies.' },
+  { topic:'lfd', type:'concept',
+    prompt:'Confidence-Based Autonomy (CBA)',
+    body:'Agent decides when to act and when to ask. <strong>Confident → act.</strong> <strong>Uncertain → request demo.</strong> Gathers demonstrations exactly where they help most.' },
+
+  // ===== 14. ETHICS =====
+  { topic:'ethics', type:'concept',
+    prompt:'Weapon of Math Destruction — three traits',
+    body:'<strong>Opacity</strong> — model is a black box; affected cannot interrogate or appeal.<br><br><strong>Scale</strong> — effects ripple across whole groups and industries.<br><br><strong>Damage</strong> — causes real harm, often reinforcing bias against vulnerable groups.' },
+  { topic:'ethics', type:'concept',
+    prompt:'Why "blind" classifiers fail to remove bias',
+    body:'PROXY FEATURES. Postcode correlates with race; school with class. Naive removal of sensitive columns leaves bias intact through proxies. Audit the FULL feature set.' },
+  { topic:'ethics', type:'concept',
+    prompt:'How to reduce harm in ML systems',
+    body:'· Audit data for systematic bias BEFORE training<br>· Watch for proxy features<br>· Evaluate error rates per demographic group<br>· Build in explainability<br>· Keep humans in the loop<br>· Document model & tests publicly' },
+];
+
+
+// ======================================================================
+// FLASHCARD LOGIC
+// ======================================================================
+let fcState = {
+  cards: [],
+  index: 0,
+  knownIds: new Set(),
+  againIds: new Set(),
+  deckTitle: '',
+  reviewQueue: new Set(),  // persistent
+};
+
+function fcCardId(c) { return c.topic + '::' + c.prompt; }
+
+async function fcLoadState() {
+  try {
+    if (window.storage) {
+      const r = await window.storage.get('ml_fc_review_queue');
+      if (r && r.value) fcState.reviewQueue = new Set(JSON.parse(r.value));
+    } else {
+      const raw = localStorage.getItem('ml_fc_review_queue');
+      if (raw) fcState.reviewQueue = new Set(JSON.parse(raw));
+    }
+  } catch (e) { /* ignore */ }
+}
+
+async function fcPersist() {
+  try {
+    const data = JSON.stringify([...fcState.reviewQueue]);
+    if (window.storage) await window.storage.set('ml_fc_review_queue', data);
+    else localStorage.setItem('ml_fc_review_queue', data);
+  } catch (e) { /* ignore */ }
+}
+
+function fcStartMode(mode) {
+  let pool;
+  if (mode === 'fc-formulas') {
+    pool = FLASHCARDS.filter(c => c.type === 'formula');
+    fcState.deckTitle = 'All formulas';
+  } else if (mode === 'fc-scary') {
+    const scary = ['svm','nn','hmm','regression','clustering'];
+    pool = FLASHCARDS.filter(c => scary.includes(c.topic));
+    fcState.deckTitle = 'Scary topics';
+  } else if (mode === 'fc-all') {
+    pool = FLASHCARDS.slice();
+    fcState.deckTitle = 'All cards';
+  } else if (mode === 'fc-topic') {
+    fcShowTopicPicker();
+    return;
+  } else if (mode === 'fc-due') {
+    pool = FLASHCARDS.filter(c => fcState.reviewQueue.has(fcCardId(c)));
+    if (pool.length === 0) { alert('No cards in your review queue!'); return; }
+    fcState.deckTitle = 'Review queue';
+  }
+  fcState.cards = shuffled(pool);
+  fcStartDeck();
+}
+
+function fcShowTopicPicker() {
+  const grid = document.getElementById('fc-topic-grid');
+  grid.innerHTML = '';
+  Object.entries(TOPIC_META).forEach(([tid, meta]) => {
+    const count = FLASHCARDS.filter(c => c.topic === tid).length;
+    if (count === 0) return;
+    const btn = document.createElement('button');
+    btn.style.cssText = 'background:white; border:2px solid #e8d9b8; border-radius:10px; padding:14px 16px; cursor:pointer; font-family:inherit; text-align:left; transition:all 0.15s;';
+    btn.innerHTML = `
+      <div style="font-size:14px; color:#b45309; font-weight:700;">${meta.icon} ${meta.name}</div>
+      <div style="font-size:12px; color:var(--muted); margin-top:4px;">${count} cards</div>
+    `;
+    btn.onmouseenter = () => { btn.style.borderColor = '#f39c12'; btn.style.transform = 'translateY(-2px)'; };
+    btn.onmouseleave = () => { btn.style.borderColor = '#e8d9b8'; btn.style.transform = 'none'; };
+    btn.onclick = () => {
+      fcState.cards = shuffled(FLASHCARDS.filter(c => c.topic === tid));
+      fcState.deckTitle = meta.name;
+      fcStartDeck();
+    };
+    grid.appendChild(btn);
+  });
+  showScreen('fc-picker-screen');
+}
+
+function fcStartDeck() {
+  fcState.index = 0;
+  fcState.knownIds = new Set();
+  fcState.againIds = new Set();
+  showScreen('fc-deck-screen');
+  fcRender();
+}
+
+function fcRender() {
+  const c = fcState.cards[fcState.index];
+  if (!c) { fcFinish(); return; }
+  const card = document.getElementById('flashcard');
+  card.classList.remove('flipped');
+
+  // Tags
+  const topicMeta = TOPIC_META[c.topic] || { icon:'•', name:c.topic };
+  document.getElementById('fc-topic-tag').textContent = topicMeta.icon + ' ' + topicMeta.name;
+  document.getElementById('fc-type-tag').textContent = c.type === 'formula' ? '📐 Formula' : '💡 Concept';
+
+  // Front face
+  document.getElementById('fc-front').innerHTML = `
+    <div style="font-size:11px; letter-spacing:0.15em; color:#b0a48a; text-transform:uppercase; text-align:center;">${c.type === 'formula' ? 'Recall the formula' : 'Define / explain'}</div>
+    <div class="fc-prompt">${c.prompt}</div>
+    <div class="fc-hint">tap to reveal</div>
+  `;
+
+  // Back face
+  let backHtml = `<div class="fc-back-label">${c.type === 'formula' ? 'Formula' : 'Answer'}</div>`;
+  if (c.formula) backHtml += `<div class="fc-formula-box">${c.formula}</div>`;
+  if (c.where) backHtml += `<div class="fc-where">${c.where}</div>`;
+  if (c.body) backHtml += `<div class="fc-body">${c.body}</div>`;
+  if (c.note) backHtml += `<div class="fc-note">${c.note}</div>`;
+  if (c.trap) backHtml += `<div class="fc-trap">${c.trap}</div>`;
+  document.getElementById('fc-back').innerHTML = backHtml;
+
+  // Meta
+  document.getElementById('fc-current').textContent = fcState.index + 1;
+  document.getElementById('fc-total').textContent = fcState.cards.length;
+  document.getElementById('fc-known').textContent = fcState.knownIds.size;
+  document.getElementById('fc-again').textContent = fcState.againIds.size;
+  document.getElementById('fc-progress').style.width = ((fcState.index)/fcState.cards.length*100) + '%';
+  document.getElementById('fc-prev-btn').disabled = fcState.index === 0;
+}
+
+function flipFlashcard() {
+  document.getElementById('flashcard').classList.toggle('flipped');
+}
+
+function fcNext() {
+  if (fcState.index < fcState.cards.length - 1) { fcState.index++; fcRender(); }
+  else { fcFinish(); }
+}
+
+function fcPrev() {
+  if (fcState.index > 0) { fcState.index--; fcRender(); }
+}
+
+async function fcKnown() {
+  const c = fcState.cards[fcState.index];
+  const id = fcCardId(c);
+  fcState.knownIds.add(id);
+  fcState.againIds.delete(id);
+  if (fcState.reviewQueue.has(id)) fcState.reviewQueue.delete(id);
+  await fcPersist();
+  fcNext();
+}
+
+async function fcAgain() {
+  const c = fcState.cards[fcState.index];
+  const id = fcCardId(c);
+  fcState.againIds.add(id);
+  fcState.knownIds.delete(id);
+  fcState.reviewQueue.add(id);
+  await fcPersist();
+  fcNext();
+}
+
+function fcFinish() {
+  document.getElementById('fc-done-known').textContent = fcState.knownIds.size;
+  document.getElementById('fc-done-again').textContent = fcState.againIds.size;
+  document.getElementById('fc-done-total').textContent = fcState.cards.length;
+  const pct = fcState.cards.length === 0 ? 0 : Math.round((fcState.knownIds.size / fcState.cards.length) * 100);
+  let sub;
+  if (pct === 100) sub = '🌟 Perfect — every card landed.';
+  else if (pct >= 80) sub = '🎉 Strong recall — exam-ready on these.';
+  else if (pct >= 60) sub = '👏 Decent. Re-drill the "again" ones.';
+  else sub = '💡 Keep going. Most learning happens here.';
+  document.getElementById('fc-done-sub').textContent = sub;
+  document.getElementById('fc-review-btn').style.display = fcState.againIds.size > 0 ? 'inline-flex' : 'none';
+  showScreen('fc-done-screen');
+}
+
+function fcReviewAgain() {
+  const cards = fcState.cards.filter(c => fcState.againIds.has(fcCardId(c)));
+  if (cards.length === 0) return;
+  fcState.cards = shuffled(cards);
+  fcStartDeck();
+}
+
+function fcRestart() {
+  fcState.cards = shuffled(fcState.cards);
+  fcStartDeck();
+}
+
+// Keyboard for flashcards
+document.addEventListener('keydown', (e) => {
+  if (!document.getElementById('fc-deck-screen').classList.contains('active')) return;
+  if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+  if (e.key === ' ' || e.key === 'Enter') { e.preventDefault(); flipFlashcard(); }
+  else if (e.key === 'ArrowRight') { e.preventDefault(); fcNext(); }
+  else if (e.key === 'ArrowLeft') { e.preventDefault(); fcPrev(); }
+  else if (e.key === '1') { e.preventDefault(); fcAgain(); }
+  else if (e.key === '2') { e.preventDefault(); fcKnown(); }
+});
+
+
 // ======================================================================
 // BOOT
 // ======================================================================
-(async () => { await loadState(); renderHome(); })();
+(async () => { await loadState(); await fcLoadState(); renderHome(); })();
 </script>
 </body>
 </html>
